@@ -1,0 +1,41 @@
+<div class="grupo">
+  <div class="classe">
+      <div class="ui-g">
+
+        <div>
+          <p-table id="tabela" [value]="convenios" [responsive]="true" [paginator]="true" [rows]="filtro.itensPorPagina"
+            [lazy]="true" [totalRecords]="totalRegistros" (onLazyLoad)="aoMudarPagina($event)">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th style="width: 8%;">Código</th>
+                    <th style="width: 40%;">Título</th>
+                    <th style="width: 15%;">Telefone</th>
+                    <th style="width: 15%;">Status</th>
+                    <th style="width: 7%; text-align: center;">Opções</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-convenio>
+                <tr>
+                    <td style="text-align: center;">{{convenio.codigo}}</td>
+                    <td>{{convenio.nome}}</td>
+                    <td>{{convenio.telefone}}</td>
+                    <td>{{convenio.ativo}}</td>
+                    <td style="text-align: center;">
+                        <a pButton icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top"
+                        (click)="BuscarPeloId(convenio)"></a>
+
+                      <button pButton icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="top"
+                        (click)="Excluir(abreviatura)"></button>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+        </div>
+
+        <div class="ui-g-12" style="text-align: right;">
+          <a pButton label="Novo Convênio" routerLink="/convenios/novo"></a>
+        </div>
+      </div>
+
+    </div>
+</div>
