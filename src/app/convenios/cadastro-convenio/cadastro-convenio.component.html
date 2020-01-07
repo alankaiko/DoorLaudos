@@ -1,1 +1,92 @@
-<p>cadastro-convenio works!</p>
+<div class="conteudos">
+  <h1>{{ editando ? 'Editar' : 'Novo'}} Convênio</h1>
+
+  <div class="classecad">
+      <form autocomplete="off" [formGroup]="formulario" (ngSubmit)="Salvar()" class="formu">
+        <div class="p-grid">
+          <div class="ui-g-3 ui-fluid">
+            <label>Código</label>
+            <input [readonly]= "editando" type="text" pInputText ng-model="text" name="codigo" formControlName="codigo">
+          </div>
+
+          <div class="ui-g-9 ui-fluid">
+            <label>Descrição</label>
+            <input type="text" pInputText ng-model="text" name="nome" formControlName="nome">
+          </div>
+
+          <div class="ui-g-12 ui-fluid">
+            <label>Nome do contato</label>
+            <input type="text" pInputText ng-model="text" name="nomedocontato" formControlName="nomedocontato">
+          </div>
+
+          <div class="ui-g-9 ui-fluid">
+            <label>Telefone</label>
+            <input type="text" pInputText ng-model="text" name="telefone" formControlName="telefone">
+          </div>
+
+          <div class="ui-g-9 ui-fluid">
+            <label>Fax</label>
+            <input type="text" pInputText ng-model="text" name="fax" formControlName="fax">
+          </div>
+
+          <div class="ui-g-9 ui-fluid">
+            <label>Status</label>
+            <input type="text" pInputText ng-model="text" name="ativo" formControlName="ativo">
+          </div>
+
+          <div class="ui-g-9 ui-fluid">
+            <label>E-mail</label>
+            <input type="text" pInputText ng-model="text" name="email" formControlName="email">
+          </div>
+
+          <div class="ui-g-9 ui-fluid">
+            <label>Observações</label>
+            <input type="text" pInputText ng-model="text" name="observacoes" formControlName="observacoes">
+          </div>
+
+          <div class="ui-g-9 ui-fluid" formGroupName="endereco">
+            <label>Logradouro</label>
+            <input type="text" pInputText ng-model="text" name="logradouro" formControlName="logradouro">
+          </div>
+
+          <div class="ui-g-9 ui-fluid" formGroupName="endereco">
+            <label>Complemento</label>
+            <input type="text" pInputText ng-model="text" name="complemento" formControlName="complemento">
+          </div>
+
+          <div class="ui-g-9 ui-fluid" formGroupName="endereco">
+            <label>Num.</label>
+            <input type="text" pInputText ng-model="text" name="numero" formControlName="numero">
+          </div>
+
+          <div class="ui-g-9 ui-fluid" formGroupName="endereco">
+            <label>Bairro</label>
+            <input type="text" pInputText ng-model="text" name="bairro" formControlName="bairro">
+          </div>
+
+          <div class="ui-g-9 ui-fluid" formGroupName="endereco">
+            <label>Cidade</label>
+            <input type="text" pInputText ng-model="text" name="cidade" formControlName="cidade">
+          </div>
+
+          <div class="ui-g-9 ui-fluid" formGroupName="endereco">
+            <label>Estado</label>
+            <input type="text" pInputText ng-model="text" name="estado" formControlName="estado">
+          </div>
+
+          <div class="ui-g-9 ui-fluid" formGroupName="endereco">
+            <label>CEP</label>
+            <input type="text" pInputText ng-model="text" name="cep" formControlName="cep">
+          </div>
+
+          <div class="ui-g-12 ui-md-12 ui-lg-12 ui-fluid">
+            <button class="btn btn-primary" type="submit" style="margin-right: 8px;">Salvar</button>
+            <button class="btn btn-outline-secondary" routerLink="/convenios">Cancelar</button>
+
+            <a routerLink="/convenios">Voltar para a pesquisa</a>
+          </div>
+        </div>
+      </form>
+  </div>
+
+</div>
