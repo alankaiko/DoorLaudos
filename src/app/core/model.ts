@@ -39,6 +39,7 @@ export class Patient {
   birthday: Date;
   patientage: string;
   patientsex: string;
+  studyes: [];
   datecreate: Date;
   datemodify: Date;
 }

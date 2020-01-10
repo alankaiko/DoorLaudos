@@ -1,0 +1,40 @@
+<div class="conteudogeral">
+    <section class="ui-g ui-fluid">
+      <section class="ui-g-12">
+        <h4>Patient: {{patient?.patientname}}</h4>
+      </section>
+
+      <section class="ui-g-12">
+        <div class="ui-g-6" style="border: 1px solid #cc0000;">
+          <div>
+            <h6>Paciente</h6>
+            {{patient?.patientname}}, possui um total de {{patient?.studyes.length}} Estudo(s)
+          </div>
+
+          <div>
+            <span>Nome: {{patient?.patientname}}</span>
+          </div>
+
+          <div>
+            <span>Id: {{patient?.patientid}} </span>
+          </div>
+
+          <div>
+            <span>Sexo: {{patient?.patientsex}} </span>
+          </div>
+
+          <div>
+            <span>Idade: {{patient?.patientage}} </span>
+          </div>
+
+        </div>
+
+        <div class="ui-g-6">
+          <div>
+            <h5>Imagens em jpeg</h5>
+
+          </div>
+        </div>
+      </section>
+    </section>
+</div>

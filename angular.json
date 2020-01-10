@@ -28,9 +28,11 @@
               "node_modules/primeicons/primeicons.css",
               "node_modules/primeng/resources/themes/luna-amber/theme.css",
               "node_modules/primeng/resources/primeng.min.css",
-              "src/styles.css",
+              "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+
+            ]
           },
           "configurations": {
             "production": {

@@ -1,3 +1,5 @@
+import { ViewerComponent } from './servidor/viewer/viewer.component';
+import { PrevisualizacaoComponent } from './servidor/previsualizacao/previsualizacao.component';
 import { ListaServidorComponent } from './servidor/lista-servidor/lista-servidor.component';
 import { ListaEspecialidademedicaComponent } from './basededados/lista-especialidademedica/lista-especialidademedica.component';
 import { ListaCrmComponent } from './basededados/lista-crm/lista-crm.component';
@@ -53,7 +55,10 @@ const rotas: Routes = [
   { path: 'listacnes', component: ListaCnesComponent },
   { path: 'listacrm', component: ListaCrmComponent },
   { path: 'listaespecialidades', component: ListaEspecialidademedicaComponent },
-  { path: 'servidor', component: ListaServidorComponent }
+  { path: 'servidor', component: ListaServidorComponent },
+  { path: 'previsualizar', component: PrevisualizacaoComponent },
+  { path: 'previsualizar/:idpatient', component: PrevisualizacaoComponent },
+  { path: 'viewer', component: ViewerComponent }
 ];
 
 @NgModule({

@@ -18,9 +18,9 @@
             </ng-template>
             <ng-template pTemplate="body" let-patient>
                 <tr>
-                    <td style="text-align: center;">
-                        <a pButton icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top"
-                        (click)="BuscarPeloId(patient)"></a>
+                    <td>
+                      <a icon="pi pi-eye" pTooltip="Pré-Visualização"
+                        [routerLink]="['/previsualizar', patient.idpatient]">{{patient.idpatient}}</a>
                     </td>
                     <td>{{patient.patientid}}</td>
                     <td>{{patient.patientname}}</td>
@@ -34,7 +34,6 @@
         </p-table>
         </div>
       </div>
-
     </div>
 </div>
 
