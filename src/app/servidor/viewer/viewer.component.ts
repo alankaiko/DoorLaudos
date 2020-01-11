@@ -26,18 +26,21 @@ export class ViewerComponent implements OnInit {
   constructor(private router: Router, private route: ActivatedRoute, private service: ServidorService) { }
 
   ngOnInit() {
+    const instanceuid = this.route.snapshot.params.instanceuid;
     cornerstoneWADOImageLoader.external.cornerstone = cornerstone;
     cornerstoneWADOImageLoader.external.dicomParser = dicomParser;
-    this.NgAfterViewInit();
+
+    if (instanceuid) {
+      this.NgAfterViewInit(instanceuid);
+    }
   }
 
-  NgAfterViewInit() {
+  NgAfterViewInit(instanceuid: any) {
     const element = document.querySelector('.image-canvas');
-    const DCMPath = this.service.BuscarUrlBuscaImagem();
+    const DCMPath = this.service.BuscarUrlBuscaImagem(instanceuid);
     cornerstone.enable(element);
 
     cornerstone.loadAndCacheImage('wadouri:' + DCMPath).then(imageData => {
-      console.log(imageData);
       cornerstone.displayImage(element, imageData);
     }).catch( error => { console.error(error); });
     // cornerstoneWADOImageLoader.wadouri.fileManager.remove(imageID);

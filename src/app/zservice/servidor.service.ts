@@ -50,7 +50,7 @@ export class ServidorService {
       params = params.append('patientage', filtro.patientage);
     }
 
-    return this.http.get<any>(`${this.url}/filtro`, { params })
+    return this.http.get<any>(`${this.url}?resumo`, { params })
       .toPromise()
       .then(response => {
         const patients = response;
@@ -73,7 +73,8 @@ export class ServidorService {
       });
   }
 
-  BuscarUrlBuscaImagem() {
-    return `${this.url}/arquivo/1`;
+  BuscarUrlBuscaImagem(instanceuid: any) {
+    console.log(`${this.url}/dicom/${instanceuid}`);
+    return `${this.url}/dicom/${instanceuid}`;
   }
 }

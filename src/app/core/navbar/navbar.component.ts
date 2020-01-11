@@ -46,9 +46,7 @@ items: MenuItem[];
         {
           label: 'Server',
           items: [
-            {label: 'Listagem', icon: 'fa fa-refresh', routerLink: ['servidor']},
-            {label: 'Preview', icon: 'fa fa-refresh', routerLink: ['previsualizar']},
-            {label: 'Visualizar', icon: 'fa fa-refresh', routerLink: ['viewer']}
+            {label: 'Listagem', icon: 'fa fa-refresh', routerLink: ['servidor']}
         ]
         }
       ];

@@ -13,6 +13,7 @@ export class Study {
   datecreate: Date;
   datemodify: Date;
   patient = new Patient();
+  series = new Array<Series>();
 }
 
 export class Series {
@@ -30,6 +31,7 @@ export class Series {
   datemodify: Date;
   study = new Study();
   dispositive = new Dispositive();
+  instances = new Array<Instance>();
 }
 
 export class Patient {
@@ -39,7 +41,7 @@ export class Patient {
   birthday: Date;
   patientage: string;
   patientsex: string;
-  studyes: [];
+  studyes = new Array<Study>();
   datecreate: Date;
   datemodify: Date;
 }

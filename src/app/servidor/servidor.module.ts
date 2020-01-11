@@ -9,6 +9,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { PrevisualizacaoComponent } from './previsualizacao/previsualizacao.component';
 import { ViewerComponent } from './viewer/viewer.component';
+import {TreeTableModule} from 'primeng/components/treetable/treetable';
+import {TreeNode} from 'primeng/api';
 
 
 @NgModule({
@@ -20,7 +22,8 @@ import { ViewerComponent } from './viewer/viewer.component';
     TableModule,
     FormsModule,
     HttpClientModule,
-    RouterModule
+    RouterModule,
+    TreeTableModule
   ],
   exports: [
     ListaServidorComponent

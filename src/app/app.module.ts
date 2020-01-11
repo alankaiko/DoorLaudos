@@ -56,9 +56,8 @@ const rotas: Routes = [
   { path: 'listacrm', component: ListaCrmComponent },
   { path: 'listaespecialidades', component: ListaEspecialidademedicaComponent },
   { path: 'servidor', component: ListaServidorComponent },
-  { path: 'previsualizar', component: PrevisualizacaoComponent },
   { path: 'previsualizar/:idpatient', component: PrevisualizacaoComponent },
-  { path: 'viewer', component: ViewerComponent }
+  { path: 'viewer/:instanceuid', component: ViewerComponent }
 ];
 
 @NgModule({
