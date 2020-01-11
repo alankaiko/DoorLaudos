@@ -73,9 +73,7 @@ export class ServidorService {
       });
   }
 
-  BuscarImagem(): Promise<any> {
-    return this.http.get(`${this.url}/arquivo/1`)
-    .toPromise()
-    .then(response => response);
+  BuscarUrlBuscaImagem() {
+    return `${this.url}/arquivo/1`;
   }
 }

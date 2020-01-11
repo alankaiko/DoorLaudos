@@ -1,13 +1,8 @@
 import { ServidorService } from './../../zservice/servidor.service';
-import {Component, OnInit, Input, ElementRef, ViewChild, AfterViewInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import cornerstone from 'cornerstone-core';
-import cornerstoneMath from 'cornerstone-math';
-import cornerstoneTools from 'cornerstone-tools';
-import Hammer from 'hammerjs';
-import cornerstoneWebImageLoader from 'cornerstone-web-image-loader';
 import cornerstoneWADOImageLoader from 'cornerstone-wado-image-loader';
 import { Router, ActivatedRoute } from '@angular/router';
-import { switchMap, map } from 'rxjs/operators';
 import dicomParser from 'dicom-parser';
 
 const config = {
@@ -38,8 +33,7 @@ export class ViewerComponent implements OnInit {
 
   NgAfterViewInit() {
     const element = document.querySelector('.image-canvas');
-
-    const DCMPath = 'http://192.168.0.23:8087/servidor/arquivo/1';
+    const DCMPath = this.service.BuscarUrlBuscaImagem();
     cornerstone.enable(element);
 
     cornerstone.loadAndCacheImage('wadouri:' + DCMPath).then(imageData => {
