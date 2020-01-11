@@ -72,4 +72,10 @@ export class ServidorService {
         return patient;
       });
   }
+
+  BuscarImagem(): Promise<any> {
+    return this.http.get(`${this.url}/arquivo/1`)
+    .toPromise()
+    .then(response => response);
+  }
 }
