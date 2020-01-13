@@ -74,7 +74,10 @@ export class ServidorService {
   }
 
   BuscarUrlBuscaImagem(instanceuid: any) {
-    console.log(`${this.url}/dicom/${instanceuid}`);
     return `${this.url}/dicom/${instanceuid}`;
+  }
+
+  BuscarInstanciasDoPaciente(idpatient: number): Promise<any> {
+    return this.http.get<any>(`${this.url}/series/${idpatient}`).toPromise().then(response => response);
   }
 }

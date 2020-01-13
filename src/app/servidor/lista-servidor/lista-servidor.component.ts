@@ -1,7 +1,6 @@
 import { ServidorService, PatientFiltro } from './../../zservice/servidor.service';
 import { Patient } from './../../core/model';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
 import { LazyLoadEvent, TreeNode } from 'primeng/api';
 
 @Component({
@@ -11,12 +10,10 @@ import { LazyLoadEvent, TreeNode } from 'primeng/api';
 })
 export class ListaServidorComponent implements OnInit {
   patients = [];
-  patient = new Patient();
-  formulario: FormGroup;
   totalRegistros = 0;
   filtro = new PatientFiltro();
 
-  constructor(private service: ServidorService , private formbuilder: FormBuilder) { }
+  constructor(private service: ServidorService) { }
 
   ngOnInit() {}
 
@@ -27,12 +24,12 @@ export class ListaServidorComponent implements OnInit {
       .then(response => {
         this.totalRegistros = response.total;
         this.patients = response.patients.content;
-      }).catch(erro => console.log(erro));
+    }).catch(erro => console.log(erro));
   }
 
 
   BuscarPeloId(patient: Patient) {
-    this.service.BuscarPorId(patient.idpatient).then(response => { this.formulario.patchValue(response); });
+    this.service.BuscarPorId(patient.idpatient).then(response => this.patients = response);
   }
 
   aoMudarPagina(event: LazyLoadEvent) {

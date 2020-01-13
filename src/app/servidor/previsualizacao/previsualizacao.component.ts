@@ -1,5 +1,5 @@
 import { ActivatedRoute } from '@angular/router';
-import { Patient } from './../../core/model';
+import { Patient, Series, Study, Instance } from './../../core/model';
 import { ServidorService } from './../../zservice/servidor.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -10,6 +10,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PrevisualizacaoComponent implements OnInit {
   patient: Patient;
+  series: Series[];
 
   constructor(private service: ServidorService, private route: ActivatedRoute) { }
 
@@ -23,6 +24,7 @@ export class PrevisualizacaoComponent implements OnInit {
 
   CarregarDadosPatient(idpatient: number) {
     this.service.BuscarPorId(idpatient).then(response => this.patient = response);
+    this.service.BuscarInstanciasDoPaciente(idpatient).then(response => this.series = response);
   }
 
 }

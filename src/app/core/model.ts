@@ -31,7 +31,7 @@ export class Series {
   datemodify: Date;
   study = new Study();
   dispositive = new Dispositive();
-  instances = new Array<Instance>();
+  instance: [];
 }
 
 export class Patient {
