@@ -70,6 +70,7 @@ export class Instance {
   datecreate: Date;
   datemodify: Date;
   series = new Series();
+  tagimagem = new Tagimagem();
 }
 
 export class Dispositive {
@@ -256,4 +257,55 @@ export class TextoPessoal {
   codigo: number;
   abreviatura: string;
   texto: string;
+}
+
+export class Tagimagem {
+  codigo: number;
+  imagetype: string;
+  sopclassuid: string;
+  sopinstanceuid: string;
+  studydate: string;
+  seriesdate: string;
+  acquisitiondate: string;
+  contentdate: string;
+  studytime: string;
+  seriestime: string;
+  acquisitiontime: string;
+  contenttime: string;
+  accessionnumber: string;
+  modality: string;
+  presentationintenttype: string;
+  manufacturer: string;
+  institutionname: string;
+  institutionaddress: string;
+  referringphysiciansname: string;
+  stationname: string;
+  studydescription: string;
+  seriesdescription: string;
+  institutionaldepartmentname: string;
+  performingphysiciansname: string;
+  operatorsname: string;
+  manufacturersmodelname: string;
+  referencedpatientsequence: string;
+  anatomicregionsequence: string;
+  primaryAnatomicstructuresequence: string;
+  patientsname: string;
+  patientid: string;
+  softwareversions: string;
+  imagerpixelspacing: string;
+  positionertype: string;
+  detectortype: string;
+  detectordescription: string;
+  detectormode: string;
+  timeoflastdetectorcalibration: string;
+  samplesperpixel: string;
+  photometricinterpretation: string;
+  rows: string;
+  columns: string;
+}
+
+export class TagImagemGamb {
+  tag: string;
+  indentificacao: string;
+  campo: string;
 }

@@ -1,9 +1,9 @@
 <div class="conteudos">
-  <h1>{{ editando ? 'Editar' : 'Nova'}} Abreviatura</h1>
+  <h1>{{ editando ? 'Editar' : 'Novo'}} Profissional</h1>
 
   <div class="classecad">
       <form autocomplete="off" [formGroup]="formulario" (ngSubmit)="Salvar()" class="formu">
-        <div class="p-grid">
+        <div class="ui-g">
           <div class="ui-g-3 ui-fluid">
             <label>Código</label>
             <input [readonly]= "editando" type="text" pInputText ng-model="text" name="codigo" formControlName="codigo">
@@ -19,12 +19,12 @@
             <input type="text" pInputText ng-model="text" name="numnoconselho" formControlName="numnoconselho">
           </div>
 
-          <div class="ui-g-9 ui-fluid" formGroupName="conselho">
+          <div class="ui-g-4 ui-fluid" formGroupName="conselho">
             <label>Sigla</label>
             <input type="text" pInputText ng-model="text" name="sigla" formControlName="sigla">
           </div>
 
-          <div class="ui-g-9 ui-fluid" formGroupName="conselho">
+          <div class="ui-g-8 ui-fluid" formGroupName="conselho">
             <label>Descrição</label>
             <input type="text" pInputText ng-model="text" name="descricao" formControlName="descricao">
           </div>
@@ -33,7 +33,7 @@
             <button class="btn btn-primary" type="submit" style="margin-right: 8px;">Salvar</button>
             <button class="btn btn-outline-secondary" routerLink="/profissionalsolicitante">Cancelar</button>
 
-            <a routerLink="/profissionalsolicitante">Voltar para a pesquisa</a>
+            <!--<a routerLink="/profissionalsolicitante">Voltar para a pesquisa</a>-->
           </div>
         </div>
       </form>

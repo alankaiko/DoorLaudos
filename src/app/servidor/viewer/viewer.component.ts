@@ -1,5 +1,7 @@
+import { InstanceService } from './../../zservice/instance.service';
+import { Instance, TagImagemGamb } from './../../core/model';
 import { ServidorService } from './../../zservice/servidor.service';
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import cornerstone from 'cornerstone-core';
 import cornerstoneWADOImageLoader from 'cornerstone-wado-image-loader';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -22,20 +24,29 @@ cornerstoneWADOImageLoader.webWorkerManager.initialize(config);
   styleUrls: ['./viewer.component.css']
 })
 export class ViewerComponent implements OnInit {
+  display: boolean = false;
 
-  constructor(private router: Router, private route: ActivatedRoute, private service: ServidorService) { }
+  constructor(private router: Router,
+              private route: ActivatedRoute,
+              private service: ServidorService) { }
 
   ngOnInit() {
-    const instanceuid = this.route.snapshot.params.instanceuid;
+    const idinstance = this.route.snapshot.params.cod;
     cornerstoneWADOImageLoader.external.cornerstone = cornerstone;
     cornerstoneWADOImageLoader.external.dicomParser = dicomParser;
 
-    if (instanceuid) {
-      this.NgAfterViewInit(instanceuid);
+    if (idinstance) {
+      this.NgAfterViewInit(idinstance);
     }
+
+
   }
 
-  NgAfterViewInit(instanceuid: any) {
+  showDialog() {
+    this.display = true;
+  }
+
+  NgAfterViewInit(instanceuid: string) {
     const element = document.querySelector('.image-canvas');
     const DCMPath = this.service.BuscarUrlBuscaImagem(instanceuid);
     cornerstone.enable(element);
@@ -45,7 +56,6 @@ export class ViewerComponent implements OnInit {
     }).catch( error => { console.error(error); });
     // cornerstoneWADOImageLoader.wadouri.fileManager.remove(imageID);
   }
-
 
 
 }

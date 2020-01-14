@@ -77,4 +77,5 @@ export class CadastroConvenioComponent implements OnInit {
     this.service.Atualizar(this.formulario.value)
       .then(convenio => {this.formulario.patchValue(convenio); });
   }
+
 }

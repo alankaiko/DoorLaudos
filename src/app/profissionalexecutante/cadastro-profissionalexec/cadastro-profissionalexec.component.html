@@ -1,9 +1,9 @@
 <div class="conteudos">
-  <h1>{{ editando ? 'Editar' : 'Nova'}} Abreviatura</h1>
+  <h1>{{ editando ? 'Editar' : 'Novo'}} Profissional</h1>
 
   <div class="classecad">
       <form autocomplete="off" [formGroup]="formulario" (ngSubmit)="Salvar()" class="formu">
-        <div class="p-grid">
+        <div class="ui-g">
           <div class="ui-g-3 ui-fluid">
             <label>Código</label>
             <input [readonly]= "editando" type="text" pInputText ng-model="text" name="codigo" formControlName="codigo">
@@ -14,52 +14,52 @@
             <input type="text" pInputText ng-model="text" name="nome" formControlName="nome">
           </div>
 
-          <div class="ui-g-9 ui-fluid">
+          <div class="ui-g-4 ui-fluid">
             <label>Num no Conselho</label>
             <input type="text" pInputText ng-model="text" name="numnoconselho" formControlName="numnoconselho">
           </div>
 
-          <div class="ui-g-9 ui-fluid" formGroupName="contato">
+          <div class="ui-g-8 ui-fluid" formGroupName="contato">
             <label>E-mail</label>
             <input type="text" pInputText ng-model="text" name="email" formControlName="email">
           </div>
 
-          <div class="ui-g-9 ui-fluid" formGroupName="contato">
+          <div class="ui-g-4 ui-fluid" formGroupName="contato">
             <label>Telefone</label>
             <input type="text" pInputText ng-model="text" name="telefone" formControlName="telefone">
           </div>
 
-          <div class="ui-g-9 ui-fluid" formGroupName="contato">
+          <div class="ui-g-4 ui-fluid" formGroupName="contato">
             <label>Telefone 2</label>
             <input type="text" pInputText ng-model="text" name="telefone2" formControlName="telefone2">
           </div>
 
-          <div class="ui-g-9 ui-fluid" formGroupName="contato">
+          <div class="ui-g-4 ui-fluid" formGroupName="contato">
             <label>Celular</label>
             <input type="text" pInputText ng-model="text" name="celular" formControlName="celular">
           </div>
 
-          <div class="ui-g-9 ui-fluid" formGroupName="endereco">
+          <div class="ui-g-12 ui-fluid" formGroupName="endereco">
             <label>Logradouro</label>
             <input type="text" pInputText ng-model="text" name="logradouro" formControlName="logradouro">
           </div>
 
-          <div class="ui-g-9 ui-fluid" formGroupName="endereco">
+          <div class="ui-g-12 ui-fluid" formGroupName="endereco">
             <label>Complemento</label>
             <input type="text" pInputText ng-model="text" name="complemento" formControlName="complemento">
           </div>
 
-          <div class="ui-g-9 ui-fluid" formGroupName="endereco">
+          <div class="ui-g-3 ui-fluid" formGroupName="endereco">
             <label>Num.</label>
             <input type="text" pInputText ng-model="text" name="numero" formControlName="numero">
           </div>
 
-          <div class="ui-g-9 ui-fluid" formGroupName="endereco">
+          <div class="ui-g-6 ui-fluid" formGroupName="endereco">
             <label>Bairro</label>
             <input type="text" pInputText ng-model="text" name="bairro" formControlName="bairro">
           </div>
 
-          <div class="ui-g-9 ui-fluid" formGroupName="endereco">
+          <div class="ui-g-3 ui-fluid" formGroupName="endereco">
             <label>Cidade</label>
             <input type="text" pInputText ng-model="text" name="cidade" formControlName="cidade">
           </div>
@@ -69,17 +69,17 @@
             <input type="text" pInputText ng-model="text" name="estado" formControlName="estado">
           </div>
 
-          <div class="ui-g-9 ui-fluid" formGroupName="endereco">
+          <div class="ui-g-3 ui-fluid" formGroupName="endereco">
             <label>CEP</label>
             <input type="text" pInputText ng-model="text" name="cep" formControlName="cep">
           </div>
 
-          <div class="ui-g-9 ui-fluid" formGroupName="conselho">
+          <div class="ui-g-4 ui-fluid" formGroupName="conselho">
             <label>Sigla</label>
             <input type="text" pInputText ng-model="text" name="sigla" formControlName="sigla">
           </div>
 
-          <div class="ui-g-9 ui-fluid" formGroupName="conselho">
+          <div class="ui-g-8 ui-fluid" formGroupName="conselho">
             <label>Descrição</label>
             <input type="text" pInputText ng-model="text" name="descricao" formControlName="descricao">
           </div>
@@ -88,7 +88,7 @@
             <button class="btn btn-primary" type="submit" style="margin-right: 8px;">Salvar</button>
             <button class="btn btn-outline-secondary" routerLink="/profissionalexecutante">Cancelar</button>
 
-            <a routerLink="/profissionalexecutante">Voltar para a pesquisa</a>
+            <!--<a routerLink="/profissionalexecutante">Voltar para a pesquisa</a>-->
           </div>
         </div>
       </form>

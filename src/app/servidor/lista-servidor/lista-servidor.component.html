@@ -3,24 +3,24 @@
       <div class="ui-g">
         <div>
           <p-table id="tabela" [value]="patients" [responsive]="true" [paginator]="true" [rows]="filtro.itensPorPagina"
-            [lazy]="true" [totalRecords]="totalRegistros" (onLazyLoad)="aoMudarPagina($event)">
+            [lazy]="true" [totalRecords]="totalRegistros" (onLazyLoad)="aoMudarPagina($event)" >
             <ng-template pTemplate="header">
                 <tr>
-                    <th style="width: 8%;">Visualizar</th>
-                    <th style="width: 8%;">Paciente Id</th>
-                    <th style="width: 8%;">Nome Paciente</th>
-                    <th style="width: 8%;">Data Nasc</th>
-                    <th style="width: 8%;">Idade</th>
-                    <th style="width: 8%;">Sexo</th>
-                    <th style="width: 8%;">Data Criação</th>
-                    <th style="width: 8%;">Data Modif.</th>
+                    <th style="width: 6%; text-align: center;">Show</th>
+                    <th style="width: 11%;">Paciente Id</th>
+                    <th style="width: 35%;">Nome</th>
+                    <th style="width: 9%; text-align: center;">Data Nasc</th>
+                    <th style="width: 7%; text-align: center;">Idade</th>
+                    <th style="width: 7%; text-align: center;">Sexo</th>
+                    <th style="width: 9%; text-align: center;">Data Criação</th>
                 </tr>
             </ng-template>
             <ng-template pTemplate="body" let-patient>
                 <tr>
                     <td>
-                      <a icon="pi pi-eye" pTooltip="Pré-Visualização"
-                        [routerLink]="['/previsualizar', patient.idpatient]">{{patient.idpatient}}</a>
+                      <a pTooltip="Pré-Visualização" [routerLink]="['/previsualizar', patient.idpatient]">
+                        <i class="fa fa-fw fa-eye icone" aria-hidden="true"></i>
+                      </a>
                     </td>
                     <td>{{patient.patientid}}</td>
                     <td>{{patient.patientname}}</td>
@@ -28,7 +28,6 @@
                     <td>{{patient.patientage}}</td>
                     <td>{{patient.patientsex}}</td>
                     <td>{{patient.datecreate}}</td>
-                    <td>{{patient.datemodify}}</td>
                 </tr>
             </ng-template>
         </p-table>

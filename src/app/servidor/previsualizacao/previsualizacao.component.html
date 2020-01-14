@@ -6,14 +6,15 @@
         </div>
 
         <div class="ui-g-1">
-          <a routerLink="/servidor">Voltar</a>
+          <a routerLink="/servidor">
+            <i class="fa fa-fw fa-undo" aria-hidden="true">Voltar</i>
+          </a>
         </div>
       </section>
 
       <section class="ui-g-12">
-        <div class="ui-g-5">
+        <div>
           <div>
-            <h6>Paciente</h6>
             {{patient?.patientname}}, possui um total de {{patient?.studyes.length}} Estudo(s)
           </div>
 
@@ -24,23 +25,17 @@
           <div>
             <span>Id: {{patient?.patientid}} </span>
           </div>
-
-          <div>
-            <span>Sexo: {{patient?.patientsex}} </span>
-          </div>
-
-          <div>
-            <span>Idade: {{patient?.patientage}} </span>
-          </div>
         </div>
+      </section>
 
-        <div class="ui-g-7">
-          <p-table id="tabela" [value]="series.instance" [responsive]="true">
+      <section class="ui-g-12">
+        <div>
+          <p-table id="tabela" [value]="series?.instance" [responsive]="true">
             <ng-template pTemplate="header">
                 <tr>
-                  <th style="width: 10%;">Id</th>
+                  <th style="width: 10%;">Cod.</th>
                   <th style="width: 50%;">Inst. UID</th>
-                  <th style="width: 7%; text-align: center;">Class UID</th>
+                  <th style="width: 7%; text-align: center;">Data Incl.</th>
                 </tr>
             </ng-template>
             <ng-template pTemplate="body" let-insta>

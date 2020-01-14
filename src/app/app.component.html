@@ -1,12 +1,26 @@
 <div class="classegeral">
   <div class="ui-g">
     <div class="ui-g-12 topo">
-      <app-navbar></app-navbar>
+      <div class="conainer-top">
+        <div class="conainer">
+          <a routerLink="/">
+            <img src="assets/prefeitura.png">
+          </a>
+        </div>
+
+        <div class="row panel-heading-2">
+
+        </div>
+      </div>
     </div>
 
     <div class="ui-g-12 corpo">
         <div class="conteudo">
-            <div>
+            <div class="menu-lateral ui-g-3">
+              <app-navbar></app-navbar>
+            </div>
+
+            <div class="ui-g-9">
               <router-outlet></router-outlet>
             </div>
         </div>

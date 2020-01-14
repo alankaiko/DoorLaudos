@@ -11,6 +11,7 @@ import { PrevisualizacaoComponent } from './previsualizacao/previsualizacao.comp
 import { ViewerComponent } from './viewer/viewer.component';
 import {TreeTableModule} from 'primeng/components/treetable/treetable';
 import {TreeNode} from 'primeng/api';
+import {DialogModule} from 'primeng/components/dialog/dialog';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import {TreeNode} from 'primeng/api';
     FormsModule,
     HttpClientModule,
     RouterModule,
-    TreeTableModule
+    TreeTableModule,
+    DialogModule
   ],
   exports: [
     ListaServidorComponent

@@ -34,13 +34,17 @@ import { ButtonModule } from 'primeng/components/button/button';
 import { InputTextModule } from 'primeng/components/inputtext/inputtext';
 import {TableModule} from 'primeng/components/table/table';
 import { ListaProfissionalexecutanteComponent } from './profissionalexecutante/lista-profissionalexecutante/lista-profissionalexecutante.component';
+import { CheckboxModule } from 'primeng/components/checkbox/checkbox';
 
 const rotas: Routes = [
   { path: 'abreviaturas/novo', component: CadastroAbreviaturaComponent },
   { path: 'abreviaturas', component: ListaAbreviaturasComponent },
+  { path: 'abreviaturas/:cod', component: CadastroAbreviaturaComponent },
   { path: 'convenios/novo', component: CadastroConvenioComponent },
+  { path: 'convenios/:cod', component: CadastroConvenioComponent },
   { path: 'convenios', component: ListaConvenioComponent },
   { path: 'grupoprocedimento/novo', component: CadastroGrupoprocedimentoComponent },
+  { path: 'grupoprocedimento/:cod', component: CadastroGrupoprocedimentoComponent },
   { path: 'grupoprocedimento', component: ListaGrupoprocedimentoComponent },
   { path: 'procedimentomedico/novo', component: CadastroProcedimentomedicoComponent },
   { path: 'procedimentomedico', component: ListaProcedimentomedicoComponent },
@@ -57,7 +61,7 @@ const rotas: Routes = [
   { path: 'listaespecialidades', component: ListaEspecialidademedicaComponent },
   { path: 'servidor', component: ListaServidorComponent },
   { path: 'previsualizar/:idpatient', component: PrevisualizacaoComponent },
-  { path: 'viewer/:instanceuid', component: ViewerComponent }
+  { path: 'viewer/:cod', component: ViewerComponent }
 ];
 
 @NgModule({
@@ -83,6 +87,7 @@ const rotas: Routes = [
     CommonModule,
     CoreModule,
     FormsModule,
+    CheckboxModule,
     RouterModule.forRoot(rotas)
   ],
   providers: [],

@@ -10,25 +10,23 @@ export class NavbarComponent implements OnInit {
 items: MenuItem[];
 
     ngOnInit() {
+
       this.items = [
-        {
-          label: 'Cadastros',
-          items: [
-            {label: 'Convênio', icon: 'fa fa-refresh', routerLink: ['convenios']},
-            {label: 'Exames e Procedimentos Médicos', icon: 'fa fa-repeat', routerLink: ['procedimentomedico']},
-            {label: 'Grupo de Exames e Procedimentos', icon: 'fa fa-refresh', routerLink: ['grupoprocedimento']},
-            {label: 'Pacientes', icon: 'fa fa-refresh'},
-            {label: 'Profissionais Executantes', icon: 'fa fa-refresh', routerLink: ['profissionalexecutante']},
-            {label: 'Profissionais Solicitantes', icon: 'fa fa-refresh', routerLink: ['profissionalsolicitante']},
-            {label: 'Textos Pessoais', icon: 'fa fa-refresh', routerLink: ['textopessoal']},
-            {label: 'Abreviaturas', icon: 'fa fa-refresh', routerLink: ['abreviaturas']}
-          ]
-        },
         {
           label: 'Operações'
         },
         {
-          label: 'Relatórios'
+          label: 'Cadastros',
+          items: [
+            {label: 'Convênio', icon: 'fa fa-fw fa-cubes', routerLink: ['convenios']},
+            {label: 'Ex. e Proc. Médicos', icon: 'fa fa-fw fa-cubes', routerLink: ['procedimentomedico']},
+            {label: 'Grupo de Exames', icon: 'fa fa-fw fa-cubes', routerLink: ['grupoprocedimento']},
+            {label: 'Pacientes', icon: 'fa fa-fw fa-cubes'},
+            {label: 'Prof. Executantes', icon: 'fa fa-fw fa-cubes', routerLink: ['profissionalexecutante']},
+            {label: 'Prof. Solicitantes', icon: 'fa fa-fw fa-cubes', routerLink: ['profissionalsolicitante']},
+            {label: 'Textos Pessoais', icon: 'fa fa-fw fa-cubes', routerLink: ['textopessoal']},
+            {label: 'Abreviaturas', icon: 'fa fa-fw fa-cubes', routerLink: ['abreviaturas']}
+          ]
         },
         {
           label: 'Base de Dados',
@@ -44,9 +42,12 @@ items: MenuItem[];
           label: 'Ferramentas'
         },
         {
+          label: 'Relatórios'
+        },
+        {
           label: 'Server',
           items: [
-            {label: 'Listagem', icon: 'fa fa-refresh', routerLink: ['servidor']}
+            {label: 'Listagem', icon: 'fa fa-fw fa-server', routerLink: ['servidor']}
         ]
         }
       ];

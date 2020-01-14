@@ -1,5 +1,5 @@
 <div class="conteudos">
-  <h1>{{ editando ? 'Editar' : 'Nova'}} Abreviatura</h1>
+  <h1>{{ editando ? 'Editar' : 'Cadastrar'}} Texto</h1>
 
   <div class="classecad">
       <form autocomplete="off" [formGroup]="formulario" (ngSubmit)="Salvar()" class="formu">
@@ -23,7 +23,7 @@
             <button class="btn btn-primary" type="submit" style="margin-right: 8px;">Salvar</button>
             <button class="btn btn-outline-secondary" routerLink="/textopessoal">Cancelar</button>
 
-            <a routerLink="/textopessoal">Voltar para a pesquisa</a>
+            <!--<a routerLink="/textopessoal">Voltar para a pesquisa</a>-->
           </div>
         </div>
       </form>

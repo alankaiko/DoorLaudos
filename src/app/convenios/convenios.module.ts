@@ -11,6 +11,7 @@ import {TableModule} from 'primeng/components/table/table';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { ListaConvenioComponent } from './lista-convenio/lista-convenio.component';
+import { CheckboxModule } from 'primeng/components/checkbox/checkbox';
 
 
 
@@ -27,7 +28,8 @@ import { ListaConvenioComponent } from './lista-convenio/lista-convenio.componen
     HttpClientModule,
     ReactiveFormsModule,
     TooltipModule,
-    RouterModule
+    RouterModule,
+    CheckboxModule
   ]
 })
 export class ConveniosModule { }

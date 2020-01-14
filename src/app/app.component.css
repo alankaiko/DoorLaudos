@@ -1,3 +1,28 @@
 .classegeral{
   width: 100%;
 }
+
+
+.conainer-top {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+.conainer-top .conainer{
+
+}
+
+.panel-heading-2{
+  position: relative;
+    width: 100%;
+    height: 20px;
+    border: 2px solid;
+    margin: 0 auto;
+    padding: 0px;
+    background-color: #252525;
+    color: #FFF;
+    line-height: 1.42857143;
+}

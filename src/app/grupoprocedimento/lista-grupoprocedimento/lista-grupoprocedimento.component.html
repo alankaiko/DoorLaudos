@@ -7,9 +7,9 @@
             [lazy]="true" [totalRecords]="totalRegistros" (onLazyLoad)="aoMudarPagina($event)">
             <ng-template pTemplate="header">
                 <tr>
-                    <th style="width: 15%;">Código</th>
-                    <th style="width: 70%;">Título</th>
-                    <th style="width: 7%; text-align: center;">Opções</th>
+                    <th style="width: 10%;">Código</th>
+                    <th style="width: 60%;">Título</th>
+                    <th style="width: 12%; text-align: center;">Opções</th>
                 </tr>
             </ng-template>
             <ng-template pTemplate="body" let-grupo>
@@ -18,7 +18,7 @@
                     <td>{{grupo.nome}}</td>
                     <td style="text-align: center;">
                         <a pButton icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top"
-                        (click)="BuscarPeloId(grupo)"></a>
+                        [routerLink]="['/grupoprocedimento', grupo.codigo]"></a>
 
                       <button pButton icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="top"
                         (click)="Excluir(grupo)"></button>
