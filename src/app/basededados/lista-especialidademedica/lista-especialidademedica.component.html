@@ -9,20 +9,12 @@
                 <tr>
                     <th style="width: 8%;">Código</th>
                     <th style="width: 15%;">Descrição</th>
-                    <th style="width: 7%; text-align: center;">Opções</th>
                 </tr>
             </ng-template>
             <ng-template pTemplate="body" let-especialidade>
                 <tr>
                     <td style="text-align: center;">{{especialidade.codigo}}</td>
                     <td>{{especialidade.nome}}</td>
-                    <td style="text-align: center;">
-                        <a pButton icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top"
-                        (click)="BuscarPeloId(especialidade)"></a>
-
-                      <button pButton icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="top"
-                        (click)="Excluir(especialidade)"></button>
-                    </td>
                 </tr>
             </ng-template>
         </p-table>

@@ -20,7 +20,7 @@
                     <td>{{procedimento.grupo.nome}}</td>
                     <td style="text-align: center;">
                         <a pButton icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top"
-                        (click)="BuscarPeloId(procedimento)"></a>
+                        [routerLink]="['/procedimentomedico', procedimento.codigo]"></a>
 
                       <button pButton icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="top"
                         (click)="Excluir(procedimento)"></button>

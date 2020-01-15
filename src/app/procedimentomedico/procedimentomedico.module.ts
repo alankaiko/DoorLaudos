@@ -9,12 +9,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import {TableModule} from 'primeng/components/table/table';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { CadastroProcedimentomedicoComponent } from './cadastro-procedimentomedico/cadastro-procedimentomedico.component';
-import { ListaProcedimentomedicoComponent } from './lista-procedimentomedico/lista-procedimentomedico.component';
 
 
 @NgModule({
-  declarations: [CadastroProcedimentomedicoComponent, ListaProcedimentomedicoComponent],
+  declarations: [],
   imports: [
     CommonModule,
     TableModule,

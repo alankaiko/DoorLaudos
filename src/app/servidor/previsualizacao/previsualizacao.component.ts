@@ -1,5 +1,5 @@
 import { ActivatedRoute } from '@angular/router';
-import { Patient, Series, Study, Instance } from './../../core/model';
+import { Patient, Series } from './../../core/model';
 import { ServidorService } from './../../zservice/servidor.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -10,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PrevisualizacaoComponent implements OnInit {
   patient: Patient;
-  series: Series[];
+  series: Series;
 
   constructor(private service: ServidorService, private route: ActivatedRoute) { }
 

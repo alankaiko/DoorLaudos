@@ -18,7 +18,7 @@
                     <td>{{texto.abreviatura}}</td>
                     <td style="text-align: center;">
                         <a pButton icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top"
-                        (click)="BuscarPeloId(texto)"></a>
+                        [routerLink]="['/textopessoal', texto.codigo]"></a>
 
                       <button pButton icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="top"
                         (click)="Excluir(texto)"></button>

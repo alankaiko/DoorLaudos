@@ -10,7 +10,6 @@
                     <th style="width: 8%;">Código</th>
                     <th style="width: 15%;">CRM</th>
                     <th style="width: 40%;">Nome</th>
-                    <th style="width: 7%; text-align: center;">Opções</th>
                 </tr>
             </ng-template>
             <ng-template pTemplate="body" let-lista>
@@ -18,13 +17,6 @@
                     <td style="text-align: center;">{{lista.codigo}}</td>
                     <td>{{lista.crm}}</td>
                     <td>{{lista.nome}}</td>
-                    <td style="text-align: center;">
-                        <a pButton icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top"
-                        (click)="BuscarPeloId(lista)"></a>
-
-                      <button pButton icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="top"
-                        (click)="Excluir(lista)"></button>
-                    </td>
                 </tr>
             </ng-template>
         </p-table>

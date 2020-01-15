@@ -1,7 +1,13 @@
-import { Instance } from './../core/model';
+import { Instance, Tagimagem } from './../core/model';
 import { environment } from './../../environments/environment.prod';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+
+export class ResumoInstance {
+  codigo: number;
+  mediastoragesopinstanceuid: string;
+  tagimage = new Tagimagem();
+}
 
 @Injectable({
   providedIn: 'root'
@@ -21,11 +27,20 @@ export class InstanceService {
     return this.http.post(`${this.url}`, instance).subscribe(response => response);
   }
 
-  BuscarPorId(codigo: number): Promise<any> {
-    return this.http.get(`${this.url}/${codigo}`)
+  BuscarPorId(idinstance: number): Promise<any> {
+    return this.http.get(`${this.url}/${idinstance}`)
       .toPromise()
       .then(response => {
         const instance = response as Instance;
+        return instance;
+      });
+  }
+
+  ResumoProDicom(codigo: number): Promise<any> {
+    return this.http.get(`${this.url}/${codigo}?resumo`)
+      .toPromise()
+      .then(response => {
+        const instance = response as ResumoInstance;
         return instance;
       });
   }

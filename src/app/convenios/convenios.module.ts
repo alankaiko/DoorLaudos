@@ -1,6 +1,6 @@
+import { CadastroConvenioComponent } from './cadastro-convenio/cadastro-convenio.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CadastroConvenioComponent } from './cadastro-convenio/cadastro-convenio.component';
 import { TooltipModule } from 'primeng/components/tooltip/tooltip';
 import { HttpClientModule } from '@angular/common/http';
 import { ButtonModule } from 'primeng/components/button/button';
@@ -10,13 +10,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import {TableModule} from 'primeng/components/table/table';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { ListaConvenioComponent } from './lista-convenio/lista-convenio.component';
 import { CheckboxModule } from 'primeng/components/checkbox/checkbox';
-
-
+import { FieldsetModule } from 'primeng/components/fieldset/fieldset';
 
 @NgModule({
-  declarations: [CadastroConvenioComponent, ListaConvenioComponent],
+  declarations: [],
   imports: [
     CommonModule,
     TableModule,
@@ -29,7 +27,9 @@ import { CheckboxModule } from 'primeng/components/checkbox/checkbox';
     ReactiveFormsModule,
     TooltipModule,
     RouterModule,
-    CheckboxModule
-  ]
+    CheckboxModule,
+    FieldsetModule
+  ],
+  exports: [CadastroConvenioComponent]
 })
 export class ConveniosModule { }

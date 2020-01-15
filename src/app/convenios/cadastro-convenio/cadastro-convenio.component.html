@@ -1,7 +1,6 @@
 <div class="conteudos">
-  <h1>{{ editando ? 'Editar' : 'Novo'}} Convênio</h1>
-
-  <div class="classecad">
+  <p-fieldset legend="{{ editando ? 'Editar' : 'Novo'}} Convênio">
+    <div class="classecad">
       <form autocomplete="off" [formGroup]="formulario" (ngSubmit)="Salvar()" class="formu">
         <div class="ui-g-12">
           <div class="ui-g-3 ui-fluid">
@@ -87,6 +86,6 @@
           </div>
         </div>
       </form>
-  </div>
-
+    </div>
+  </p-fieldset>
 </div>

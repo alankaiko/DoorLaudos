@@ -1,7 +1,6 @@
-import { InstanceService } from './../../zservice/instance.service';
-import { Instance, TagImagemGamb } from './../../core/model';
+import { InstanceService, ResumoInstance } from './../../zservice/instance.service';
 import { ServidorService } from './../../zservice/servidor.service';
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import cornerstone from 'cornerstone-core';
 import cornerstoneWADOImageLoader from 'cornerstone-wado-image-loader';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -10,7 +9,7 @@ import dicomParser from 'dicom-parser';
 const config = {
   webWorkerPath: '/assets/cornerstoneWADOImageLoaderWebWorker.js',
   taskConfiguration: {
-      'decodeTask': {
+      decodeTask: {
           codecsPath: '/assets/cornerstoneWADOImageLoaderCodecs.js'
       }
   }
@@ -24,26 +23,34 @@ cornerstoneWADOImageLoader.webWorkerManager.initialize(config);
   styleUrls: ['./viewer.component.css']
 })
 export class ViewerComponent implements OnInit {
-  display: boolean = false;
+  display: boolean;
+  instance = ResumoInstance;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
-              private service: ServidorService) { }
+              private service: ServidorService,
+              private serviceInst: InstanceService) { }
 
   ngOnInit() {
     const idinstance = this.route.snapshot.params.cod;
     cornerstoneWADOImageLoader.external.cornerstone = cornerstone;
     cornerstoneWADOImageLoader.external.dicomParser = dicomParser;
 
-    if (idinstance) {
-      this.NgAfterViewInit(idinstance);
-    }
-
-
+    this.BuscarInstanciaResumida(idinstance);
   }
 
   showDialog() {
     this.display = true;
+  }
+
+  BuscarInstanciaResumida(idinstance: number) {
+    return this.serviceInst.ResumoProDicom(idinstance)
+      .then(
+        instance => {
+          this.instance = instance;
+          this.NgAfterViewInit(instance.mediastoragesopinstanceuid);
+        }
+      );
   }
 
   NgAfterViewInit(instanceuid: string) {

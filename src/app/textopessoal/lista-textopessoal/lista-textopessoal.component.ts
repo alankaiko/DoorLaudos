@@ -1,4 +1,5 @@
-import { TextoPessoalFiltro, TextopessoalService } from './../../zservice/textopessoal.service';
+import { TextoPessoalFiltro } from './../../zservice/textopessoal.service';
+import { TextopessoalService } from './../../zservice/textopessoal.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';

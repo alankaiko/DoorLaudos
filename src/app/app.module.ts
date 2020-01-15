@@ -1,3 +1,5 @@
+import { ListaTextopessoalComponent } from './textopessoal/lista-textopessoal/lista-textopessoal.component';
+import { NgModule } from '@angular/core';
 import { ViewerComponent } from './servidor/viewer/viewer.component';
 import { PrevisualizacaoComponent } from './servidor/previsualizacao/previsualizacao.component';
 import { ListaServidorComponent } from './servidor/lista-servidor/lista-servidor.component';
@@ -6,7 +8,6 @@ import { ListaCrmComponent } from './basededados/lista-crm/lista-crm.component';
 import { ListaCnesComponent } from './basededados/lista-cnes/lista-cnes.component';
 import { ListaCid10Component } from './basededados/lista-cid10/lista-cid10.component';
 import { ListaCbhpmComponent } from './basededados/lista-cbhpm/lista-cbhpm.component';
-import { ListaTextopessoalComponent } from './textopessoal/lista-textopessoal/lista-textopessoal.component';
 import { CadastroTextopessoalComponent } from './textopessoal/cadastro-textopessoal/cadastro-textopessoal.component';
 import { ListaProfissionalsolicitanteComponent } from './profissionalsolicitante/lista-profissionalsolicitante/lista-profissionalsolicitante.component';
 import { CadastroProfissionalsolComponent } from './profissionalsolicitante/cadastro-profissionalsol/cadastro-profissionalsol.component';
@@ -23,7 +24,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServidorModule } from './servidor/servidor.module';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -38,6 +38,7 @@ import { CheckboxModule } from 'primeng/components/checkbox/checkbox';
 
 const rotas: Routes = [
   { path: 'abreviaturas/novo', component: CadastroAbreviaturaComponent },
+  { path: 'abreviaturas/:cod', component: CadastroAbreviaturaComponent },
   { path: 'abreviaturas', component: ListaAbreviaturasComponent },
   { path: 'abreviaturas/:cod', component: CadastroAbreviaturaComponent },
   { path: 'convenios/novo', component: CadastroConvenioComponent },
@@ -47,12 +48,16 @@ const rotas: Routes = [
   { path: 'grupoprocedimento/:cod', component: CadastroGrupoprocedimentoComponent },
   { path: 'grupoprocedimento', component: ListaGrupoprocedimentoComponent },
   { path: 'procedimentomedico/novo', component: CadastroProcedimentomedicoComponent },
+  { path: 'procedimentomedico/:cod', component: CadastroProcedimentomedicoComponent },
   { path: 'procedimentomedico', component: ListaProcedimentomedicoComponent },
   { path: 'profissionalexecutante/novo', component: CadastroProfissionalexecComponent },
+  { path: 'profissionalexecutante/:cod', component: CadastroProfissionalexecComponent },
   { path: 'profissionalexecutante', component: ListaProfissionalexecutanteComponent },
   { path: 'profissionalsolicitante/novo', component: CadastroProfissionalsolComponent },
+  { path: 'profissionalsolicitante/:cod', component: CadastroProfissionalsolComponent },
   { path: 'profissionalsolicitante', component: ListaProfissionalsolicitanteComponent },
   { path: 'textopessoal/novo', component: CadastroTextopessoalComponent },
+  { path: 'textopessoal/:cod', component: CadastroTextopessoalComponent },
   { path: 'textopessoal', component: ListaTextopessoalComponent },
   { path: 'listacbhpm', component: ListaCbhpmComponent },
   { path: 'listacid', component: ListaCid10Component },

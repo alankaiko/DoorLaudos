@@ -22,7 +22,7 @@
                     <td>{{profissional.contato.email}}</td>
                     <td style="text-align: center;">
                         <a pButton icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top"
-                        (click)="BuscarPeloId(profissional)"></a>
+                        [routerLink]="['/profissionalexecutante', profissional.codigo]"></a>
 
                       <button pButton icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="top"
                         (click)="Excluir(profissional)"></button>

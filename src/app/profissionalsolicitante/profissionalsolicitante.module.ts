@@ -9,12 +9,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import {TableModule} from 'primeng/components/table/table';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { CadastroProfissionalsolComponent } from './cadastro-profissionalsol/cadastro-profissionalsol.component';
-import { ListaProfissionalsolicitanteComponent } from './lista-profissionalsolicitante/lista-profissionalsolicitante.component';
 
 
 @NgModule({
-  declarations: [CadastroProfissionalsolComponent, ListaProfissionalsolicitanteComponent],
+  declarations: [],
   imports: [
     CommonModule,
     TableModule,
