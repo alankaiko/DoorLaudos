@@ -92,7 +92,7 @@ export class Dispositive {
 
 export class Abreviatura {
   codigo: number;
-  abreviatura: string;
+  titulo: string;
   texto: string;
 }
 

@@ -5,7 +5,7 @@
         <div class="ui-g-12">
           <div class="ui-g-3 ui-fluid">
             <label>Código</label>
-            <input [readonly]= "editando" type="text" pInputText ng-model="text" name="codigo" formControlName="codigo">
+            <input [readonly]= "true" type="text" pInputText ng-model="text" name="codigo" formControlName="codigo">
           </div>
 
           <div class="ui-g-9 ui-fluid">
@@ -20,12 +20,12 @@
 
           <div class="ui-g-4 ui-fluid">
             <label>Telefone</label>
-            <input type="text" pInputText ng-model="text" name="telefone" formControlName="telefone">
+            <p-inputMask mask="(99) 9 9999-9999" name="telefone" formControlName="telefone"></p-inputMask>
           </div>
 
           <div class="ui-g-4 ui-fluid">
             <label>Fax</label>
-            <input type="text" pInputText ng-model="text" name="fax" formControlName="fax">
+            <p-inputMask mask="(99) 9999-9999" name="fax" formControlName="fax"></p-inputMask>
           </div>
 
           <div class="ui-g-4 ui-fluid">
@@ -35,7 +35,7 @@
 
           <div class="ui-g-12 ui-fluid">
             <label>E-mail</label>
-            <input type="text" pInputText ng-model="text" name="email" formControlName="email">
+            <input type="text" pInputText ng-model="text" placeholder="seu-email@email.com" name="email" formControlName="email">
           </div>
 
           <div class="ui-g-12 ui-fluid">
@@ -75,14 +75,18 @@
 
           <div class="ui-g-2 ui-fluid" formGroupName="endereco">
             <label>CEP</label>
-            <input type="text" pInputText ng-model="text" name="cep" formControlName="cep">
+            <p-inputMask mask="99.999-999" name="cep" formControlName="cep"></p-inputMask>
           </div>
 
-          <div class="ui-g-12 ui-md-12 ui-lg-12 ui-fluid">
-            <button class="btn btn-primary" type="submit" style="margin-right: 8px;">Salvar</button>
-            <button class="btn btn-outline-secondary" routerLink="/convenios">Cancelar</button>
+          <div class="ui-g-12 ui-fluid">
+            <div style="text-align: left;">
+              <button class="btn btn-primary" type="submit" style="margin-right: 8px;">Salvar</button>
+              <button class="btn btn-outline-secondary" routerLink="/convenios">Cancelar</button>
+            </div>
 
-            <!--<a routerLink="/convenios">Voltar para a pesquisa</a>-->
+            <div style="text-align: right;">
+              <a routerLink="/convenios">Voltar para a pesquisa</a>
+            </div>
           </div>
         </div>
       </form>

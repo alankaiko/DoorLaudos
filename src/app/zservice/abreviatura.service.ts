@@ -44,7 +44,6 @@ export class AbreviaturaService {
       });
   }
 
-
   Adicionar(abreviatura) {
     return this.http.post(`${this.url}`, abreviatura).subscribe(response => response);
   }

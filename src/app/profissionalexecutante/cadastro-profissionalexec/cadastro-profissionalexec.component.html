@@ -1,12 +1,11 @@
 <div class="conteudos">
-  <h1>{{ editando ? 'Editar' : 'Novo'}} Profissional</h1>
-
+  <p-fieldset legend="{{ editando ? 'Editar' : 'Novo'}} Profissional">
   <div class="classecad">
       <form autocomplete="off" [formGroup]="formulario" (ngSubmit)="Salvar()" class="formu">
         <div class="ui-g">
           <div class="ui-g-3 ui-fluid">
             <label>Código</label>
-            <input [readonly]= "editando" type="text" pInputText ng-model="text" name="codigo" formControlName="codigo">
+            <input [readonly]= "true" type="text" pInputText ng-model="text" name="codigo" formControlName="codigo">
           </div>
 
           <div class="ui-g-9 ui-fluid">
@@ -21,22 +20,22 @@
 
           <div class="ui-g-8 ui-fluid" formGroupName="contato">
             <label>E-mail</label>
-            <input type="text" pInputText ng-model="text" name="email" formControlName="email">
+            <input type="text" pInputText ng-model="text" name="email" formControlName="email" placeholder="seu-email@email.com">
           </div>
 
           <div class="ui-g-4 ui-fluid" formGroupName="contato">
             <label>Telefone</label>
-            <input type="text" pInputText ng-model="text" name="telefone" formControlName="telefone">
+            <p-inputMask mask="(99)9999-9999" name="telefone" formControlName="telefone"></p-inputMask>
           </div>
 
           <div class="ui-g-4 ui-fluid" formGroupName="contato">
             <label>Telefone 2</label>
-            <input type="text" pInputText ng-model="text" name="telefone2" formControlName="telefone2">
+            <p-inputMask mask="(99)9999-9999" name="telefone2" formControlName="telefone2"></p-inputMask>
           </div>
 
           <div class="ui-g-4 ui-fluid" formGroupName="contato">
             <label>Celular</label>
-            <input type="text" pInputText ng-model="text" name="celular" formControlName="celular">
+            <p-inputMask mask="(99) 9 9999-9999" name="celular" formControlName="celular"></p-inputMask>
           </div>
 
           <div class="ui-g-12 ui-fluid" formGroupName="endereco">
@@ -71,7 +70,7 @@
 
           <div class="ui-g-3 ui-fluid" formGroupName="endereco">
             <label>CEP</label>
-            <input type="text" pInputText ng-model="text" name="cep" formControlName="cep">
+            <p-inputMask mask="99.999-999" name="cep" formControlName="cep"></p-inputMask>
           </div>
 
           <div class="ui-g-4 ui-fluid" formGroupName="conselho">
@@ -84,14 +83,18 @@
             <input type="text" pInputText ng-model="text" name="descricao" formControlName="descricao">
           </div>
 
-          <div class="ui-g-12 ui-md-12 ui-lg-12 ui-fluid">
-            <button class="btn btn-primary" type="submit" style="margin-right: 8px;">Salvar</button>
-            <button class="btn btn-outline-secondary" routerLink="/profissionalexecutante">Cancelar</button>
+          <div class="ui-g-12 ui-fluid">
+            <div style="text-align: left;">
+              <button class="btn btn-primary" type="submit" style="margin-right: 8px;">Salvar</button>
+              <button class="btn btn-outline-secondary" routerLink="/profissionalexecutante">Cancelar</button>
+            </div>
 
-            <!--<a routerLink="/profissionalexecutante">Voltar para a pesquisa</a>-->
+            <div style="text-align: right;">
+              <a routerLink="/profissionalexecutante">Voltar para a pesquisa</a>
+            </div>
           </div>
         </div>
       </form>
-  </div>
-
+    </div>
+  </p-fieldset>
 </div>

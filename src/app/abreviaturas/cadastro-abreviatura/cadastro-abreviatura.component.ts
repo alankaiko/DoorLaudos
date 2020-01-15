@@ -31,7 +31,7 @@ export class CadastroAbreviaturaComponent implements OnInit {
   CriarFormulario(abreviatura: Abreviatura) {
     this.formulario = this.formbuilder.group({
       codigo: [null, abreviatura.codigo],
-      abreviatura: [null, abreviatura.abreviatura],
+      titulo: [null, abreviatura.titulo],
       texto: [null, abreviatura.texto]
     });
   }

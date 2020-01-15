@@ -35,6 +35,8 @@ import { InputTextModule } from 'primeng/components/inputtext/inputtext';
 import {TableModule} from 'primeng/components/table/table';
 import { ListaProfissionalexecutanteComponent } from './profissionalexecutante/lista-profissionalexecutante/lista-profissionalexecutante.component';
 import { CheckboxModule } from 'primeng/components/checkbox/checkbox';
+import {InputMaskModule} from 'primeng/components/inputmask/inputmask';
+import { FieldsetModule } from 'primeng/components/fieldset/fieldset';
 
 const rotas: Routes = [
   { path: 'abreviaturas/novo', component: CadastroAbreviaturaComponent },
@@ -93,7 +95,9 @@ const rotas: Routes = [
     CoreModule,
     FormsModule,
     CheckboxModule,
-    RouterModule.forRoot(rotas)
+    RouterModule.forRoot(rotas),
+    InputMaskModule,
+    FieldsetModule
   ],
   providers: [],
   bootstrap: [AppComponent]

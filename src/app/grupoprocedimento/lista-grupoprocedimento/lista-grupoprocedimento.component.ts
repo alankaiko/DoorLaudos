@@ -31,7 +31,6 @@ export class ListaGrupoprocedimentoComponent implements OnInit {
       }).catch(erro => console.log(erro));
   }
 
-
   Excluir(grupo: GrupoProcedimento) {
     try {
       this.service.Remover(grupo.codigo);

@@ -1,12 +1,11 @@
 <div class="conteudos">
-  <h1>{{ editando ? 'Editar' : 'Cadastrar'}} Texto</h1>
-
+  <p-fieldset legend="{{ editando ? 'Editar' : 'Cadastrar'}} Texto">
   <div class="classecad">
       <form autocomplete="off" [formGroup]="formulario" (ngSubmit)="Salvar()" class="formu">
         <div class="p-grid">
           <div class="ui-g-3 ui-fluid">
             <label>Código</label>
-            <input [readonly]= "editando" type="text" pInputText ng-model="text" name="codigo" formControlName="codigo">
+            <input [readonly]= "true" type="text" pInputText ng-model="text" name="codigo" formControlName="codigo">
           </div>
 
           <div class="ui-g-9 ui-fluid">
@@ -19,14 +18,18 @@
             <input type="text" pInputText ng-model="text" name="texto" formControlName="texto">
           </div>
 
-          <div class="ui-g-12 ui-md-12 ui-lg-12 ui-fluid">
-            <button class="btn btn-primary" type="submit" style="margin-right: 8px;">Salvar</button>
-            <button class="btn btn-outline-secondary" routerLink="/textopessoal">Cancelar</button>
+          <div class="ui-g-12 ui-fluid">
+            <div style="text-align: left;">
+              <button class="btn btn-primary" type="submit" style="margin-right: 8px;">Salvar</button>
+              <button class="btn btn-outline-secondary" routerLink="/textopessoal">Cancelar</button>
+            </div>
 
-            <!--<a routerLink="/textopessoal">Voltar para a pesquisa</a>-->
+            <div style="text-align: right;">
+              <a routerLink="/textopessoal">Voltar para a pesquisa</a>
+            </div>
           </div>
         </div>
       </form>
-  </div>
-
+    </div>
+  </p-fieldset>
 </div>

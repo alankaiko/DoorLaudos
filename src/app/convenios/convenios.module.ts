@@ -11,7 +11,6 @@ import {TableModule} from 'primeng/components/table/table';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { CheckboxModule } from 'primeng/components/checkbox/checkbox';
-import { FieldsetModule } from 'primeng/components/fieldset/fieldset';
 
 @NgModule({
   declarations: [],
@@ -27,9 +26,7 @@ import { FieldsetModule } from 'primeng/components/fieldset/fieldset';
     ReactiveFormsModule,
     TooltipModule,
     RouterModule,
-    CheckboxModule,
-    FieldsetModule
-  ],
-  exports: [CadastroConvenioComponent]
+    CheckboxModule
+  ]
 })
 export class ConveniosModule { }

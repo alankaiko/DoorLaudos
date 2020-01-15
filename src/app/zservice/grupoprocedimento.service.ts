@@ -42,7 +42,7 @@ export class GrupoprocedimentoService {
 
         return resultado;
       });
-  }
+    }
 
 
   Adicionar(grupoprocedimento) {
