@@ -1,6 +1,5 @@
 <div class="conteudos">
-  <h1>{{ editando ? 'Editar' : 'Novo'}} Procedimento Médico</h1>
-
+  <p-fieldset legend="{{ editando ? 'Editar' : 'Novo'}} Procedimento Médico">
   <div class="classecad">
       <form autocomplete="off" [formGroup]="formulario" (ngSubmit)="Salvar()" class="formu">
         <div class="p-grid">
@@ -14,14 +13,24 @@
             <input type="text" pInputText ng-model="text" name="nome" formControlName="nome">
           </div>
 
-          <div class="ui-g-12 ui-md-12 ui-lg-12 ui-fluid">
-            <button class="btn btn-primary" type="submit" style="margin-right: 8px;">Salvar</button>
-            <button class="btn btn-outline-secondary" routerLink="/procedimentomedico">Cancelar</button>
+          <div class="ui-g-12 ui-md-12 ui-lg-12 ui-fluid" formGroupName="grupo">
+            <label>Grupo</label>
+            <p-dropdown required formControlName="codigo" [options]="grupos" [autoWidth]="false" placeholder="Selecione o grupo" name="grupo"></p-dropdown>
+          </div>
 
-            <!--<a routerLink="/procedimentomedico">Voltar para a pesquisa</a>-->
+          <div class="ui-g-12 ui-fluid">
+            <div style="text-align: left;">
+              <button class="btn btn-primary" type="submit" style="margin-right: 8px;">Salvar</button>
+            <button class="btn btn-outline-secondary" routerLink="/procedimentomedico">Cancelar</button>
+            </div>
+
+            <div style="text-align: right;">
+              <a routerLink="/procedimentomedico">Voltar para a pesquisa</a>
+            </div>
+
           </div>
         </div>
       </form>
-  </div>
-
+    </div>
+  </p-fieldset>
 </div>

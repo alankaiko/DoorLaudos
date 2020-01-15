@@ -1,3 +1,4 @@
+import { GrupoprocedimentoService } from './../../zservice/grupoprocedimento.service';
 import { ProcedimentomedicoService } from './../../zservice/procedimentomedico.service';
 import { Component, OnInit } from '@angular/core';
 import { ProcedimentoMedico } from './../../core/model';
@@ -11,9 +12,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class CadastroProcedimentomedicoComponent implements OnInit {
   formulario: FormGroup;
+  grupos = [];
 
   constructor(private service: ProcedimentomedicoService,
               private rota: ActivatedRoute,
+              private serviceGrupo: GrupoprocedimentoService,
               private formbuilder: FormBuilder,
               private route: Router) {
   }
@@ -25,6 +28,16 @@ export class CadastroProcedimentomedicoComponent implements OnInit {
     if (codprocedimentomedico) {
       this.CarregarProcedimentoMedico(codprocedimentomedico);
     }
+
+    this.BuscarGrupos();
+  }
+
+  BuscarGrupos() {
+    return this.serviceGrupo.Listar()
+    .then(grupos => {
+      this.grupos = grupos
+        .map(g => ({ label: g.nome, value: g.codigo }));
+    });
   }
 
   get editando() {
@@ -35,13 +48,6 @@ export class CadastroProcedimentomedicoComponent implements OnInit {
     this.formulario = this.formbuilder.group({
       codigo: [null, procedimentomedico.codigo],
       nome: [null, procedimentomedico.nome],
-      diasparaentregadolaudo: [null, procedimentomedico.diasparaentregadolaudo],
-      margemtop: [null, procedimentomedico.margemtop],
-      margembottom: [null, procedimentomedico.margembottom],
-      restricaosexo: [null, procedimentomedico.restricaosexo],
-      imagem1: [null, procedimentomedico.imagem1],
-      imagem2: [null, procedimentomedico.imagem2],
-      laudomodelo: [null, procedimentomedico.laudomodelo],
       grupo: this.formbuilder.group({
         codigo: [procedimentomedico.grupo.codigo],
         nome: [procedimentomedico.grupo.nome],

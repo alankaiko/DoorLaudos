@@ -1,16 +1,16 @@
 <div class="grupo">
   <div class="classe">
       <div class="ui-g">
-
+        <h3>Procedimentos Médico</h3>
         <div>
           <p-table id="tabela" [value]="procedimentos" [responsive]="true" [paginator]="true" [rows]="filtro.itensPorPagina"
             [lazy]="true" [totalRecords]="totalRegistros" (onLazyLoad)="aoMudarPagina($event)">
             <ng-template pTemplate="header">
                 <tr>
-                    <th style="width: 15%;">Código</th>
-                    <th style="width: 70%;">Título</th>
-                    <th style="width: 30%;">Grupo Pert.</th>
-                    <th style="width: 7%; text-align: center;">Opções</th>
+                    <th style="width: 10%;">Código</th>
+                    <th style="width: 50%;">Título</th>
+                    <th style="width: 20%;">Grupo Pert.</th>
+                    <th style="width: 10%; text-align: center;">Opções</th>
                 </tr>
             </ng-template>
             <ng-template pTemplate="body" let-procedimento>
