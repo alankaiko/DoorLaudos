@@ -21,7 +21,7 @@ items: MenuItem[];
             {label: 'Convênio', icon: 'fa fa-fw fa-cubes', routerLink: ['convenios']},
             {label: 'Ex. e Proc. Médicos', icon: 'fa fa-fw fa-cubes', routerLink: ['procedimentomedico']},
             {label: 'Grupo de Exames', icon: 'fa fa-fw fa-cubes', routerLink: ['grupoprocedimento']},
-            {label: 'Pacientes', icon: 'fa fa-fw fa-cubes'},
+            {label: 'Pacientes', icon: 'fa fa-fw fa-cubes', routerLink: ['paciente']},
             {label: 'Prof. Executantes', icon: 'fa fa-fw fa-cubes', routerLink: ['profissionalexecutante']},
             {label: 'Prof. Solicitantes', icon: 'fa fa-fw fa-cubes', routerLink: ['profissionalsolicitante']},
             {label: 'Textos Pessoais', icon: 'fa fa-fw fa-cubes', routerLink: ['textopessoal']},

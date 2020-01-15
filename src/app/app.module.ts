@@ -1,3 +1,5 @@
+import { ListaPacienteComponent } from './pacientes/lista-paciente/lista-paciente.component';
+import { CadastroPacienteComponent } from './pacientes/cadastro-paciente/cadastro-paciente.component';
 import { ListaTextopessoalComponent } from './textopessoal/lista-textopessoal/lista-textopessoal.component';
 import { NgModule } from '@angular/core';
 import { ViewerComponent } from './servidor/viewer/viewer.component';
@@ -38,6 +40,7 @@ import { CheckboxModule } from 'primeng/components/checkbox/checkbox';
 import {InputMaskModule} from 'primeng/components/inputmask/inputmask';
 import { FieldsetModule } from 'primeng/components/fieldset/fieldset';
 import {DropdownModule} from 'primeng/components/dropdown/dropdown';
+import {CalendarModule} from 'primeng/components/calendar/calendar';
 
 const rotas: Routes = [
   { path: 'abreviaturas/novo', component: CadastroAbreviaturaComponent },
@@ -69,7 +72,10 @@ const rotas: Routes = [
   { path: 'listaespecialidades', component: ListaEspecialidademedicaComponent },
   { path: 'servidor', component: ListaServidorComponent },
   { path: 'previsualizar/:idpatient', component: PrevisualizacaoComponent },
-  { path: 'viewer/:cod', component: ViewerComponent }
+  { path: 'viewer/:cod', component: ViewerComponent },
+  { path: 'paciente', component: ListaPacienteComponent },
+  { path: 'paciente/novo', component: CadastroPacienteComponent },
+  { path: 'paciente/:cod', component: CadastroPacienteComponent }
 ];
 
 @NgModule({
@@ -81,7 +87,8 @@ const rotas: Routes = [
     ListaProfissionalexecutanteComponent, CadastroProfissionalsolComponent,
     ListaProfissionalsolicitanteComponent, CadastroTextopessoalComponent,
     ListaTextopessoalComponent, ListaCbhpmComponent, ListaCid10Component,
-    ListaCnesComponent, ListaCrmComponent, ListaEspecialidademedicaComponent
+    ListaCnesComponent, ListaCrmComponent, ListaEspecialidademedicaComponent,
+    ListaPacienteComponent, CadastroPacienteComponent
   ],
   imports: [
     ServidorModule,
@@ -99,7 +106,8 @@ const rotas: Routes = [
     RouterModule.forRoot(rotas),
     InputMaskModule,
     FieldsetModule,
-    DropdownModule
+    DropdownModule,
+    CalendarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

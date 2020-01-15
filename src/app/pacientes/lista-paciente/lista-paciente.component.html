@@ -1,0 +1,43 @@
+<div class="grupo">
+  <div class="classe">
+      <div class="ui-g">
+        <h3>Lista De Pacientes</h3>
+        <div>
+          <p-table id="tabela" [value]="patients" [responsive]="true" [paginator]="true" [rows]="filtro.itensPorPagina"
+            [lazy]="true" [totalRecords]="totalRegistros" (onLazyLoad)="aoMudarPagina($event)">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th style="width: 10%;">Código</th>
+                    <th style="width: 10%;">Ident.</th>
+                    <th style="width: 40%;">Nome</th>
+                    <th style="width: 10%;">Idade</th>
+                    <th style="width: 10%;">Sexo</th>
+                    <th style="width: 12%; text-align: center;">Opções</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-patient>
+                <tr>
+                    <td style="text-align: center;">{{patient.idpatient}}</td>
+                    <td>{{patient.patientid}}</td>
+                    <td>{{patient.patientname}}</td>
+                    <td>{{patient.patientage}}</td>
+                    <td>{{patient.patientsex}}</td>
+                    <td style="text-align: center;">
+                        <a pButton icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top"
+                        [routerLink]="['/paciente', patient.idpatient]"></a>
+
+                      <button pButton icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="top"
+                        (click)="Excluir(patient)"></button>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+        </div>
+
+        <div class="ui-g-12" style="text-align: right;">
+          <a pButton label="Novo Registro" routerLink="/paciente/novo"></a>
+        </div>
+      </div>
+
+    </div>
+</div>

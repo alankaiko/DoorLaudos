@@ -42,6 +42,8 @@ export class Patient {
   patientage: string;
   patientsex: string;
   studyes = new Array<Study>();
+  endereco = new Endereco();
+  contato = new Contato();
   datecreate: Date;
   datemodify: Date;
 }
@@ -200,17 +202,6 @@ export class CapituloCID10 {
 export class GrupoProcedimento {
   codigo: number;
   nome: string;
-}
-
-export class Paciente {
-  codigo: number;
-  nome: string;
-  cpf: string;
-  rg: string;
-  datanasc: Date;
-  datacad: Date;
-  contato = new Contato();
-  endereco = new Endereco();
 }
 
 export class ProcedimentoMedico {

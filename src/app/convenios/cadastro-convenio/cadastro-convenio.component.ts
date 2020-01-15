@@ -50,7 +50,7 @@ export class CadastroConvenioComponent implements OnInit {
         cidade: [convenio.endereco.cidade],
         estado: [convenio.endereco.estado],
         cep: [convenio.endereco.cep]
-      }),
+      })
     });
   }
 

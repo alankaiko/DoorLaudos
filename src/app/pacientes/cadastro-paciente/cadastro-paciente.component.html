@@ -1,0 +1,105 @@
+<div class="conteudos">
+  <p-fieldset legend="{{ editando ? 'Editar' : 'Novo'}} Paciente">
+  <div class="classecad">
+      <form autocomplete="off" [formGroup]="formulario" (ngSubmit)="Salvar()" class="formu">
+        <div class="p-grid">
+          <div class="ui-g-3 ui-fluid">
+            <label>Código</label>
+            <input [readonly]= "true" type="text" pInputText ng-model="text" name="idpatient" formControlName="idpatient">
+          </div>
+
+          <div class="ui-g-9 ui-fluid">
+            <label>Paciente Ident.</label>
+            <input type="text" pInputText ng-model="text" name="patientid" formControlName="patientid">
+          </div>
+
+          <div class="ui-g-12 ui-fluid">
+            <label>Nome</label>
+            <input type="text" pInputText ng-model="text" name="patientname" formControlName="patientname">
+          </div>
+
+          <div class="ui-g-4 ui-fluid">
+            <label>Data Nasc.</label>
+            <p-calendar  dateFormat="dd/mm/yy" [monthNavigator]="true" [yearNavigator]="true" yearRange="1930:2020" name="birthday" formControlName="birthday"></p-calendar>
+          </div>
+
+          <div class="ui-g-4 ui-fluid">
+            <label>Idade</label>
+            <p-inputMask mask="99" name="patientage" formControlName="patientage"></p-inputMask>
+          </div>
+
+          <div class="ui-g-4 ui-fluid">
+            <label>Sexo</label>
+            <input type="text" pInputText ng-model="text" name="patientsex" formControlName="patientsex">
+          </div>
+
+          <div class="ui-g-4 ui-fluid" formGroupName="contato">
+            <label>Telefone</label>
+            <input type="text" pInputText ng-model="text" name="telefone" formControlName="telefone">
+          </div>
+
+          <div class="ui-g-4 ui-fluid" formGroupName="contato">
+            <label>2 Telefone</label>
+            <input type="text" pInputText ng-model="text" name="telefone2" formControlName="telefone2">
+          </div>
+
+          <div class="ui-g-4 ui-fluid" formGroupName="contato">
+            <label>Celular</label>
+            <input type="text" pInputText ng-model="text" name="celular" formControlName="celular">
+          </div>
+
+          <div class="ui-g-12 ui-fluid" formGroupName="contato">
+            <label>E-mail</label>
+            <input type="text" pInputText ng-model="text" name="email" formControlName="email">
+          </div>
+
+          <div class="ui-g-12 ui-fluid" formGroupName="endereco">
+            <label>Logradouro</label>
+            <input type="text" pInputText ng-model="text" name="logradouro" formControlName="logradouro">
+          </div>
+
+          <div class="ui-g-12 ui-fluid" formGroupName="endereco">
+            <label>Complemento</label>
+            <input type="text" pInputText ng-model="text" name="complemento" formControlName="complemento">
+          </div>
+
+          <div class="ui-g-2 ui-fluid" formGroupName="endereco">
+            <label>Número</label>
+            <input type="text" pInputText ng-model="text" name="numero" formControlName="numero">
+          </div>
+
+          <div class="ui-g-4 ui-fluid" formGroupName="endereco">
+            <label>Bairro</label>
+            <input type="text" pInputText ng-model="text" name="bairro" formControlName="bairro">
+          </div>
+
+          <div class="ui-g-6 ui-fluid" formGroupName="endereco">
+            <label>Cidade</label>
+            <input type="text" pInputText ng-model="text" name="cidade" formControlName="cidade">
+          </div>
+
+          <div class="ui-g-6 ui-fluid" formGroupName="endereco">
+            <label>UF</label>
+            <input type="text" pInputText ng-model="text" name="estado" formControlName="estado">
+          </div>
+
+          <div class="ui-g-6 ui-fluid" formGroupName="endereco">
+            <label>CEP</label>
+            <input type="text" pInputText ng-model="text" name="cep" formControlName="cep">
+          </div>
+
+          <div class="ui-g-12 ui-fluid">
+            <div style="text-align: left;">
+              <button class="btn btn-primary" type="submit" style="margin-right: 8px;">Salvar</button>
+            <button class="btn btn-outline-secondary" routerLink="/grupoprocedimento">Cancelar</button>
+            </div>
+
+            <div style="text-align: right;">
+              <a routerLink="/grupoprocedimento">Voltar para a pesquisa</a>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </p-fieldset>
+</div>

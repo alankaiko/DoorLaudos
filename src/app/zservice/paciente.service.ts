@@ -1,9 +1,15 @@
-import { Paciente } from './../core/model';
+import { Patient } from './../core/model';
 import { environment } from './../../environments/environment.prod';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import * as moment from 'moment';
 
 export class PacientesFiltro {
+  patientid: string;
+  patientname: string;
+  birthday: Date;
+  patientage: string;
+  patientsex: string;
   pagina = 0;
   itensPorPagina = 7;
 }
@@ -16,7 +22,7 @@ export class PacienteService {
   url: string;
 
   constructor(private http: HttpClient) {
-    this.url = `${environment.apiUrl}/pacientes`;
+    this.url = `${environment.apiUrl}/servidor`;
   }
 
   Listar(): Promise<any> {
@@ -30,6 +36,27 @@ export class PacienteService {
         size: filtro.itensPorPagina.toString()
       }
     });
+
+    if (filtro.patientid) {
+      params = params.append('patientid', filtro.patientid);
+    }
+
+    if (filtro.patientname) {
+      params = params.append('patientname', filtro.patientname);
+    }
+
+    if (filtro.patientage) {
+      params = params.append('patientage', filtro.patientage);
+    }
+
+    if (filtro.birthday) {
+      params.set('birthday',
+        moment(filtro.birthday).format('YYYY-MM-DD'));
+    }
+
+    if (filtro.patientsex) {
+      params = params.append('patientsex', filtro.patientsex);
+    }
 
     return this.http.get<any>(`${this.url}?resumo`, { params })
       .toPromise()
@@ -45,32 +72,41 @@ export class PacienteService {
       });
   }
 
-
-  Adicionar(paciente) {
-    return this.http.post(`${this.url}`, paciente).subscribe(response => response);
+  Adicionar(patient) {
+    return this.http.post(`${this.url}`, patient).subscribe(response => JSON.stringify(response));
   }
 
-  BuscarPorId(codigo: number): Promise<any> {
-    return this.http.get(`${this.url}/${codigo}`)
+  BuscarPorId(idpatient: number): Promise<any> {
+    return this.http.get(`${this.url}/${idpatient}`)
       .toPromise()
       .then(response => {
-        const paciente = response as Paciente;
-        return paciente;
+        const patient = response as Patient;
+        this.converterStringsParaDatas([patient]);
+        return patient;
       });
   }
 
-  Atualizar(paciente: Paciente): Promise<any> {
-    return this.http.put(`${this.url}/${paciente.codigo}`, paciente)
+  Atualizar(patient: Patient): Promise<any> {
+    return this.http.put(`${this.url}/${patient.idpatient}`, patient)
       .toPromise()
       .then(response => {
-        const pacientealterado = response as Paciente;
-        return pacientealterado;
+        const patientalterado = response as Patient;
+        this.converterStringsParaDatas([patientalterado]);
+
+        return patientalterado;
       });
   }
 
-  Remover(codigo: number) {
-    this.http.delete(`${this.url}/${codigo}`)
+  Remover(idpatient: number) {
+    this.http.delete(`${this.url}/${idpatient}`)
       .toPromise()
       .then(() => null);
+  }
+
+  private converterStringsParaDatas(patients: Patient[]) {
+    for (const patient of patients) {
+      patient.birthday = moment(patient.birthday,
+        'YYYY-MM-DD').toDate();
+    }
   }
 }
