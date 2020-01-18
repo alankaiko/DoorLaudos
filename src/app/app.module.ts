@@ -1,3 +1,5 @@
+import { TelaAtendimentoComponent } from './atendimento/tela-atendimento/tela-atendimento.component';
+import { ListaAtendimentoComponent } from './atendimento/lista-atendimento/lista-atendimento.component';
 import { ListaPacienteComponent } from './pacientes/lista-paciente/lista-paciente.component';
 import { CadastroPacienteComponent } from './pacientes/cadastro-paciente/cadastro-paciente.component';
 import { ListaTextopessoalComponent } from './textopessoal/lista-textopessoal/lista-textopessoal.component';
@@ -75,7 +77,10 @@ const rotas: Routes = [
   { path: 'viewer/:cod', component: ViewerComponent },
   { path: 'paciente', component: ListaPacienteComponent },
   { path: 'paciente/novo', component: CadastroPacienteComponent },
-  { path: 'paciente/:cod', component: CadastroPacienteComponent }
+  { path: 'paciente/:cod', component: CadastroPacienteComponent },
+  { path: 'atendimento', component: ListaAtendimentoComponent },
+  { path: 'atendimento/:cod', component: TelaAtendimentoComponent },
+  { path: 'atendimento/novo', component: TelaAtendimentoComponent }
 ];
 
 @NgModule({
@@ -88,7 +93,8 @@ const rotas: Routes = [
     ListaProfissionalsolicitanteComponent, CadastroTextopessoalComponent,
     ListaTextopessoalComponent, ListaCbhpmComponent, ListaCid10Component,
     ListaCnesComponent, ListaCrmComponent, ListaEspecialidademedicaComponent,
-    ListaPacienteComponent, CadastroPacienteComponent
+    ListaPacienteComponent, CadastroPacienteComponent, ListaAtendimentoComponent,
+    TelaAtendimentoComponent
   ],
   imports: [
     ServidorModule,

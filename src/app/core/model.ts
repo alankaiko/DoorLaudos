@@ -300,3 +300,32 @@ export class TagImagemGamb {
   indentificacao: string;
   campo: string;
 }
+
+export class Atendimento {
+  codigo: number;
+  paciente = new Patient();
+  convenio = new Convenio();
+  procedimentos = new Array<ProcedimentoAtendimento>();
+  solicitante = new ProfissionalSolicitante();
+  dataatendimento: Date;
+  observacoes: string;
+}
+
+export class ProcedimentoAtendimento {
+  codigo: number;
+  profexecutante = new ProfissionalExecutante();
+  procedimentotabela = new ProcedimentoTabela();
+  valorpaciente: string;
+  valorconvenio: string;
+  preventregalaudo: Date;
+  dataexecucao: Date;
+  atendimento = new Atendimento();
+}
+
+export class ProcedimentoTabela {
+  codigo: number;
+  valorpaciente: string;
+  tabeladeprocedimentos = new TabelaDeProcedimentos();
+  procedimentomedico = new ProcedimentoMedico();
+  valornoconvenio: string;
+}

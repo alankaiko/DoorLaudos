@@ -37,9 +37,6 @@ export class PacienteService {
       }
     });
 
-    if (filtro.patientid) {
-      params = params.append('patientid', filtro.patientid);
-    }
 
     if (filtro.patientname) {
       params = params.append('patientname', filtro.patientname);

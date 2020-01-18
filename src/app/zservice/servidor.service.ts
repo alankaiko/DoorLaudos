@@ -38,18 +38,6 @@ export class ServidorService {
       params = params.append('patientid', filtro.patientid);
     }
 
-    if (filtro.patientname) {
-      params = params.append('patientname', filtro.patientname);
-    }
-
-    if (filtro.patientsex) {
-      params = params.append('patientsex', filtro.patientsex);
-    }
-
-    if (filtro.patientage) {
-      params = params.append('patientage', filtro.patientage);
-    }
-
     return this.http.get<any>(`${this.url}?resumo`, { params })
       .toPromise()
       .then(response => {

@@ -1,29 +1,31 @@
 <div class="grupo">
   <div class="classe">
       <div class="ui-g">
-        <h3>Atendimento</h3>
+        <h3>Abreviaturas</h3>
         <div>
-          <p-table id="tabela" [value]="abreviaturas" [responsive]="true" [paginator]="true" [rows]="filtro.itensPorPagina"
+          <p-table id="tabela" [value]="atendimentos" [responsive]="true" [paginator]="true" [rows]="filtro.itensPorPagina"
             [lazy]="true" [totalRecords]="totalRegistros" (onLazyLoad)="aoMudarPagina($event)">
             <ng-template pTemplate="header">
                 <tr>
                     <th style="width: 8%;">Código</th>
-                    <th style="width: 15%;">Abreviatura</th>
-                    <th style="width: 40%;">Descrição</th>
+                    <th style="width: 15%;">Nome</th>
+                    <th style="width: 40%;">Convenio</th>
+                    <th style="width: 40%;">Data Cad</th>
                     <th style="width: 7%; text-align: center;">Opções</th>
                 </tr>
             </ng-template>
-            <ng-template pTemplate="body" let-abreviatura>
+            <ng-template pTemplate="body" let-atend>
                 <tr>
-                    <td style="text-align: center;">{{abreviatura.codigo}}</td>
-                    <td>{{abreviatura.titulo}}</td>
-                    <td>{{abreviatura.texto}}</td>
+                    <td style="text-align: center;">{{atend.codigo}}</td>
+                    <td>{{atend.paciente.patientname}}</td>
+                    <td>{{atend.convenio.nome}}</td>
+                    <td>{{atend.dataatendimento}}</td>
                     <td style="text-align: center;">
                         <a pButton icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top"
-                        [routerLink]="['/abreviaturas', abreviatura.codigo]"></a>
+                        [routerLink]="['/atendimento', atend.codigo]"></a>
 
                       <button pButton icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="top"
-                        (click)="Excluir(abreviatura)"></button>
+                        (click)="Excluir(atend)"></button>
                     </td>
                 </tr>
             </ng-template>
@@ -31,7 +33,7 @@
         </div>
 
         <div class="ui-g-12" style="text-align: right;">
-          <a pButton label="Nova Abreviatura" routerLink="/abreviaturas/novo"></a>
+          <a pButton label="Novo Atendimento" routerLink="/atendimento/novo"></a>
         </div>
       </div>
 
