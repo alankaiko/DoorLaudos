@@ -1,3 +1,4 @@
+import { ProcedimentoCadApendComponent } from './atendimento/procedimento-cad-apend/procedimento-cad-apend.component';
 import { TelaAtendimentoComponent } from './atendimento/tela-atendimento/tela-atendimento.component';
 import { ListaAtendimentoComponent } from './atendimento/lista-atendimento/lista-atendimento.component';
 import { ListaPacienteComponent } from './pacientes/lista-paciente/lista-paciente.component';
@@ -43,6 +44,8 @@ import {InputMaskModule} from 'primeng/components/inputmask/inputmask';
 import { FieldsetModule } from 'primeng/components/fieldset/fieldset';
 import {DropdownModule} from 'primeng/components/dropdown/dropdown';
 import {CalendarModule} from 'primeng/components/calendar/calendar';
+import { PanelModule } from 'primeng/components/panel/panel';
+import { DialogModule } from 'primeng/components/dialog/dialog';
 
 const rotas: Routes = [
   { path: 'abreviaturas/novo', component: CadastroAbreviaturaComponent },
@@ -79,8 +82,8 @@ const rotas: Routes = [
   { path: 'paciente/novo', component: CadastroPacienteComponent },
   { path: 'paciente/:cod', component: CadastroPacienteComponent },
   { path: 'atendimento', component: ListaAtendimentoComponent },
-  { path: 'atendimento/:cod', component: TelaAtendimentoComponent },
-  { path: 'atendimento/novo', component: TelaAtendimentoComponent }
+  { path: 'atendimento/novo', component: TelaAtendimentoComponent },
+  { path: 'atendimento/:cod', component: TelaAtendimentoComponent }
 ];
 
 @NgModule({
@@ -94,7 +97,7 @@ const rotas: Routes = [
     ListaTextopessoalComponent, ListaCbhpmComponent, ListaCid10Component,
     ListaCnesComponent, ListaCrmComponent, ListaEspecialidademedicaComponent,
     ListaPacienteComponent, CadastroPacienteComponent, ListaAtendimentoComponent,
-    TelaAtendimentoComponent
+    TelaAtendimentoComponent, ProcedimentoCadApendComponent
   ],
   imports: [
     ServidorModule,
@@ -113,7 +116,9 @@ const rotas: Routes = [
     InputMaskModule,
     FieldsetModule,
     DropdownModule,
-    CalendarModule
+    CalendarModule,
+    PanelModule,
+    DialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

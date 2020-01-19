@@ -1,1 +1,59 @@
-<p>tela-atendimento works!</p>
+<div class="container">
+  <p-fieldset legend="{{ editando ? 'Editar' : 'Novo'}} Atendimento">
+    <form #f="ngForm" autocomplete="off" (ngSubmit)="Salvar(f)">
+      <div class="ui-g">
+        <div class="ui-g-3 ui-fluid">
+            <label>Código Atend.</label>
+            <input [readonly]= "true" type="text" pInputText  [(ngModel)]="atendimento.codigo" name="codigo" #codigo="ngModel">
+        </div>
+
+        <div class="ui-g-9 ui-fluid">
+          <label>Data Atend.</label>
+          <p-calendar  dateFormat="dd/mm/yy" [monthNavigator]="true" [yearNavigator]="true" #dataatendimento="ngModel"
+              yearRange="1930:2020" name="dataatendimento" [(ngModel)]="atendimento.dataatendimento"></p-calendar>
+        </div>
+
+        <div class="ui-g-12 ui-fluid">
+          <label>Paciente</label>
+          <p-dropdown [options]="pacientes" [autoWidth]="false" [filter]="true" [(ngModel)]="pacienteselecionado"
+            placeholder="Selecione..." name="paciente" (onChange)="CarregarPacientes()"#paciente="ngModel"></p-dropdown>
+        </div>
+
+        <div class="ui-g-6 ui-fluid">
+          <label>Convênio</label>
+          <p-dropdown [options]="convenios" [autoWidth]="false" [filter]="true" [(ngModel)]="convenioselecionado"
+            placeholder="Selecione..." name="convenio" (onChange)="CarregarConvenios()"#convenio="ngModel"></p-dropdown>
+        </div>
+
+        <div class="ui-g-6 ui-fluid">
+          <label>Prof. Solicitante</label>
+          <p-dropdown [options]="solicitantes" [autoWidth]="false" [filter]="true" [(ngModel)]="solicitanteselecionado"
+            placeholder="Selecione..." name="solicitante" (onChange)="CarregarSolicitantes()"#solicitante="ngModel"></p-dropdown>
+        </div>
+
+        <div class="ui-g-12 ui-fluid">
+          <label>Observações</label>
+          <input type="text" pInputText ng-model="text" name="observacoes" [(ngModel)]="atendimento.observacoes" #observacoes="ngModel">
+        </div>
+
+        <div class="ui-g-12">
+          <p-panel header="Procedimentos">
+            <app-procedimento-cad-apend [procedimentos]="atendimento.procedimentos"></app-procedimento-cad-apend>
+          </p-panel>
+        </div>
+
+
+        <div class="ui-g-12 ui-fluid">
+          <div style="text-align: left;">
+            <button class="btn btn-primary" type="submit" style="margin-right: 8px;">Salvar</button>
+            <button class="btn btn-outline-secondary" routerLink="/abreviaturas">Cancelar</button>
+          </div>
+
+          <div style="text-align: right;">
+            <a routerLink="/atendimento">Voltar para a pesquisa</a>
+          </div>
+        </div>
+      </div>
+    </form>
+  </p-fieldset>
+</div>

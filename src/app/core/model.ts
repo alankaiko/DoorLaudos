@@ -320,6 +320,20 @@ export class ProcedimentoAtendimento {
   preventregalaudo: Date;
   dataexecucao: Date;
   atendimento = new Atendimento();
+
+  constructor(codigo?: number, profexecutante?: ProfissionalExecutante,
+              procedimentotabela?: ProcedimentoTabela, valorpaciente?: string,
+              valorconvenio?: string, preventreglaudo?: Date,
+              dataexecucao?: Date, atendimento?: Atendimento){
+                this.codigo = codigo;
+                this.profexecutante = profexecutante;
+                this.procedimentotabela = procedimentotabela;
+                this.valorpaciente = valorpaciente;
+                this.valorconvenio = valorconvenio;
+                this.preventregalaudo = preventreglaudo;
+                this.dataexecucao = dataexecucao;
+                this.atendimento = atendimento;
+              }
 }
 
 export class ProcedimentoTabela {

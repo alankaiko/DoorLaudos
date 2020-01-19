@@ -2,11 +2,11 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TelaAtendimentoComponent } from './tela-atendimento/tela-atendimento.component';
 import { ListaAtendimentoComponent } from './lista-atendimento/lista-atendimento.component';
-
+import { ProcedimentoCadApendComponent } from './procedimento-cad-apend/procedimento-cad-apend.component';
 
 
 @NgModule({
-  declarations: [TelaAtendimentoComponent, ListaAtendimentoComponent],
+  declarations: [TelaAtendimentoComponent, ListaAtendimentoComponent, ProcedimentoCadApendComponent],
   imports: [
     CommonModule
   ]

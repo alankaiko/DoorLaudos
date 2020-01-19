@@ -2,6 +2,7 @@ import { Atendimento } from './../core/model';
 import { environment } from './../../environments/environment.prod';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import * as moment from 'moment';
 
 export class AtendimentoFilter {
   pagina = 0;
@@ -30,22 +31,22 @@ export class AtendimentoService {
       }
     });
 
-    return this.http.get<any>(`${this.url}?resumo`)
-    .toPromise()
-    .then(response => {
-      const atendimentos = response;
+    return this.http.get<any>(`${this.url}?resumo`, { params })
+      .toPromise()
+      .then(response => {
+        const atendimentos = response;
 
-      const resultado = {
-        atendimentos,
-        total: response.totalElements
-      };
+        const resultado = {
+          atendimentos,
+          total: response.totalElements
+        };
 
-      return resultado;
-    });
-   }
+        return resultado;
+      });
+  }
 
-   Adicionar(atendimento) {
-    return this.http.post(`${this.url}`, atendimento).subscribe(response => response);
+   Adicionar(atendimento): Promise<any> {
+    return this.http.post(`${this.url}`, atendimento).toPromise().then(response => response);
    }
 
    BuscarPorId(codigo: number): Promise<any> {
@@ -53,6 +54,8 @@ export class AtendimentoService {
       .toPromise()
       .then(response => {
         const atendimento = response as Atendimento;
+        this.converterStringsParaDatas([atendimento]);
+
         return atendimento;
       });
 
@@ -63,6 +66,7 @@ export class AtendimentoService {
       .toPromise()
       .then(response => {
         const atendimentoalterado = response as Atendimento;
+        this.converterStringsParaDatas([atendimentoalterado]);
         return atendimentoalterado;
       });
    }
@@ -72,4 +76,10 @@ export class AtendimentoService {
       .toPromise()
       .then(() => null);
    }
+
+   private converterStringsParaDatas(atendimentos: Atendimento[]) {
+    for (const atendimento of atendimentos) {
+      atendimento.dataatendimento = moment(atendimento.dataatendimento, 'YYYY-MM-DD').toDate();
+    }
+  }
 }

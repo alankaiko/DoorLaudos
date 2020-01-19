@@ -15,7 +15,9 @@ export class ListaAtendimentoComponent implements OnInit {
   totalRegistros = 0;
   filtro = new AtendimentoFilter();
 
-  constructor(private service: AtendimentoService, private formbuilder: FormBuilder, private route: Router) { }
+  constructor(private service: AtendimentoService,
+              private formbuilder: FormBuilder,
+              private route: Router) { }
 
   ngOnInit() {}
 

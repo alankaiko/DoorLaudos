@@ -1,0 +1,68 @@
+<div class="ui-g">
+  <div class="ui-g-12">
+    <button pButton label="Novo" icon="fa fa-plus" type="button"
+      class="ui-button-secondary" (click)="PrepararNovoProcedimento()"></button>
+  </div>
+
+  <div class="ui-g-12">
+    <p-table [value]="procedimentos" [responsive]="true">
+      <ng-template pTemplate="header">
+        <tr>
+          <th>Código</th>
+          <th>Valor Paciente</th>
+          <th>Valor Convenio</th>
+          <th class="col-acoes-header"></th>
+        </tr>
+      </ng-template>
+
+      <ng-template pTemplate="body" let-procedimento
+        let-rowIndex="rowIndex">
+        <tr>
+          <td>{{ procedimento.codigo }}</td>
+          <td>{{ procedimento.valorpaciente }}</td>
+          <td>{{ procedimento.valorconvenio }}</td>
+          <td class="col-acoes">
+            <button pButton icon="fa fa-pencil" type="button"
+              pTooltip="Editar" tooltipPosition="top"
+              (click)="PrepararEdicaoProcedimento(procedimento, rowIndex)"></button>
+
+            <button pButton icon="fa fa-trash" type="button"
+              pTooltip="Excluir" tooltipPosition="top"
+              (click)="RemoverContato(rowIndex)"></button>
+          </td>
+        </tr>
+      </ng-template>
+
+      <ng-template pTemplate="emptymessage">
+        <tr>
+          <td colspan="4">
+            Nenhum contato cadastrado
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+</div>
+
+
+<p-dialog [header]="editando ? 'Edição Procedimento' : 'Novo Procedimento'" [(visible)]="ExbindoFormularioProcedimento"
+  modal="modal" *ngIf="procedimento">
+  <form #frmContato="ngForm" (ngSubmit)="ConfirmarProcedimento(frmProcedimento)">
+    <div class="ui-g-12 ui-fluid">
+      <label>Nome</label>
+
+      <input pInputText type="text" name="codigo"
+        required [(ngModel)]="procedimento.codigo" #procedimentoCodigo="ngModel"/>
+    </div>
+
+    <div class="ui-g-12 ui-fluid">
+        <label>E-mail</label>
+
+        <input pInputText type="email" name="valorpaciente"
+          required email [(ngModel)]="procedimento.valorpaciente" #procedimentoValorpaciente="ngModel"/>
+      </div>
+      <div class="ui-g-12">
+        <button pButton type="submit" label="Confirmar" [disabled]="frmProcedimento.invalid"></button>
+      </div>
+  </form>
+</p-dialog>
