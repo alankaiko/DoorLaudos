@@ -1,4 +1,4 @@
-import { Atendimento } from './../core/model';
+import { Atendimento, Patient, Convenio, ProfissionalSolicitante } from './../core/model';
 import { environment } from './../../environments/environment.prod';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -14,9 +14,15 @@ export class AtendimentoFilter {
 })
 export class AtendimentoService {
   url: string;
+  conveniourl: string;
+  pacienteurl: string;
+  solicitanteurl: string;
 
   constructor(private http: HttpClient) {
     this.url = `${environment.apiUrl}/atendimentos`;
+    this.conveniourl = `${environment.apiUrl}/convenios`;
+    this.pacienteurl = `${environment.apiUrl}/servidor`;
+    this.solicitanteurl = `${environment.apiUrl}/profissionaissolicitantes`;
    }
 
    Listar() {
@@ -45,8 +51,8 @@ export class AtendimentoService {
       });
   }
 
-   Adicionar(atendimento): Promise<any> {
-    return this.http.post(`${this.url}`, atendimento).toPromise().then(response => response);
+   Adicionar(atendimento: Atendimento): Promise<Atendimento> {
+    return this.http.post<Atendimento>(this.url, atendimento).toPromise();
    }
 
    BuscarPorId(codigo: number): Promise<any> {
@@ -76,6 +82,18 @@ export class AtendimentoService {
       .toPromise()
       .then(() => null);
    }
+
+  ListarPacientes(): Promise<Patient[]> {
+    return this.http.get<Patient[]>(this.pacienteurl).toPromise();
+  }
+
+  ListarConvenios(): Promise<Convenio[]> {
+    return this.http.get<Convenio[]>(this.conveniourl).toPromise();
+  }
+
+  ListarSolicitantes(): Promise<ProfissionalSolicitante[]> {
+    return this.http.get<ProfissionalSolicitante[]>(this.solicitanteurl).toPromise();
+  }
 
    private converterStringsParaDatas(atendimentos: Atendimento[]) {
     for (const atendimento of atendimentos) {

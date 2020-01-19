@@ -45,9 +45,9 @@
 </div>
 
 
-<p-dialog [header]="editando ? 'Edição Procedimento' : 'Novo Procedimento'" [(visible)]="ExbindoFormularioProcedimento"
+<p-dialog [header]="editando ? 'Edição Procedimento' : 'Novo Procedimento'" [(visible)]="exbindoFormularioProcedimento"
   modal="modal" *ngIf="procedimento">
-  <form #frmContato="ngForm" (ngSubmit)="ConfirmarProcedimento(frmProcedimento)">
+  <form #frmProcedimento="ngForm" (ngSubmit)="ConfirmarProcedimento(frmProcedimento)">
     <div class="ui-g-12 ui-fluid">
       <label>Nome</label>
 

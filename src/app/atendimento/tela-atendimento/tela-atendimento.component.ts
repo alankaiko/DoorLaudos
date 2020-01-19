@@ -1,6 +1,3 @@
-import { ProfissionalsolicitanteService } from './../../zservice/profissionalsolicitante.service';
-import { ConvenioService } from './../../zservice/convenio.service';
-import { ServidorService } from './../../zservice/servidor.service';
 import { Patient, Convenio, ProfissionalSolicitante } from './../../core/model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AtendimentoService } from './../../zservice/atendimento.service';
@@ -16,9 +13,9 @@ import { Atendimento } from 'src/app/core/model';
 export class TelaAtendimentoComponent implements OnInit {
   atendimento = new Atendimento();
   formulario: FormGroup;
-  pacientes: [];
-  convenios: [];
-  solicitantes: [];
+  pacientes: any[];
+  convenios: any[];
+  solicitantes: any[];
   pacienteselecionado: number;
   convenioselecionado: number;
   solicitanteselecionado: number;
@@ -26,10 +23,7 @@ export class TelaAtendimentoComponent implements OnInit {
   constructor(private service: AtendimentoService,
               private rota: ActivatedRoute,
               private formbuilder: FormBuilder,
-              private route: Router,
-              private patientService: ServidorService,
-              private convenioService: ConvenioService,
-              private solicitanteService: ProfissionalsolicitanteService) {
+              private route: Router) {
   }
 
   ngOnInit() {
@@ -67,59 +61,48 @@ export class TelaAtendimentoComponent implements OnInit {
   }
 
   CarregarAtendimento(codigo: number) {
-    this.service.BuscarPorId(codigo)
-      .then(atendimento => {
-        this.atendimento = atendimento;
-      }).catch(erro => erro);
+    this.service.BuscarPorId(codigo).then(atendimento => this.formulario.patchValue(atendimento));
   }
 
-
-
-  Salvar(form: FormControl) {
+  Salvar() {
     if (this.editando) {
-      this.AtualizarAtendimento(form);
+      this.AtualizarAtendimento();
+      this.route.navigate(['/atendimento']);
     } else {
-      this.AdicionarAtendimento(form);
+      this.formulario.patchValue(this.AdicionarAtendimento());
+      this.route.navigate(['/atendimento/novo']);
     }
+    this.CriarFormulario(new Atendimento());
   }
 
-  AdicionarAtendimento(form: FormControl) {
-    return this.service.Adicionar(this.atendimento)
-      .then(response => response).catch(erro => erro);
+  AdicionarAtendimento() {
+    return this.service.Adicionar(this.formulario.value);
   }
 
-  AtualizarAtendimento(form: FormControl) {
-    this.service.Atualizar(this.atendimento)
-      .then(atendimento => {
-        this.atendimento = atendimento;
-      }).catch(erro => erro);
+  AtualizarConvenios() {
+    this.service.Atualizar(this.formulario.value)
+      .then(convenio => {this.formulario.patchValue(convenio); });
   }
 
-  Novo(form: FormControl) {
-    form.reset();
-
-    setTimeout(function() {
-      this.atendimento = new Atendimento();
-    }.bind(this), 1);
-
-    this.route.navigate(['/atendimento/novo']);
+  AtualizarAtendimento() {
+    this.service.Atualizar(this.formulario.value)
+      .then(atendimento => this.formulario.patchValue(atendimento));
   }
-
 
   CarregarPacientes() {
-    this.patientService.Listar().then(lista => {
+    this.service.ListarPacientes().then(lista => {
       this.pacientes = lista.map(patient => ({label: patient.patientname, value: patient.idpatient}));
     }).catch(erro => erro);
   }
 
   CarregarConvenios() {
-    this.convenioService.Listar().then(lista => {
+    this.service.ListarConvenios().then(lista => {
       this.convenios = lista.map(convenio => ({label: convenio.nome, value: convenio.codigo}));
     }).catch(erro => erro);
   }
 
   CarregarSolicitantes() {
-    this.solicitanteService.Listar().then(lista => {
+    this.service.ListarSolicitantes().then(lista => {
       this.solicitantes = lista.map(solicitante => ({label: solicitante.nome, value: solicitante.codigo}));
     }).catch(erro => erro);
   }
