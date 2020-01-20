@@ -338,8 +338,8 @@ export class ProcedimentoAtendimento {
 
 export class ProcedimentoTabela {
   codigo: number;
-  valorpaciente: string;
+  valorpacientez: string;
   tabeladeprocedimentos = new TabelaDeProcedimentos();
   procedimentomedico = new ProcedimentoMedico();
-  valornoconvenio: string;
+  valornoconvenioz: string;
 }

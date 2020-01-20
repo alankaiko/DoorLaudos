@@ -1,6 +1,7 @@
+import { ProcedimentomedicoService } from './../../zservice/procedimentomedico.service';
 import { ProcedimentoAtendimento } from './../../core/model';
 import { Component, OnInit, Input } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-procedimento-cad-apend',
@@ -10,32 +11,62 @@ import { FormControl } from '@angular/forms';
 export class ProcedimentoCadApendComponent implements OnInit {
 
   @Input() procedimentos: Array<ProcedimentoAtendimento>;
-  procedimento: ProcedimentoAtendimento;
+  // procedimento: ProcedimentoAtendimento;
+  formulario: FormGroup;
   exbindoFormularioProcedimento = false;
   procedimentoIndex: number;
+  profissionalexecutantes: any[];
+  procedimentomedicos: [];
 
-  constructor() { }
+  constructor(private formbuilder: FormBuilder, private serviceProc: ProcedimentomedicoService) { }
 
   ngOnInit() {
+    this.CriarFormulario(new ProcedimentoAtendimento());
+    this.CarregarProcedimentosMedico();
+  }
+
+  CriarFormulario(procedimento: ProcedimentoAtendimento) {
+    this.formulario = this.formbuilder.group({
+      codigo: [null, procedimento.codigo],
+      valorpaciente: [null, procedimento.valorpaciente],
+      valorconvenio: [null, procedimento.valorconvenio],
+      preventregalaudo: [null, procedimento.preventregalaudo],
+      dataexecucao: [null, procedimento.dataexecucao],
+      profexecutante: this.formbuilder.group({
+        codigo: [null, Validators.required]
+      }),
+      procedimentotabela: this.formbuilder.group({
+        valorpacientez: [procedimento.procedimentotabela.valorpacientez],
+        valornoconvenioz: [procedimento.procedimentotabela.valornoconvenioz],
+        procedimentomedico: this.formbuilder.group({
+          codigo: [null, Validators.required]
+        })
+      })
+    });
   }
 
   PrepararNovoProcedimento() {
     this.exbindoFormularioProcedimento = true;
-    this.procedimento = new ProcedimentoAtendimento();
+    this.CriarFormulario(new ProcedimentoAtendimento());
+   // this.procedimento = new ProcedimentoAtendimento();
     this.procedimentoIndex = this.procedimentos.length;
   }
 
-  PrepararEdicaoProcedimento(procedimento: ProcedimentoAtendimento, index: number) {
-    this.procedimento = this.ClonarProcedimento(procedimento);
+  PrepararEdicaoProcedimento(procedimento: ProcedimentoAtendimento) {
+    // this.procedimento = this.ClonarProcedimento(procedimento);
+  //  this.CriarFormulario(this.ClonarProcedimento(procedimento));
+    this.CriarFormulario(procedimento);
+  //  this.service.BuscarPorId(codigo).then(abreviatura => this.formulario.patchValue(abreviatura));
     this.exbindoFormularioProcedimento = true;
-    this.procedimentoIndex = index;
+   // this.procedimentoIndex = index;
   }
 
-  ConfirmarProcedimento(frm: FormControl) {
-    this.procedimentos[this.procedimentoIndex] = this.ClonarProcedimento(this.procedimento);
+  ConfirmarProcedimento() {
+   // this.procedimentos[this.procedimentoIndex] = this.ClonarProcedimento(this.procedimento);
+    this.procedimentos[this.procedimentoIndex] = this.formulario.value;
     this.exbindoFormularioProcedimento = false;
 
-    frm.reset();
+    this.CriarFormulario(new ProcedimentoAtendimento());
   }
 
   RemoverProcedimento(index: number) {
@@ -49,8 +80,9 @@ export class ProcedimentoCadApendComponent implements OnInit {
       procedimento.dataexecucao, procedimento.atendimento);
   }
 
-  get editando() {
-    return this.procedimento && this.procedimento.codigo;
+  CarregarProcedimentosMedico() {
+    this.serviceProc.Listar().then(lista => {
+      this.procedimentomedicos = lista.map(proc => ({label: proc.nome, value: proc.codigo}));
+    }).catch(erro => erro);
   }
-
 }
