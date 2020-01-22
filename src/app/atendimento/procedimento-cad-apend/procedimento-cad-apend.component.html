@@ -17,7 +17,7 @@
 
       <ng-template pTemplate="body" let-procedimento let-rowIndex="rowIndex">
         <tr>
-          <td>{{ procedimento.dataexecucao }}</td>
+          <td>{{ procedimento.dataexecucao | date:'dd/MM/yyyy' }}</td>
           <td>{{ procedimento.valorpaciente }}</td>
           <td>{{ procedimento.valorconvenio }}</td>
           <td class="col-acoes">
@@ -74,17 +74,8 @@
           yearRange="1930:2020" name="dataexecucao"></p-calendar>
       </div>
 
+
       <div class="ui-g-3 ui-fluid" formGroupName="procedimentotabela">
-        <div class="ui-g-3 ui-fluid">
-          <label>Valor Paciente</label>
-          <input type="text" pInputText ng-model="text" name="valorpaciente" formControlName="valorpaciente" placeholder="0.00">
-        </div>
-
-        <div class="ui-g-3 ui-fluid">
-          <label>Valor Convênio</label>
-          <input type="text" pInputText ng-model="text" name="valornoconvenio" formControlName="valornoconvenio" placeholder="0.00">
-        </div>
-
         <div class="ui-g-12 ui-fluid" formGroupName="procedimentomedico">
           <label>Procedimento Médico</label>
           <p-dropdown [options]="procedimentomedicos" [autoWidth]="false" [filter]="true"  formControlName="codigo"

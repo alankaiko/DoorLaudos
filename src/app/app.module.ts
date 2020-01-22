@@ -1,3 +1,6 @@
+import { HttpClientModule } from '@angular/common/http';
+import { TelaLaudoComponent } from './laudo/tela-laudo/tela-laudo.component';
+import { LaudoModule } from './laudo/laudo.module';
 import { ProcedimentoCadApendComponent } from './atendimento/procedimento-cad-apend/procedimento-cad-apend.component';
 import { TelaAtendimentoComponent } from './atendimento/tela-atendimento/tela-atendimento.component';
 import { ListaAtendimentoComponent } from './atendimento/lista-atendimento/lista-atendimento.component';
@@ -46,6 +49,7 @@ import {DropdownModule} from 'primeng/components/dropdown/dropdown';
 import {CalendarModule} from 'primeng/components/calendar/calendar';
 import { PanelModule } from 'primeng/components/panel/panel';
 import { DialogModule } from 'primeng/components/dialog/dialog';
+import {EditorModule} from 'primeng/components/editor/editor';
 
 const rotas: Routes = [
   { path: 'abreviaturas/novo', component: CadastroAbreviaturaComponent },
@@ -83,7 +87,8 @@ const rotas: Routes = [
   { path: 'paciente/:cod', component: CadastroPacienteComponent },
   { path: 'atendimento', component: ListaAtendimentoComponent },
   { path: 'atendimento/novo', component: TelaAtendimentoComponent },
-  { path: 'atendimento/:cod', component: TelaAtendimentoComponent }
+  { path: 'atendimento/:cod', component: TelaAtendimentoComponent },
+  { path: 'laudos', component: TelaLaudoComponent }
 ];
 
 @NgModule({
@@ -118,7 +123,10 @@ const rotas: Routes = [
     DropdownModule,
     CalendarModule,
     PanelModule,
-    DialogModule
+    DialogModule,
+    LaudoModule,
+    EditorModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

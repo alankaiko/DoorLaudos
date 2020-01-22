@@ -1,7 +1,6 @@
-import { Patient, Convenio, ProfissionalSolicitante } from './../../core/model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AtendimentoService } from './../../zservice/atendimento.service';
-import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { Atendimento } from 'src/app/core/model';
 
@@ -56,7 +55,8 @@ export class TelaAtendimentoComponent implements OnInit {
       }),
       solicitante: this.formbuilder.group({
         codigo: [null, Validators.required]
-      })
+      }),
+      procedimentos: this.atendimento.procedimentos
     });
   }
 

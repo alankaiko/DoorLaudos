@@ -324,7 +324,7 @@ export class ProcedimentoAtendimento {
   constructor(codigo?: number, profexecutante?: ProfissionalExecutante,
               procedimentotabela?: ProcedimentoTabela, valorpaciente?: string,
               valorconvenio?: string, preventreglaudo?: Date,
-              dataexecucao?: Date, atendimento?: Atendimento){
+              dataexecucao?: Date, atendimento?: Atendimento) {
                 this.codigo = codigo;
                 this.profexecutante = profexecutante;
                 this.procedimentotabela = procedimentotabela;
@@ -338,8 +338,8 @@ export class ProcedimentoAtendimento {
 
 export class ProcedimentoTabela {
   codigo: number;
-  valorpacientez: string;
+  valorpaciente: string;
   tabeladeprocedimentos = new TabelaDeProcedimentos();
   procedimentomedico = new ProcedimentoMedico();
-  valornoconvenioz: string;
+  valornoconvenio: string;
 }

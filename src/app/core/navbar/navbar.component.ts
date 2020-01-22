@@ -16,6 +16,7 @@ items: MenuItem[];
           label: 'Operações',
           items: [
             {label: 'Atendimento', icon: 'fa fa-fw fa-file-image-o', routerLink: ['atendimento']},
+            {label: 'Laudo', icon: 'fa fa-fw fa-file-image-o', routerLink: ['laudos']}
           ]
         },
         {

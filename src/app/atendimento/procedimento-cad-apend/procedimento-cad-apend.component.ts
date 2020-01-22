@@ -36,8 +36,6 @@ export class ProcedimentoCadApendComponent implements OnInit {
         codigo: [null, Validators.required]
       }),
       procedimentotabela: this.formbuilder.group({
-        valorpacientez: [procedimento.procedimentotabela.valorpacientez],
-        valornoconvenioz: [procedimento.procedimentotabela.valornoconvenioz],
         procedimentomedico: this.formbuilder.group({
           codigo: [null, Validators.required]
         })
