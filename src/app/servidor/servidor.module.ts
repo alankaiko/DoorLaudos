@@ -12,10 +12,11 @@ import { ViewerComponent } from './viewer/viewer.component';
 import {TreeTableModule} from 'primeng/components/treetable/treetable';
 import {TreeNode} from 'primeng/api';
 import {DialogModule} from 'primeng/components/dialog/dialog';
+import { VisualComponent } from './visual/visual.component';
 
 
 @NgModule({
-  declarations: [ListaServidorComponent, PrevisualizacaoComponent, ViewerComponent],
+  declarations: [ListaServidorComponent, PrevisualizacaoComponent, ViewerComponent, VisualComponent],
   imports: [
     CommonModule,
     BrowserModule,

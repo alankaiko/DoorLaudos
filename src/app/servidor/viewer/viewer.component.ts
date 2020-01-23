@@ -1,3 +1,4 @@
+import { Tagimagem } from './../../core/model';
 import { InstanceService, ResumoInstance } from './../../zservice/instance.service';
 import { ServidorService } from './../../zservice/servidor.service';
 import {Component, OnInit} from '@angular/core';
@@ -37,10 +38,12 @@ export class ViewerComponent implements OnInit {
     cornerstoneWADOImageLoader.external.dicomParser = dicomParser;
 
     this.BuscarInstanciaResumida(idinstance);
+    console.log('codigo instance' + this.instance);
   }
 
   showDialog() {
     this.display = true;
+
   }
 
   BuscarInstanciaResumida(idinstance: number) {
@@ -49,6 +52,7 @@ export class ViewerComponent implements OnInit {
         instance => {
           this.instance = instance;
           this.NgAfterViewInit(instance.mediastoragesopinstanceuid);
+          console.log(instance.tagimage);
         }
       );
   }
