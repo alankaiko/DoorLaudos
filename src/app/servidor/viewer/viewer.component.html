@@ -2,65 +2,58 @@
   <div class="ui-g-11 ui-fluid" style="text-align: right;">
     <a routerLink="/servidor"><i class="fa fa-fw fa-undo" aria-hidden="true"><span>Voltar</span> </i></a>
   </div>
+  <p-toolbar>
+    <div class="ui-toolbar-group-left">
+      <button class="btn btn-outline-dark" type="button" (click)="enableTools('bright')">Windowing</button>
+      <button class="btn btn-outline-dark" type="button" (click)="enableTools('invert')">Invert</button>
+      <button class="btn btn-outline-dark" type="button" (click)="enableTools('pan')">Pan</button>
+      <button class="btn btn-outline-dark" type="button" (click)="enableTools('zoom')">Zoom</button>
+      <button class="btn btn-outline-dark" type="button" (click)="enableTools('rectangleRoi')">RectangleRoi</button>
+      <button class="btn btn-outline-dark" type="button" (click)="enableTools('length')">Length</button>
+      <button class="btn btn-outline-dark" type="button" (click)="enableTools('cobb')">Cobb</button>
+      <button class="btn btn-outline-dark" type="button" (click)="enableTools('angle')">Angle</button>
+      <button class="btn btn-outline-dark" type="button" (click)="enableTools('text')">Text</button>
+      <button class="btn btn-outline-dark" type="button" (click)="enableTools('elliptical')">Elliptical</button>
+      <button class="btn btn-outline-dark" type="button" (click)="enableTools('bi-directional')">Bi-Directional</button>
+      <button class="btn btn-outline-dark" type="button" (click)="enableTools('arrow-annotation')">Arrow</button>
+      <button class="btn btn-outline-dark" type="button" (click)="enableTools('probe')">Probe</button>
+      <button class="btn btn-outline-dark" type="button" (click)="enableTools('rotate')">Rotate</button>
+      <button class="btn btn-outline-dark" type="button" (click)="enableTools('hFlip')">HFlip</button>
+      <button class="btn btn-outline-dark" type="button" (click)="enableTools('vFlip')">VFlip</button>
+      <button class="btn btn-outline-dark" type="button" (click)="enableTools('magnify')">Magnif</button>
+      <button class="btn btn-outline-dark" type="button" (click)="enableTools('dragprobe')">Drag</button>
+      <button class="btn btn-outline-dark" type="button" (click)="showDialog()">Tags</button>
+      <button class="btn btn-outline-danger" type="button" (click)="enableTools('reset')">Reset</button>
+    </div>
+
+    <div class="ui-toolbar-group-right">
+      <button class="btn btn-outline-dark" type="button" (click)="backClicked();">Back</button>
+    </div>
+
+  </p-toolbar>
 
   <div class="ui-g-10">
     <div class="image-canvas" id="image-canvas" style="min-height: 420px;width:90%; border: 2px solid;">
     </div>
   </div>
 
-
-  <div class="ui-g-2">
-    <div class="col-lg-3 col-xs-3 rightButton">
-      <ul style="list-style: none;">
-          <li>
-            <button class="btn btn-primary customBtn" type="button" (click)="showDialog()" icon="pi pi-info-circle" label="Show">Tags</button>
-          </li>
-          <li>
-            <button class="btn btn-primary" type="submit" style="margin-right: 8px;">Share</button>
-          </li>
-          <li>
-            <button class="btn btn-primary" type="submit" style="margin-right: 8px;">Notes</button>
-          <li>
-            <button class="btn btn-primary" type="submit" style="margin-right: 8px;">Segments</button>
-          </li>
-      </ul>
-    </div>
-  </div>
-
-  <p-dialog header="Tabela de Tags" [(visible)]="display" [modal]="true" [responsive]="true" [style]="{width: '350px', minWidth: '200px'}" [minY]="70" [maximizable]="true" [baseZIndex]="10000">
-    <div class="modal-content">
-      <div class="modal-body">
-          <div style="padding:10px 5px">
-              <div class="table-responsive">
-                  <table class="table table-bordered">
-                      <thead>
-                          <tr>
-                              <th>Tag</th>
-                              <th>Name</th>
-                              <th>Value</th>
-                          </tr>
-                      </thead>
-                      <tbody>
-                          <tr *ngFor="let x of dicomTags | keyvalue">
-                              <td>
-                                  <font color="black">{{x.key}}</font>
-                              </td>
-                              <td>
-                                  <font color="black">{{x.value.Name}}</font>
-                              </td>
-                              <td>
-                                  <font color="black">{{x.value.Value}}</font>
-                              </td>
-
-                          </tr>
-                      </tbody>
-                  </table>
-              </div>
-          </div>
-      </div>
-      <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div>
+  <p-dialog header="Tabela de Tags" [style]="{width: '70%', minWidth: '200px'}" [(visible)]="display" [modal]="true" [responsive]="true" [minY]="70" [maximizable]="true" [baseZIndex]="10000">
+    <p-table [value]="tagsimagems">
+      <ng-template pTemplate="header">
+          <tr>
+              <th style="width: 18%;">Tag</th>
+              <th style="width: 35;">Ident.</th>
+              <th style="width: 45%;">Valor</th>
+          </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-tags>
+          <tr>
+              <td>{{tags.tag}}</td>
+              <td>{{tags.identificacao}}</td>
+              <td>{{tags.campo}}</td>
+          </tr>
+      </ng-template>
+    </p-table>
   </p-dialog>
+
 </div>

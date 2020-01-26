@@ -1,12 +1,12 @@
-import { Instance, Tagimagem } from './../core/model';
+import { Instance } from './../core/model';
 import { environment } from './../../environments/environment.prod';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 export class ResumoInstance {
-  codigo: number;
+  idinstance: number;
   mediastoragesopinstanceuid: string;
-  tagimage = new Tagimagem();
+  tagimagem: number;
 }
 
 @Injectable({
@@ -14,9 +14,11 @@ export class ResumoInstance {
 })
 export class InstanceService {
   url: string;
+  urltags: string;
 
   constructor(private http: HttpClient) {
     this.url = `${environment.apiUrl}/instances`;
+    this.urltags = `${environment.apiUrl}/tagimagens`;
   }
 
   Listar(): Promise<any> {
@@ -58,5 +60,11 @@ export class InstanceService {
     this.http.delete(`${this.url}/${codigo}`)
       .toPromise()
       .then(() => null);
+  }
+
+  BuscarTagImgGamb(codigo: number): Promise<any> {
+    return this.http.get(`${this.urltags}/tab/${codigo}`)
+      .toPromise()
+      .then(response => response);
   }
 }

@@ -1,4 +1,3 @@
-import { VisualComponent } from './servidor/visual/visual.component';
 import { HttpClientModule } from '@angular/common/http';
 import { TelaLaudoComponent } from './laudo/tela-laudo/tela-laudo.component';
 import { LaudoModule } from './laudo/laudo.module';
@@ -89,8 +88,7 @@ const rotas: Routes = [
   { path: 'atendimento', component: ListaAtendimentoComponent },
   { path: 'atendimento/novo', component: TelaAtendimentoComponent },
   { path: 'atendimento/:cod', component: TelaAtendimentoComponent },
-  { path: 'laudos', component: TelaLaudoComponent },
-  { path: 'imagem', component: VisualComponent }
+  { path: 'laudos', component: TelaLaudoComponent }
 ];
 
 @NgModule({

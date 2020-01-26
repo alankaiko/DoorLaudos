@@ -1,7 +1,7 @@
-import { Hammer } from 'hammerjs';
+import { TagImagemGamb } from './../../core/model';
 import { InstanceService, ResumoInstance } from './../../zservice/instance.service';
 import { ServidorService } from './../../zservice/servidor.service';
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import cornerstone from 'cornerstone-core';
 import * as cornerstoneMath from 'cornerstone-math';
 import * as cornerstoneTools from 'cornerstone-tools';
@@ -9,6 +9,7 @@ import cornerstoneWADOImageLoader from 'cornerstone-wado-image-loader';
 import { Router, ActivatedRoute } from '@angular/router';
 import dicomParser from 'dicom-parser';
 import {Location} from '@angular/common';
+
 
 const config = {
   webWorkerPath: '/assets/cornerstoneWADOImageLoaderWebWorker.js',
@@ -19,6 +20,7 @@ const config = {
   }
 };
 
+declare var uids: any;
 cornerstoneWADOImageLoader.webWorkerManager.initialize(config);
 
 @Component({
@@ -28,24 +30,8 @@ cornerstoneWADOImageLoader.webWorkerManager.initialize(config);
 })
 export class ViewerComponent implements OnInit {
   display: boolean;
-  instance = ResumoInstance;
-  activeBtn: any;
-  @ViewChild('fullScreen', { static: false }) divRef;
-  studyId: any;
-  seriesId: any;
-  imageStudy = {};
-  selectedinstanceId = '';
-  selectedInstanceModel = {};
-  selectedInstanceImg: any;
-  instancesTotlaCount: any;
-  listDicomTags: any[];
-  dicomTags: object;
-  currentURL = '';
-  notesList: any;
-  state: string;
-  subjecttext: string;
-  messagetext = 'Request you to comment on the study images';
-  selectedItem: any;
+  instance: ResumoInstance;
+  tagsimagems: TagImagemGamb[];
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -58,7 +44,6 @@ export class ViewerComponent implements OnInit {
     this.ConfigurarDicomInicial();
 
     this.BuscarInstanciaResumida(idinstance);
-    console.log('codigo instance' + this.instance);
   }
 
   ConfigurarDicomInicial() {
@@ -72,8 +57,14 @@ export class ViewerComponent implements OnInit {
   }
 
   showDialog() {
+    this.BuscarTabeladeTags(this.instance.tagimagem);
     this.display = true;
+  }
 
+
+  BuscarTabeladeTags(codigo) {
+    return this.serviceInst.BuscarTagImgGamb(codigo)
+      .then(response => { this.tagsimagems = response; } );
   }
 
   BuscarInstanciaResumida(idinstance: number) {
@@ -95,6 +86,7 @@ export class ViewerComponent implements OnInit {
     cornerstone.loadAndCacheImage('wadouri:' + DCMPath).then(imageData => {
       cornerstone.displayImage(element, imageData);
     }).catch( error => { console.error(error); });
+    localStorage.setItem('debug', 'cornerstoneTools');
   }
 
 
@@ -123,7 +115,7 @@ export class ViewerComponent implements OnInit {
     itemsProcessed++;
   }
 
-  public enableTools(tool: string, imageName: string, ) {
+  enableTools(tool: string ) {
     const diacomImageElement = document.getElementById('image-canvas');
     if (tool === 'bright') {
       cornerstoneTools.setToolActive('Wwwc', { mouseButtonMask: 1 });
@@ -206,46 +198,9 @@ export class ViewerComponent implements OnInit {
     }
   }
 
-  openFullscreen() {
-    const elem = this.divRef.nativeElement;
-
-    if (elem.requestFullscreen) {
-      elem.requestFullscreen();
-    } else if (elem.msRequestFullscreen) {
-      elem.msRequestFullscreen();
-    } else if (elem.mozRequestFullScreen) {
-      elem.mozRequestFullScreen();
-    } else if (elem.webkitRequestFullscreen) {
-      elem.webkitRequestFullscreen();
-    }
-  }
-
 
   backClicked() {
     this.location.back();
-  }
-
-  btnActive(check) {
-    if (check === 'pan') {
-      this.activeBtn = 'pan';
-    } else if (check === 'zoom') {
-      this.activeBtn = 'zoom';
-    } else if (check === 'annotate') {
-      this.activeBtn = 'annotate';
-    } else if (check === 'rotateDDL') {
-      this.activeBtn = 'rotateDDL';
-    }  else if (check === 'magnify') {
-      this.activeBtn = 'magnify';
-    } else if (check === 'windowningDDL') {
-      this.activeBtn = 'windowningDDL';
-    } else if (check === 'dragprobe') {
-      this.activeBtn = 'dragprobe';
-    } else if (check === 'fullscreen') {
-      this.activeBtn = 'fullscreen';
-    } else if (check  === 'reset') {
-      this.activeBtn = 'reset';
-    }
-
   }
 
 }

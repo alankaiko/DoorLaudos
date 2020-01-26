@@ -10,13 +10,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { PrevisualizacaoComponent } from './previsualizacao/previsualizacao.component';
 import { ViewerComponent } from './viewer/viewer.component';
 import {TreeTableModule} from 'primeng/components/treetable/treetable';
-import {TreeNode} from 'primeng/api';
 import {DialogModule} from 'primeng/components/dialog/dialog';
-import { VisualComponent } from './visual/visual.component';
+import {ToolbarModule} from 'primeng/components/toolbar/toolbar';
 
 
 @NgModule({
-  declarations: [ListaServidorComponent, PrevisualizacaoComponent, ViewerComponent, VisualComponent],
+  declarations: [ListaServidorComponent, PrevisualizacaoComponent, ViewerComponent],
   imports: [
     CommonModule,
     BrowserModule,
@@ -26,7 +25,8 @@ import { VisualComponent } from './visual/visual.component';
     HttpClientModule,
     RouterModule,
     TreeTableModule,
-    DialogModule
+    DialogModule,
+    ToolbarModule
   ],
   exports: [
     ListaServidorComponent
