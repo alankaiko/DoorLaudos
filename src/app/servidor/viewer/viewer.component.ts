@@ -1,26 +1,25 @@
-import { TagImagemGamb } from './../../core/model';
+import { Tagimagem, TagImagemGamb } from './../../core/model';
 import { InstanceService, ResumoInstance } from './../../zservice/instance.service';
 import { ServidorService } from './../../zservice/servidor.service';
 import {Component, OnInit} from '@angular/core';
 import cornerstone from 'cornerstone-core';
-import * as cornerstoneMath from 'cornerstone-math';
-import * as cornerstoneTools from 'cornerstone-tools';
+import cornerstoneMath from 'cornerstone-math';
+import cornerstoneTools from 'cornerstone-tools';
+import Hammer from 'hammerjs';
 import cornerstoneWADOImageLoader from 'cornerstone-wado-image-loader';
 import { Router, ActivatedRoute } from '@angular/router';
 import dicomParser from 'dicom-parser';
 import {Location} from '@angular/common';
 
-
 const config = {
   webWorkerPath: '/assets/cornerstoneWADOImageLoaderWebWorker.js',
   taskConfiguration: {
-      decodeTask: {
-          codecsPath: '/assets/cornerstoneWADOImageLoaderCodecs.js'
-      }
+    decodeTask: {
+        codecsPath: '/assets/cornerstoneWADOImageLoaderCodecs.js'
+    }
   }
 };
 
-declare var uids: any;
 cornerstoneWADOImageLoader.webWorkerManager.initialize(config);
 
 @Component({
@@ -30,37 +29,36 @@ cornerstoneWADOImageLoader.webWorkerManager.initialize(config);
 })
 export class ViewerComponent implements OnInit {
   display: boolean;
-  instance: ResumoInstance;
+  instance = new ResumoInstance();
   tagsimagems: TagImagemGamb[];
 
   constructor(private router: Router,
               private route: ActivatedRoute,
               private service: ServidorService,
               private serviceInst: InstanceService,
-              private location: Location) { }
+              private location: Location) {}
 
   ngOnInit() {
     const idinstance = this.route.snapshot.params.cod;
-    this.ConfigurarDicomInicial();
-
+    this.ConfigureCornerBase();
+    this.IniciarToolsBasicos();
     this.BuscarInstanciaResumida(idinstance);
   }
 
-  ConfigurarDicomInicial() {
-  //  cornerstoneTools.external.Hammer = Hammer;
-    cornerstoneTools.external.cornerstone = cornerstone;
-    cornerstoneTools.external.cornerstoneMath = cornerstoneMath;
+  ConfigureCornerBase() {
     cornerstoneWADOImageLoader.external.cornerstone = cornerstone;
     cornerstoneWADOImageLoader.external.dicomParser = dicomParser;
+    cornerstoneTools.external.cornerstone = cornerstone;
+    cornerstoneTools.external.Hammer = Hammer;
+    cornerstoneTools.external.cornerstoneMath = cornerstoneMath;
 
     cornerstoneTools.init();
   }
 
-  showDialog() {
+  MostrarTabela() {
     this.BuscarTabeladeTags(this.instance.tagimagem);
     this.display = true;
   }
-
 
   BuscarTabeladeTags(codigo) {
     return this.serviceInst.BuscarTagImgGamb(codigo)
@@ -72,13 +70,12 @@ export class ViewerComponent implements OnInit {
       .then(
         instance => {
           this.instance = instance;
-          this.initDiacomToolsForImages();
-          this.NgAfterViewInit(instance.mediastoragesopinstanceuid);
+          this.CriarTelaVisualizarDicom(instance.mediastoragesopinstanceuid);
         }
       );
   }
 
-  NgAfterViewInit(instanceuid: string) {
+  CriarTelaVisualizarDicom(instanceuid: string) {
     const element = document.querySelector('.image-canvas');
     const DCMPath = this.service.BuscarUrlBuscaImagem(instanceuid);
     cornerstone.enable(element);
@@ -86,11 +83,11 @@ export class ViewerComponent implements OnInit {
     cornerstone.loadAndCacheImage('wadouri:' + DCMPath).then(imageData => {
       cornerstone.displayImage(element, imageData);
     }).catch( error => { console.error(error); });
+    // cornerstoneWADOImageLoader.wadouri.fileManager.remove(imageID);
     localStorage.setItem('debug', 'cornerstoneTools');
   }
 
-
-  public initDiacomToolsForImages() {
+  public IniciarToolsBasicos() {
     const that = this;
     let itemsProcessed = 0;
 
@@ -115,7 +112,7 @@ export class ViewerComponent implements OnInit {
     itemsProcessed++;
   }
 
-  enableTools(tool: string ) {
+  AtivarToolEsp(tool: string ) {
     const diacomImageElement = document.getElementById('image-canvas');
     if (tool === 'bright') {
       cornerstoneTools.setToolActive('Wwwc', { mouseButtonMask: 1 });

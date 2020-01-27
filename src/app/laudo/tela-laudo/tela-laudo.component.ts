@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./tela-laudo.component.css']
 })
 export class TelaLaudoComponent implements OnInit {
-  text1: string = '<div>Hello World!</div><div>PrimeNG <b>Editor</b> Rocks</div><div><br></div>';
+  text1: string = '<div>Teste Base!</div><div>Base</div><div><br></div>';
 
   constructor() { }
 

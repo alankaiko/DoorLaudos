@@ -52,7 +52,7 @@ items: MenuItem[];
           label: 'Server',
           items: [
             {label: 'Listagem', icon: 'fa fa-fw fa-server', routerLink: ['servidor']}
-          ]
+        ]
         }
       ];
     }
