@@ -14,7 +14,7 @@
                 yearRange="1930:2020" name="dataatendimento"></p-calendar>
           </div>
 
-          <div class="ui-g-12 ui-fluid" formGroupName="paciente">
+          <div class="ui-g-12 ui-fluid" formGroupName="patient">
             <label>Paciente</label>
             <p-dropdown [options]="pacientes" [autoWidth]="false" [filter]="true"  formControlName="idpatient"
               placeholder="Selecione..." name="idpatient" (onChange)="CarregarPacientes()"></p-dropdown>

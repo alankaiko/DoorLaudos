@@ -303,10 +303,10 @@ export class TagImagemGamb {
 
 export class Atendimento {
   codigo: number;
-  paciente = new Patient();
+  patient = new Patient();
   convenio = new Convenio();
-  procedimentos = new Array<ProcedimentoAtendimento>();
   solicitante = new ProfissionalSolicitante();
+  procedimentos = new Array<ProcedimentoAtendimento>();
   dataatendimento: Date;
   observacoes: string;
 }
@@ -314,7 +314,7 @@ export class Atendimento {
 export class ProcedimentoAtendimento {
   codigo: number;
   profexecutante = new ProfissionalExecutante();
-  procedimentotabela = new ProcedimentoTabela();
+  procedimentomedico = new ProcedimentoMedico();
   valorpaciente: string;
   valorconvenio: string;
   preventregalaudo: Date;
@@ -322,24 +322,16 @@ export class ProcedimentoAtendimento {
   atendimento = new Atendimento();
 
   constructor(codigo?: number, profexecutante?: ProfissionalExecutante,
-              procedimentotabela?: ProcedimentoTabela, valorpaciente?: string,
+              procedimentoMedico?: ProcedimentoMedico, valorpaciente?: string,
               valorconvenio?: string, preventreglaudo?: Date,
               dataexecucao?: Date, atendimento?: Atendimento) {
                 this.codigo = codigo;
                 this.profexecutante = profexecutante;
-                this.procedimentotabela = procedimentotabela;
+                this.procedimentomedico = procedimentoMedico;
                 this.valorpaciente = valorpaciente;
                 this.valorconvenio = valorconvenio;
                 this.preventregalaudo = preventreglaudo;
                 this.dataexecucao = dataexecucao;
                 this.atendimento = atendimento;
               }
-}
-
-export class ProcedimentoTabela {
-  codigo: number;
-  valorpaciente: string;
-  tabeladeprocedimentos = new TabelaDeProcedimentos();
-  procedimentomedico = new ProcedimentoMedico();
-  valornoconvenio: string;
 }

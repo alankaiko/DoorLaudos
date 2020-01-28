@@ -36,7 +36,7 @@
       <ng-template pTemplate="emptymessage">
         <tr>
           <td colspan="4">
-            Nenhum contato cadastrado
+            Nenhum Procedimento
           </td>
         </tr>
       </ng-template>
@@ -65,7 +65,8 @@
 
       <div class="ui-g-3 ui-fluid">
         <label>Prev. Ent. Laudo</label>
-        <input type="text" pInputText ng-model="text" name="preventregalaudo" formControlName="preventregalaudo">
+        <p-calendar  dateFormat="dd/mm/yy" [monthNavigator]="true" [yearNavigator]="true" formControlName="preventregalaudo"
+          yearRange="1930:2020" name="preventregalaudo"></p-calendar>
       </div>
 
       <div class="ui-g-3 ui-fluid">
@@ -74,13 +75,10 @@
           yearRange="1930:2020" name="dataexecucao"></p-calendar>
       </div>
 
-
-      <div class="ui-g-3 ui-fluid" formGroupName="procedimentotabela">
-        <div class="ui-g-12 ui-fluid" formGroupName="procedimentomedico">
-          <label>Procedimento Médico</label>
-          <p-dropdown [options]="procedimentomedicos" [autoWidth]="false" [filter]="true"  formControlName="codigo"
-            placeholder="Selecione..." name="codigo" (onChange)="CarregarProcedimentosMedico()"></p-dropdown>
-        </div>
+      <div class="ui-g-3 ui-fluid" formGroupName="procedimentomedico">
+        <label>Procedimento Médico</label>
+        <p-dropdown [options]="procedimentomedicos" [autoWidth]="false" [filter]="true"  formControlName="codigo"
+          placeholder="Selecione..." name="codigo" (onChange)="CarregarProcedimentosMedico()"></p-dropdown>
       </div>
 
       <div class="ui-g-12">

@@ -1,3 +1,4 @@
+import { ProcedimentoAtendimento } from './../../core/model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AtendimentoService } from './../../zservice/atendimento.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
@@ -47,7 +48,7 @@ export class TelaAtendimentoComponent implements OnInit {
       codigo: [null, atendimento.codigo],
       dataatendimento: [null, atendimento.dataatendimento],
       observacoes: [null, atendimento.observacoes],
-      paciente: this.formbuilder.group({
+      patient: this.formbuilder.group({
         idpatient: [null, Validators.required]
       }),
       convenio: this.formbuilder.group({
@@ -55,8 +56,7 @@ export class TelaAtendimentoComponent implements OnInit {
       }),
       solicitante: this.formbuilder.group({
         codigo: [null, Validators.required]
-      }),
-      procedimentos: this.atendimento.procedimentos
+      })
     });
   }
 
@@ -70,7 +70,7 @@ export class TelaAtendimentoComponent implements OnInit {
       this.route.navigate(['/atendimento']);
     } else {
       this.formulario.patchValue(this.AdicionarAtendimento());
-      this.route.navigate(['/atendimento/novo']);
+      this.route.navigate(['/atendimento']);
     }
     this.CriarFormulario(new Atendimento());
   }

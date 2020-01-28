@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Abreviatura } from 'src/app/core/model';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-cadastro-abreviatura',
@@ -12,7 +13,12 @@ import { Abreviatura } from 'src/app/core/model';
 export class CadastroAbreviaturaComponent implements OnInit {
   formulario: FormGroup;
 
-  constructor(private service: AbreviaturaService, private rota: ActivatedRoute, private formbuilder: FormBuilder, private route: Router) {
+  constructor(
+    private service: AbreviaturaService,
+    private rota: ActivatedRoute,
+    private formbuilder: FormBuilder,
+    private route: Router,
+    private location: Location) {
   }
 
   ngOnInit() {
@@ -58,5 +64,9 @@ export class CadastroAbreviaturaComponent implements OnInit {
   AtualizarAbreviatura() {
     this.service.Atualizar(this.formulario.value)
       .then(abreviatura => {this.formulario.patchValue(abreviatura); });
+  }
+
+  VoltarAnterior() {
+    this.location.back();
   }
 }

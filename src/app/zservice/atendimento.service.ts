@@ -72,7 +72,7 @@ export class AtendimentoService {
       .toPromise()
       .then(response => {
         const atendimentoalterado = response as Atendimento;
-        this.converterStringsParaDatas([atendimentoalterado]);
+       // this.converterStringsParaDatas([atendimentoalterado]);
         return atendimentoalterado;
       });
    }
@@ -95,9 +95,14 @@ export class AtendimentoService {
     return this.http.get<ProfissionalSolicitante[]>(this.solicitanteurl).toPromise();
   }
 
-   private converterStringsParaDatas(atendimentos: Atendimento[]) {
+  private converterStringsParaDatas(atendimentos: Atendimento[]) {
     for (const atendimento of atendimentos) {
       atendimento.dataatendimento = moment(atendimento.dataatendimento, 'YYYY-MM-DD').toDate();
+
+      for(const proc of atendimento.procedimentos) {
+        proc.dataexecucao = moment(proc.dataexecucao, 'YYYY-MM-DD').toDate();
+        proc.preventregalaudo = moment(proc.dataexecucao, 'YYYY-MM-DD').toDate();
+      }
     }
   }
 }

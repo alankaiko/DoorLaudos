@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { GrupoProcedimento } from './../../core/model';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-cadastro-grupoprocedimento',
@@ -15,7 +16,8 @@ export class CadastroGrupoprocedimentoComponent implements OnInit {
   constructor(private service: GrupoprocedimentoService,
               private rota: ActivatedRoute,
               private formbuilder: FormBuilder,
-              private route: Router) {
+              private route: Router,
+              private location: Location) {
   }
 
   ngOnInit() {
@@ -62,4 +64,7 @@ export class CadastroGrupoprocedimentoComponent implements OnInit {
       .then(grupo => {this.formulario.patchValue(grupo); });
   }
 
+  backClicked() {
+    this.location.back();
+  }
 }

@@ -35,10 +35,8 @@ export class ProcedimentoCadApendComponent implements OnInit {
       profexecutante: this.formbuilder.group({
         codigo: [null, Validators.required]
       }),
-      procedimentotabela: this.formbuilder.group({
-        procedimentomedico: this.formbuilder.group({
-          codigo: [null, Validators.required]
-        })
+      procedimentomedico: this.formbuilder.group({
+        codigo: [null, Validators.required]
       })
     });
   }
@@ -64,7 +62,7 @@ export class ProcedimentoCadApendComponent implements OnInit {
     this.procedimentos[this.procedimentoIndex] = this.formulario.value;
     this.exbindoFormularioProcedimento = false;
 
-    this.CriarFormulario(new ProcedimentoAtendimento());
+    // this.CriarFormulario(new ProcedimentoAtendimento());
   }
 
   RemoverProcedimento(index: number) {
@@ -73,7 +71,7 @@ export class ProcedimentoCadApendComponent implements OnInit {
 
   ClonarProcedimento(procedimento: ProcedimentoAtendimento): ProcedimentoAtendimento {
     return new ProcedimentoAtendimento(procedimento.codigo, procedimento.profexecutante,
-      procedimento.procedimentotabela, procedimento.valorpaciente,
+      procedimento.procedimentomedico, procedimento.valorpaciente,
       procedimento.valorconvenio, procedimento.preventregalaudo,
       procedimento.dataexecucao, procedimento.atendimento);
   }

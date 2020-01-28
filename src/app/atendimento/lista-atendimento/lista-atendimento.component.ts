@@ -35,7 +35,7 @@ export class ListaAtendimentoComponent implements OnInit {
   Excluir(atendimento: Atendimento) {
     try {
       this.service.Remover(atendimento.codigo);
-      alert(atendimento.paciente.patientname + ' foi excluído');
+      alert(atendimento.patient.patientname + ' foi excluído');
       this.route.navigate(['/atendimento']);
     } catch (error) {
       console.log('erro ao excluir');
