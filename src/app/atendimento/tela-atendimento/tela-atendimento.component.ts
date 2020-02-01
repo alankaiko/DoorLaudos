@@ -1,7 +1,7 @@
 import { ProcedimentoAtendimento } from './../../core/model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AtendimentoService } from './../../zservice/atendimento.service';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { Atendimento } from 'src/app/core/model';
 
@@ -13,6 +13,7 @@ import { Atendimento } from 'src/app/core/model';
 export class TelaAtendimentoComponent implements OnInit {
   atendimento = new Atendimento();
   formulario: FormGroup;
+  items: FormArray;
   pacientes: any[];
   convenios: any[];
   solicitantes: any[];
@@ -65,14 +66,15 @@ export class TelaAtendimentoComponent implements OnInit {
   }
 
   Salvar() {
-    if (this.editando) {
-      this.AtualizarAtendimento();
-      this.route.navigate(['/atendimento']);
-    } else {
-      this.formulario.patchValue(this.AdicionarAtendimento());
-      this.route.navigate(['/atendimento']);
-    }
-    this.CriarFormulario(new Atendimento());
+    console.log(JSON.stringify(this.atendimento));
+  //  if (this.editando) {
+  //    this.AtualizarAtendimento();
+  //    this.route.navigate(['/atendimento']);
+  //  } else {
+  //    this.formulario.patchValue(this.AdicionarAtendimento());
+  //    this.route.navigate(['/atendimento']);
+  //  }
+  //  this.CriarFormulario(new Atendimento());
   }
 
   AdicionarAtendimento() {

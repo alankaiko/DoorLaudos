@@ -60,6 +60,11 @@ export class ViewerComponent implements OnInit {
     this.display = true;
   }
 
+  RecuperarPng() {
+    const element = document.querySelector('.image-canvas');
+    this.CriarPng(element, 'testou');
+  }
+
   BuscarTabeladeTags(codigo) {
     return this.serviceInst.BuscarTagImgGamb(codigo)
       .then(response => { this.tagsimagems = response; } );
@@ -195,6 +200,27 @@ export class ViewerComponent implements OnInit {
     }
   }
 
+  CriarPng(element, filename) {
+    const mimetype = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'image/png';
+    const canvas = element.querySelector('canvas');
+
+    if (canvas.msToBlob) {
+      const blob = canvas.msToBlob();
+      return window.navigator.msSaveBlob(blob, filename);
+    }
+
+    const lnk = document.createElement('a');
+    lnk.href = canvas.toDataURL(mimetype, 1);
+
+    lnk.download = filename;
+
+    if (document.createEvent) {
+      const e = document.createEvent('MouseEvents');
+      e.initMouseEvent('click', true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+      lnk.dispatchEvent(e);
+      console.log('deu certo maluquete');
+    }
+  }
 
   backClicked() {
     this.location.back();

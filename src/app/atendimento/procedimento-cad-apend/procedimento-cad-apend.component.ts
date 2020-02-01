@@ -1,3 +1,4 @@
+import { ProfissionalexecutanteService } from './../../zservice/profissionalexecutante.service';
 import { ProcedimentomedicoService } from './../../zservice/procedimentomedico.service';
 import { ProcedimentoAtendimento } from './../../core/model';
 import { Component, OnInit, Input } from '@angular/core';
@@ -15,10 +16,12 @@ export class ProcedimentoCadApendComponent implements OnInit {
   formulario: FormGroup;
   exbindoFormularioProcedimento = false;
   procedimentoIndex: number;
-  profissionalexecutantes: any[];
+  profissionalexecutantes: [];
   procedimentomedicos: [];
 
-  constructor(private formbuilder: FormBuilder, private serviceProc: ProcedimentomedicoService) { }
+  constructor(private formbuilder: FormBuilder,
+              private serviceProc: ProcedimentomedicoService,
+              private serviceProf: ProfissionalexecutanteService) { }
 
   ngOnInit() {
     this.CriarFormulario(new ProcedimentoAtendimento());
@@ -79,6 +82,12 @@ export class ProcedimentoCadApendComponent implements OnInit {
   CarregarProcedimentosMedico() {
     this.serviceProc.Listar().then(lista => {
       this.procedimentomedicos = lista.map(proc => ({label: proc.nome, value: proc.codigo}));
+    }).catch(erro => erro);
+  }
+
+  CarregaProfissionalExecutante() {
+    this.serviceProf.Listar().then(lista => {
+      this.profissionalexecutantes = lista.map(prof => ({label: prof.nome, value: prof.codigo}));
     }).catch(erro => erro);
   }
 }

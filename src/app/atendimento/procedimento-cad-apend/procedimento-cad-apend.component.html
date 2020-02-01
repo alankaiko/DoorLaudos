@@ -75,6 +75,12 @@
           yearRange="1930:2020" name="dataexecucao"></p-calendar>
       </div>
 
+      <div class="ui-g-3 ui-fluid" formGroupName="profexecutante">
+        <label>Profissional Executante</label>
+        <p-dropdown [options]="profissionalexecutantes" [autoWidth]="false" [filter]="true"  formControlName="codigo"
+          placeholder="Selecione..." name="codigo" (onChange)="CarregaProfissionalExecutante()"></p-dropdown>
+      </div>
+
       <div class="ui-g-3 ui-fluid" formGroupName="procedimentomedico">
         <label>Procedimento Médico</label>
         <p-dropdown [options]="procedimentomedicos" [autoWidth]="false" [filter]="true"  formControlName="codigo"
