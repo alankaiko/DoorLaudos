@@ -44,46 +44,41 @@
   </div>
 </div>
 
-
-<p-dialog [header]="'Novo Procedimento'" [(visible)]="exbindoFormularioProcedimento" modal="modal">
-  <form autocomplete="off" [formGroup]="formulario" (ngSubmit)="ConfirmarProcedimento()" class="formu">
+<p-dialog [header]="'Novo Procedimento'" [(visible)]="exbindoFormularioProcedimento" modal="modal" *ngIf="procedimento">
+  <form autocomplete="off"  #frmContato="ngForm" (ngSubmit)="ConfirmarProcedimento(frmProcedimento)" class="formu">
     <div class="ui-g">
       <div class="ui-g-3 ui-fluid">
-        <label>Código</label>
-        <input [readonly]= "true" type="text" pInputText ng-model="text" name="codigo" formControlName="codigo">
-      </div>
-
-      <div class="ui-g-3 ui-fluid">
         <label>Valor Paciente</label>
-        <input type="text" pInputText ng-model="text" name="valorpaciente" formControlName="valorpaciente" placeholder="0.00">
+        <input type="text" pInputText name="valorpaciente" [(ngModel)]="procedimento.valorpaciente" #valorpaciente="ngModel" placeholder="0.00">
       </div>
 
       <div class="ui-g-3 ui-fluid">
         <label>Valor Convênio</label>
-        <input type="text" pInputText ng-model="text" name="valorconvenio" formControlName="valorconvenio" placeholder="0.00">
+        <input type="text" pInputText name="valorconvenio" [(ngModel)]="procedimento.valorconvenio" #valorconvenio="ngModel" placeholder="0.00">
       </div>
 
       <div class="ui-g-3 ui-fluid">
         <label>Prev. Ent. Laudo</label>
-        <p-calendar  dateFormat="dd/mm/yy" [monthNavigator]="true" [yearNavigator]="true" formControlName="preventregalaudo"
-          yearRange="1930:2020" name="preventregalaudo"></p-calendar>
+        <p-calendar  dateFormat="dd/mm/yy" [monthNavigator]="true" [yearNavigator]="true"
+          yearRange="1930:2020" name="preventregalaudo" [(ngModel)]="procedimento.preventregalaudo" #preventregalaudo="ngModel"></p-calendar>
       </div>
 
       <div class="ui-g-3 ui-fluid">
         <label>Data Execução</label>
-        <p-calendar  dateFormat="dd/mm/yy" [monthNavigator]="true" [yearNavigator]="true" formControlName="dataexecucao"
-          yearRange="1930:2020" name="dataexecucao"></p-calendar>
+        <p-calendar  dateFormat="dd/mm/yy" [monthNavigator]="true" [yearNavigator]="true"
+          yearRange="1930:2020" name="dataexecucao" [(ngModel)]="procedimento.dataexecucao" #dataexecucao="ngModel"></p-calendar>
       </div>
 
-      <div class="ui-g-3 ui-fluid" formGroupName="profexecutante">
+      <div class="ui-g-3 ui-fluid">
         <label>Profissional Executante</label>
-        <p-dropdown [options]="profissionalexecutantes" [autoWidth]="false" [filter]="true"  formControlName="codigo"
-          placeholder="Selecione..." name="codigo" (onChange)="CarregaProfissionalExecutante()"></p-dropdown>
+        <p-dropdown [options]="profissionalexecutantes" placeholder="Selecione..."
+        name="  codigo" #codigo="ngModel" [(ngModel)]="codigo"
+        (onChange)="CarregaProfissionalExecutante()"></p-dropdown>
       </div>
 
       <div class="ui-g-3 ui-fluid" formGroupName="procedimentomedico">
         <label>Procedimento Médico</label>
-        <p-dropdown [options]="procedimentomedicos" [autoWidth]="false" [filter]="true"  formControlName="codigo"
+        <p-dropdown [options]="procedimentomedicos" [autoWidth]="false" [filter]="true"
           placeholder="Selecione..." name="codigo" (onChange)="CarregarProcedimentosMedico()"></p-dropdown>
       </div>
 
