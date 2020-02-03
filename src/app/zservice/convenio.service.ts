@@ -45,8 +45,8 @@ export class ConvenioService {
   }
 
 
-  Adicionar(convenio) {
-    return this.http.post(`${this.url}`, convenio).subscribe(response => response);
+  Adicionar(convenio): Promise<Convenio> {
+    return this.http.post<Convenio>(`${this.url}`, convenio).toPromise();
   }
 
   BuscarPorId(codigo: number): Promise<any> {

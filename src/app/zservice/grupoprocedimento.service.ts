@@ -45,8 +45,8 @@ export class GrupoprocedimentoService {
     }
 
 
-  Adicionar(grupoprocedimento) {
-    return this.http.post(`${this.url}`, grupoprocedimento).subscribe(response => response);
+  Adicionar(grupoprocedimento): Promise<GrupoProcedimento> {
+    return this.http.post<GrupoProcedimento>(`${this.url}`, grupoprocedimento).toPromise();
   }
 
   BuscarPorId(codigo: number): Promise<any> {

@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TextopessoalService } from 'src/app/zservice/textopessoal.service';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-cadastro-textopessoal',
@@ -12,7 +13,11 @@ import { TextopessoalService } from 'src/app/zservice/textopessoal.service';
 export class CadastroTextopessoalComponent implements OnInit {
   formulario: FormGroup;
 
-  constructor(private service: TextopessoalService, private rota: ActivatedRoute, private formbuilder: FormBuilder, private route: Router) {
+  constructor(private service: TextopessoalService,
+              private rota: ActivatedRoute,
+              private formbuilder: FormBuilder,
+              private route: Router,
+              private location: Location) {
   }
 
   ngOnInit() {
@@ -43,7 +48,6 @@ export class CadastroTextopessoalComponent implements OnInit {
   Salvar() {
     if (this.editando) {
       this.AtualizarTextoPessoal();
-      this.route.navigate(['/textopessoal']);
     } else {
       this.formulario.patchValue(this.AdicionarTextoPessoal());
       this.route.navigate(['/textopessoal/novo']);
@@ -52,11 +56,21 @@ export class CadastroTextopessoalComponent implements OnInit {
   }
 
   AdicionarTextoPessoal() {
-    return this.service.Adicionar(this.formulario.value);
+    return this.service.Adicionar(this.formulario.value)
+      .then(salvo => {
+        this.route.navigate(['/textopessoal']);
+      });
   }
 
   AtualizarTextoPessoal() {
     this.service.Atualizar(this.formulario.value)
-      .then(texto => {this.formulario.patchValue(texto); });
+      .then(texto => {
+        this.formulario.patchValue(texto);
+        this.route.navigate(['/textopessoal']);
+      });
+  }
+
+  Voltar() {
+    this.location.back();
   }
 }

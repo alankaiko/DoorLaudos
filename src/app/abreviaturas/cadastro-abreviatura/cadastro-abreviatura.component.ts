@@ -49,24 +49,29 @@ export class CadastroAbreviaturaComponent implements OnInit {
   Salvar() {
     if (this.editando) {
       this.AtualizarAbreviatura();
-      this.route.navigate(['/abreviaturas']);
     } else {
       this.formulario.patchValue(this.AdicionarAbreviatura());
-      this.route.navigate(['/abreviaturas/novo']);
     }
     this.CriarFormulario(new Abreviatura());
   }
 
   AdicionarAbreviatura() {
-    return this.service.Adicionar(this.formulario.value);
+    return this.service.Adicionar(this.formulario.value)
+      .then(salvo => {
+        this.route.navigate(['/abreviaturas']);
+      });
+
   }
 
   AtualizarAbreviatura() {
     this.service.Atualizar(this.formulario.value)
-      .then(abreviatura => {this.formulario.patchValue(abreviatura); });
+      .then(abreviatura => {
+        this.formulario.patchValue(abreviatura);
+        this.route.navigate(['/abreviaturas']);
+      });
   }
 
-  VoltarAnterior() {
+  Voltar() {
     this.location.back();
   }
 }

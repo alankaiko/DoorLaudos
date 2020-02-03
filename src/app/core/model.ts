@@ -314,7 +314,9 @@ export class Atendimento {
 export class ProcedimentoAtendimento {
   codigo: number;
   profexecutante = new ProfissionalExecutante();
+  profcodigo: number;
   procedimentomedico = new ProcedimentoMedico();
+  procmedico: number;
   valorpaciente: string;
   valorconvenio: string;
   preventregalaudo: Date;

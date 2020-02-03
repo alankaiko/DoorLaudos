@@ -3,6 +3,7 @@ import { ProfissionalsolicitanteService } from './../../zservice/profissionalsol
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-cadastro-profissionalsol',
@@ -15,7 +16,8 @@ export class CadastroProfissionalsolComponent implements OnInit {
   constructor(private service: ProfissionalsolicitanteService,
               private rota: ActivatedRoute,
               private formbuilder: FormBuilder,
-              private route: Router) {
+              private route: Router,
+              private location: Location) {
   }
 
   ngOnInit() {
@@ -51,20 +53,28 @@ export class CadastroProfissionalsolComponent implements OnInit {
   Salvar() {
     if (this.editando) {
       this.AtualizarProfissionalSolicitante();
-      this.route.navigate(['/profissionalsolicitante']);
     } else {
       this.formulario.patchValue(this.AdicionarProfissionalSolicitante());
-      this.route.navigate(['/profissionalsolicitante/novo']);
     }
     this.CriarFormulario(new ProfissionalSolicitante());
   }
 
   AdicionarProfissionalSolicitante() {
-    return this.service.Adicionar(this.formulario.value);
+    return this.service.Adicionar(this.formulario.value)
+      .then(salvo => {
+        this.route.navigate(['/profissionalsolicitante']);
+      });
   }
 
   AtualizarProfissionalSolicitante() {
     this.service.Atualizar(this.formulario.value)
-      .then(profissional => {this.formulario.patchValue(profissional); });
+      .then(profissional => {
+        this.formulario.patchValue(profissional);
+        this.route.navigate(['/profissionalsolicitante']);
+      });
+  }
+
+  Voltar() {
+    this.location.back();
   }
 }

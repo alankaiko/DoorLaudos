@@ -19,7 +19,7 @@
                     <td style="text-align: center;">{{profissional.codigo}}</td>
                     <td>{{profissional.nome}}</td>
                     <td>{{profissional.numnoconselho}}</td>
-                    <td>{{profissional.contato.email}}</td>
+                    <td>{{profissional?.contato?.email}}</td>
                     <td style="text-align: center;">
                         <a pButton icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top"
                         [routerLink]="['/profissionalexecutante', profissional.codigo]"></a>

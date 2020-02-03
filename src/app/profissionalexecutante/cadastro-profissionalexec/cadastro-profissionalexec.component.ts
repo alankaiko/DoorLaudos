@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProfissionalExecutante } from './../../core/model';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-cadastro-profissionalexec',
@@ -15,7 +16,8 @@ export class CadastroProfissionalexecComponent implements OnInit {
   constructor(private service: ProfissionalexecutanteService,
               private rota: ActivatedRoute,
               private formbuilder: FormBuilder,
-              private route: Router) {
+              private route: Router,
+              private location: Location) {
   }
 
   ngOnInit() {
@@ -81,5 +83,9 @@ export class CadastroProfissionalexecComponent implements OnInit {
   AtualizarProfissionalExecutante() {
     this.service.Atualizar(this.formulario.value)
       .then(profissional => {this.formulario.patchValue(profissional); });
+  }
+
+  Voltar() {
+    this.location.back();
   }
 }

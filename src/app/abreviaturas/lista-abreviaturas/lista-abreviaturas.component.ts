@@ -33,14 +33,16 @@ export class ListaAbreviaturasComponent implements OnInit {
 
   Excluir(abreviatura: Abreviatura) {
     try {
-      this.service.Remover(abreviatura.codigo);
-      alert(abreviatura.texto + ' foi excluído');
-      this.route.navigate(['/abreviaturas']);
+      this.service.Remover(abreviatura.codigo)
+        .then(() => {
+          alert(abreviatura.texto + ' foi excluído');
+          this.route.navigate(['/abreviaturas']);
+        });
     } catch (error) {
       console.log('erro ao excluir');
     }
-
   }
+
 
   aoMudarPagina(event: LazyLoadEvent) {
     const pagina = event.first / event.rows;

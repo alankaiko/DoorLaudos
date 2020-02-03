@@ -1,7 +1,6 @@
-import { ProcedimentoAtendimento } from './../../core/model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AtendimentoService } from './../../zservice/atendimento.service';
-import { FormGroup, FormBuilder, Validators, FormArray, FormControl } from '@angular/forms';
+import { FormArray, FormControl } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { Atendimento } from 'src/app/core/model';
 
@@ -42,7 +41,7 @@ export class TelaAtendimentoComponent implements OnInit {
   }
 
   get editando() {
-    return Boolean(this.atendimento.codigo);
+    return this.atendimento.codigo === null ? false : Boolean(this.atendimento.codigo);
   }
 
   CarregaAtendimento(codigo: number) {

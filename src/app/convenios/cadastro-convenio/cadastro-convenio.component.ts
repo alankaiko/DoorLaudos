@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Convenio } from './../../core/model';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-cadastro-convenio',
@@ -15,7 +16,8 @@ export class CadastroConvenioComponent implements OnInit {
   constructor(private service: ConvenioService,
               private rota: ActivatedRoute,
               private formbuilder: FormBuilder,
-              private route: Router) {
+              private route: Router,
+              private location: Location) {
   }
 
   ngOnInit() {
@@ -43,39 +45,48 @@ export class CadastroConvenioComponent implements OnInit {
       observacoes: [null, convenio.observacoes],
       numcopiasdolaudo: [null, convenio.numcopiasdolaudo],
       endereco: this.formbuilder.group({
-        logradouro: [convenio.endereco.logradouro],
-        complemento: [convenio.endereco.complemento],
-        numero: [convenio.endereco.numero],
-        bairro: [convenio.endereco.bairro],
-        cidade: [convenio.endereco.cidade],
-        estado: [convenio.endereco.estado],
-        cep: [convenio.endereco.cep]
+        logradouro: [null, convenio.endereco.logradouro],
+        complemento: [null, convenio.endereco.complemento],
+        numero: [null, convenio.endereco.numero],
+        bairro: [null, convenio.endereco.bairro],
+        cidade: [null, convenio.endereco.cidade],
+        estado: [null, convenio.endereco.estado],
+        cep: [null, convenio.endereco.cep]
       })
     });
   }
 
   CarregarConvenios(codigo: number) {
+    console.log(codigo + ' aff');
     this.service.BuscarPorId(codigo).then(convenio => this.formulario.patchValue(convenio));
   }
 
   Salvar() {
     if (this.editando) {
       this.AtualizarConvenios();
-      this.route.navigate(['/convenios']);
     } else {
       this.formulario.patchValue(this.AdicionarConvenios());
-      this.route.navigate(['/convenios/novo']);
     }
     this.CriarFormulario(new Convenio());
   }
 
   AdicionarConvenios() {
-    return this.service.Adicionar(this.formulario.value);
+    return this.service.Adicionar(this.formulario.value)
+      .then(salvo => {
+        this.route.navigate(['/convenios']);
+      });
   }
 
   AtualizarConvenios() {
     this.service.Atualizar(this.formulario.value)
-      .then(convenio => {this.formulario.patchValue(convenio); });
+      .then(convenio => {
+        this.formulario.patchValue(convenio);
+        this.route.navigate(['/convenios']);
+      });
+  }
+
+  Voltar() {
+    this.location.back();
   }
 
 }

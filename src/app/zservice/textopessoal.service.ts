@@ -23,7 +23,7 @@ export class TextopessoalService {
   }
 
   Consultar(filtro: TextoPessoalFiltro): Promise<any> {
-    let params = new HttpParams({
+    const params = new HttpParams({
       fromObject: {
         page: filtro.pagina.toString(),
         size: filtro.itensPorPagina.toString()
@@ -45,8 +45,8 @@ export class TextopessoalService {
   }
 
 
-  Adicionar(textopessoal) {
-    return this.http.post(`${this.url}`, textopessoal).subscribe(response => response);
+  Adicionar(textopessoal): Promise<TextoPessoal> {
+    return this.http.post<TextoPessoal>(`${this.url}`, textopessoal).toPromise();
   }
 
   BuscarPorId(codigo: number): Promise<any> {
@@ -58,8 +58,8 @@ export class TextopessoalService {
       });
   }
 
-  Atualizar(textopessoal: TextoPessoal): Promise<any> {
-    return this.http.put(`${this.url}/${textopessoal.codigo}`, textopessoal)
+  Atualizar(textopessoal: TextoPessoal): Promise<TextoPessoal> {
+    return this.http.put<TextoPessoal>(`${this.url}/${textopessoal.codigo}`, textopessoal)
       .toPromise()
       .then(response => {
         const textopessoalalterado = response as TextoPessoal;
@@ -67,8 +67,8 @@ export class TextopessoalService {
       });
   }
 
-  Remover(codigo: number) {
-    this.http.delete(`${this.url}/${codigo}`)
+  Remover(codigo: number): Promise<any> {
+    return this.http.delete(`${this.url}/${codigo}`)
       .toPromise()
       .then(() => null);
   }

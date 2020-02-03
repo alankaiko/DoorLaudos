@@ -47,24 +47,28 @@ export class CadastroGrupoprocedimentoComponent implements OnInit {
   Salvar() {
     if (this.editando) {
       this.AtualizarGrupoProcedimento();
-      this.route.navigate(['/grupoprocedimento']);
     } else {
       this.formulario.patchValue(this.AdicionarGrupoProcedimento());
-      this.route.navigate(['/grupoprocedimento/novo']);
     }
     this.CriarFormulario(new GrupoProcedimento());
   }
 
   AdicionarGrupoProcedimento() {
-    return this.service.Adicionar(this.formulario.value);
+    return this.service.Adicionar(this.formulario.value)
+      .then(salvo => {
+        this.route.navigate(['/grupoprocedimento']);
+      });
   }
 
   AtualizarGrupoProcedimento() {
     this.service.Atualizar(this.formulario.value)
-      .then(grupo => {this.formulario.patchValue(grupo); });
+      .then(grupo => {
+        this.formulario.patchValue(grupo);
+        this.route.navigate(['/grupoprocedimento']);
+      });
   }
 
-  backClicked() {
+  Voltar() {
     this.location.back();
   }
 }

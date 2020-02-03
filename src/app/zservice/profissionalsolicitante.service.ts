@@ -45,8 +45,8 @@ export class ProfissionalsolicitanteService {
   }
 
 
-  Adicionar(profissionalsolicitante) {
-    return this.http.post(`${this.url}`, profissionalsolicitante).subscribe(response => response);
+  Adicionar(profissionalsolicitante): Promise<ProfissionalSolicitante> {
+    return this.http.post<ProfissionalSolicitante>(`${this.url}`, profissionalsolicitante).toPromise();
   }
 
   BuscarPorId(codigo: number): Promise<any> {

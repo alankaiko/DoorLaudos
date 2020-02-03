@@ -2,8 +2,9 @@ import { GrupoprocedimentoService } from './../../zservice/grupoprocedimento.ser
 import { ProcedimentomedicoService } from './../../zservice/procedimentomedico.service';
 import { Component, OnInit } from '@angular/core';
 import { ProcedimentoMedico } from './../../core/model';
-import { FormGroup, FormBuilder, FormArray } from '@angular/forms';
+import { FormGroup, FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-cadastro-procedimentomedico',
@@ -18,7 +19,8 @@ export class CadastroProcedimentomedicoComponent implements OnInit {
               private rota: ActivatedRoute,
               private serviceGrupo: GrupoprocedimentoService,
               private formbuilder: FormBuilder,
-              private route: Router) {
+              private route: Router,
+              private location: Location) {
   }
 
   ngOnInit() {
@@ -62,21 +64,28 @@ export class CadastroProcedimentomedicoComponent implements OnInit {
   Salvar() {
     if (this.editando) {
       this.AtualizarProcedimentoMedico();
-      this.route.navigate(['/procedimentomedico']);
     } else {
       this.formulario.patchValue(this.AdicionarProcedimentoMedico());
-      this.route.navigate(['/procedimentomedico/novo']);
     }
     this.CriarFormulario(new ProcedimentoMedico());
   }
 
   AdicionarProcedimentoMedico() {
-    return this.service.Adicionar(this.formulario.value);
+    return this.service.Adicionar(this.formulario.value)
+      .then(salvo => {
+        this.route.navigate(['/procedimentomedico']);
+      });
   }
 
   AtualizarProcedimentoMedico() {
     this.service.Atualizar(this.formulario.value)
-      .then(procedimento => {this.formulario.patchValue(procedimento); });
+      .then(procedimento => {
+        this.formulario.patchValue(procedimento);
+        this.route.navigate(['/procedimentomedico']);
+      });
   }
 
+  Voltar() {
+    this.location.back();
+  }
 }

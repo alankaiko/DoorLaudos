@@ -23,7 +23,7 @@ export class AbreviaturaService {
   }
 
   Consultar(filtro: AbreviaturaFiltro): Promise<any> {
-    let params = new HttpParams({
+    const params = new HttpParams({
       fromObject: {
         page: filtro.pagina.toString(),
         size: filtro.itensPorPagina.toString()
@@ -44,8 +44,8 @@ export class AbreviaturaService {
       });
   }
 
-  Adicionar(abreviatura) {
-    return this.http.post(`${this.url}`, abreviatura).subscribe(response => response);
+  Adicionar(abreviatura): Promise<Abreviatura> {
+    return this.http.post<Abreviatura>(`${this.url}`, abreviatura).toPromise();
   }
 
   BuscarPorId(codigo: number): Promise<any> {
@@ -66,8 +66,8 @@ export class AbreviaturaService {
       });
   }
 
-  Remover(codigo: number) {
-    this.http.delete(`${this.url}/${codigo}`)
+  Remover(codigo: number): Promise<any> {
+    return this.http.delete(`${this.url}/${codigo}`)
       .toPromise()
       .then(() => null);
   }

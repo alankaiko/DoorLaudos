@@ -45,8 +45,8 @@ export class ProcedimentomedicoService {
   }
 
 
-  Adicionar(procedimento) {
-    return this.http.post(`${this.url}`, procedimento).subscribe(response => response);
+  Adicionar(procedimento): Promise<ProcedimentoMedico> {
+    return this.http.post<ProcedimentoMedico>(`${this.url}`, procedimento).toPromise();
   }
 
   BuscarPorId(codigo: number): Promise<any> {

@@ -8,27 +8,19 @@
     <p-table [value]="procedimentos" [responsive]="true">
       <ng-template pTemplate="header">
         <tr>
-          <th>Data Exec.</th>
-          <th>Valor Paciente</th>
-          <th>Valor Convenio</th>
-          <th class="col-acoes-header"></th>
+          <th style="width: 50%;">Procedimento</th>
+          <th style="width: 20%;">Data Exec.</th>
+          <th style="width: 20%;">Prev. Ent. Laudo</th>
+          <th style="width: 10%;" class="col-acoes-header">Opções</th>
         </tr>
       </ng-template>
 
       <ng-template pTemplate="body" let-procedimento let-rowIndex="rowIndex">
         <tr>
+          <td>{{ procedimento.procedimentomedico.nome }}</td>
           <td>{{ procedimento.dataexecucao | date:'dd/MM/yyyy' }}</td>
-          <td>{{ procedimento.valorpaciente }}</td>
-          <td>{{ procedimento.valorconvenio }}</td>
+          <td>{{ procedimento.preventregalaudo | date:'dd/MM/yyyy' }}</td>
           <td class="col-acoes">
-
-
-            <a pButton icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top"
-                (click)="PrepararEdicaoProcedimento(procedimento)"></a>
-
-            <button pButton icon="fa fa-trash" type="button"
-              pTooltip="Excluir" tooltipPosition="top"
-              (click)="RemoverContato(rowIndex)"></button>
           </td>
         </tr>
       </ng-template>
@@ -44,42 +36,42 @@
   </div>
 </div>
 
-<p-dialog [header]="'Novo Procedimento'" [(visible)]="exbindoFormularioProcedimento" modal="modal" *ngIf="procedimento">
-  <form autocomplete="off"  #frmContato="ngForm" (ngSubmit)="ConfirmarProcedimento(frmProcedimento)" class="formu">
+
+<p-dialog [header]="'Novo Procedimento'" [(visible)]="exbindoFormularioProcedimento" modal="modal">
+  <form autocomplete="off" [formGroup]="formulario" (ngSubmit)="ConfirmarProcedimento()" class="formu">
     <div class="ui-g">
-      <div class="ui-g-3 ui-fluid">
-        <label>Valor Paciente</label>
-        <input type="text" pInputText name="valorpaciente" [(ngModel)]="procedimento.valorpaciente" #valorpaciente="ngModel" placeholder="0.00">
-      </div>
-
-      <div class="ui-g-3 ui-fluid">
-        <label>Valor Convênio</label>
-        <input type="text" pInputText name="valorconvenio" [(ngModel)]="procedimento.valorconvenio" #valorconvenio="ngModel" placeholder="0.00">
-      </div>
-
-      <div class="ui-g-3 ui-fluid">
-        <label>Prev. Ent. Laudo</label>
-        <p-calendar  dateFormat="dd/mm/yy" [monthNavigator]="true" [yearNavigator]="true"
-          yearRange="1930:2020" name="preventregalaudo" [(ngModel)]="procedimento.preventregalaudo" #preventregalaudo="ngModel"></p-calendar>
-      </div>
-
-      <div class="ui-g-3 ui-fluid">
-        <label>Data Execução</label>
-        <p-calendar  dateFormat="dd/mm/yy" [monthNavigator]="true" [yearNavigator]="true"
-          yearRange="1930:2020" name="dataexecucao" [(ngModel)]="procedimento.dataexecucao" #dataexecucao="ngModel"></p-calendar>
-      </div>
-
-      <div class="ui-g-3 ui-fluid">
+      <div class="ui-g-3 ui-fluid" formGroupName="profexecutante">
         <label>Profissional Executante</label>
-        <p-dropdown [options]="profissionalexecutantes" placeholder="Selecione..."
-        name="  codigo" #codigo="ngModel" [(ngModel)]="codigo"
-        (onChange)="CarregaProfissionalExecutante()"></p-dropdown>
+        <p-dropdown [options]="profissionalexecutantes" [autoWidth]="false" [filter]="true"  formControlName="codigo"
+          placeholder="Selecione..." name="codigo" (onChange)="CarregaProfissionalExecutante()"></p-dropdown>
       </div>
 
       <div class="ui-g-3 ui-fluid" formGroupName="procedimentomedico">
         <label>Procedimento Médico</label>
-        <p-dropdown [options]="procedimentomedicos" [autoWidth]="false" [filter]="true"
+        <p-dropdown [options]="procedimentomedicos" [autoWidth]="false" [filter]="true"  formControlName="codigo"
           placeholder="Selecione..." name="codigo" (onChange)="CarregarProcedimentosMedico()"></p-dropdown>
+      </div>
+
+      <div class="ui-g-3 ui-fluid">
+        <label>Valor Paciente</label>
+        <input type="text" pInputText ng-model="text" name="valorpaciente" formControlName="valorpaciente" placeholder="0.00">
+      </div>
+
+      <div class="ui-g-3 ui-fluid">
+        <label>Valor Convênio</label>
+        <input type="text" pInputText ng-model="text" name="valorconvenio" formControlName="valorconvenio" placeholder="0.00">
+      </div>
+
+      <div class="ui-g-3 ui-fluid">
+        <label>Prev. Ent. Laudo</label>
+        <p-calendar  dateFormat="dd/mm/yy" [monthNavigator]="true" [yearNavigator]="true" formControlName="preventregalaudo"
+          yearRange="1930:2020" name="preventregalaudo"></p-calendar>
+      </div>
+
+      <div class="ui-g-3 ui-fluid">
+        <label>Data Execução</label>
+        <p-calendar  dateFormat="dd/mm/yy" [monthNavigator]="true" [yearNavigator]="true" formControlName="dataexecucao"
+          yearRange="1930:2020" name="dataexecucao"></p-calendar>
       </div>
 
       <div class="ui-g-12">

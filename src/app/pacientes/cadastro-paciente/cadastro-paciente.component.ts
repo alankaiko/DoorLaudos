@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Patient } from './../../core/model';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-cadastro-paciente',
@@ -15,7 +16,8 @@ export class CadastroPacienteComponent implements OnInit {
   constructor(private service: PacienteService,
               private rota: ActivatedRoute,
               private formbuilder: FormBuilder,
-              private route: Router) {
+              private route: Router,
+              private location: Location) {
   }
 
   ngOnInit() {
@@ -82,4 +84,7 @@ export class CadastroPacienteComponent implements OnInit {
       .then(patient => {this.formulario.patchValue(patient); });
   }
 
+  Voltar() {
+    this.location.back();
+  }
 }
