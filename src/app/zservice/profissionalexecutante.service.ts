@@ -23,7 +23,7 @@ export class ProfissionalexecutanteService {
   }
 
   Consultar(filtro: ProfissionalExecutanteFiltro): Promise<any> {
-    let params = new HttpParams({
+    const params = new HttpParams({
       fromObject: {
         page: filtro.pagina.toString(),
         size: filtro.itensPorPagina.toString()
@@ -45,11 +45,11 @@ export class ProfissionalexecutanteService {
   }
 
 
-  Adicionar(profissionalexecutante) {
-    return this.http.post(`${this.url}`, profissionalexecutante).subscribe(response => response);
+  Adicionar(profissionalexecutante): Promise<ProfissionalExecutante> {
+    return this.http.post<ProfissionalExecutante>(`${this.url}`, profissionalexecutante).toPromise();
   }
 
-  BuscarPorId(codigo: number): Promise<any> {
+  BuscarPorId(codigo: number): Promise<ProfissionalExecutante> {
     return this.http.get(`${this.url}/${codigo}`)
       .toPromise()
       .then(response => {

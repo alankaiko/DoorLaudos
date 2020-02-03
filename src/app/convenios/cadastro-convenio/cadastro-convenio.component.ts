@@ -57,7 +57,6 @@ export class CadastroConvenioComponent implements OnInit {
   }
 
   CarregarConvenios(codigo: number) {
-    console.log(codigo + ' aff');
     this.service.BuscarPorId(codigo).then(convenio => this.formulario.patchValue(convenio));
   }
 

@@ -69,12 +69,12 @@ export class PacienteService {
       });
   }
 
-  Adicionar(patient) {
-    return this.http.post(`${this.url}`, patient).subscribe(response => JSON.stringify(response));
+  Adicionar(patient): Promise<Patient> {
+    return this.http.post<Patient>(`${this.url}`, patient).toPromise();
   }
 
-  BuscarPorId(idpatient: number): Promise<any> {
-    return this.http.get(`${this.url}/${idpatient}`)
+  BuscarPorId(idpatient: number): Promise<Patient> {
+    return this.http.get<Patient>(`${this.url}/${idpatient}`)
       .toPromise()
       .then(response => {
         const patient = response as Patient;
@@ -88,7 +88,7 @@ export class PacienteService {
       .toPromise()
       .then(response => {
         const patientalterado = response as Patient;
-        this.converterStringsParaDatas([patientalterado]);
+        // this.converterStringsParaDatas([patientalterado]);
 
         return patientalterado;
       });
@@ -106,4 +106,5 @@ export class PacienteService {
         'YYYY-MM-DD').toDate();
     }
   }
+
 }

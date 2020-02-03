@@ -68,21 +68,26 @@ export class CadastroProfissionalexecComponent implements OnInit {
   Salvar() {
     if (this.editando) {
       this.AtualizarProfissionalExecutante();
-      this.route.navigate(['/profissionalexecutante']);
+
     } else {
       this.formulario.patchValue(this.AdicionarProfissionalExecutante());
-      this.route.navigate(['/profissionalexecutante/novo']);
     }
     this.CriarFormulario(new ProfissionalExecutante());
   }
 
   AdicionarProfissionalExecutante() {
-    return this.service.Adicionar(this.formulario.value);
+    return this.service.Adicionar(this.formulario.value)
+      .then(response => {
+        this.route.navigate(['/profissionalexecutante']);
+      });
   }
 
   AtualizarProfissionalExecutante() {
     this.service.Atualizar(this.formulario.value)
-      .then(profissional => {this.formulario.patchValue(profissional); });
+      .then(profissional => {
+        this.formulario.patchValue(profissional);
+        this.route.navigate(['/profissionalexecutante']);
+      });
   }
 
   Voltar() {

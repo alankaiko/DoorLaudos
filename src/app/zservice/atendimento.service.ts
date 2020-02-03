@@ -30,7 +30,7 @@ export class AtendimentoService {
    }
 
    Consultar(filtro: AtendimentoFilter): Promise<any> {
-    let params = new HttpParams({
+    const params = new HttpParams({
       fromObject: {
         page: filtro.pagina.toString(),
         size: filtro.itensPorPagina.toString()
@@ -99,7 +99,7 @@ export class AtendimentoService {
     for (const atendimento of atendimentos) {
       atendimento.dataatendimento = moment(atendimento.dataatendimento, 'YYYY-MM-DD').toDate();
 
-      for(const proc of atendimento.procedimentos) {
+      for (const proc of atendimento.procedimentos) {
         proc.dataexecucao = moment(proc.dataexecucao, 'YYYY-MM-DD').toDate();
         proc.preventregalaudo = moment(proc.dataexecucao, 'YYYY-MM-DD').toDate();
       }

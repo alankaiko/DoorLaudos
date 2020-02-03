@@ -67,21 +67,25 @@ export class CadastroPacienteComponent implements OnInit {
   Salvar() {
     if (this.editando) {
       this.AtualizarPaciente();
-      this.route.navigate(['/paciente']);
     } else {
       this.formulario.patchValue(this.AdicionarPaciente());
-      this.route.navigate(['/paciente/novo']);
     }
     this.CriarFormulario(new Patient());
   }
 
   AdicionarPaciente() {
-    return this.service.Adicionar(this.formulario.value);
+    return this.service.Adicionar(this.formulario.value)
+      .then(response => {
+        this.route.navigate(['/paciente']);
+      });
   }
 
   AtualizarPaciente() {
     this.service.Atualizar(this.formulario.value)
-      .then(patient => {this.formulario.patchValue(patient); });
+      .then(patient => {
+        this.formulario.patchValue(patient);
+        this.route.navigate(['/paciente']);
+      });
   }
 
   Voltar() {
