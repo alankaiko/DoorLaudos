@@ -72,7 +72,7 @@ export class AtendimentoService {
       .toPromise()
       .then(response => {
         const atendimentoalterado = response as Atendimento;
-       // this.converterStringsParaDatas([atendimentoalterado]);
+        this.converterStringsParaDatas([atendimentoalterado]);
         return atendimentoalterado;
       });
    }

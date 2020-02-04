@@ -46,10 +46,10 @@ export class PacienteService {
       params = params.append('patientage', filtro.patientage);
     }
 
-    if (filtro.birthday) {
-      params.set('birthday',
-        moment(filtro.birthday).format('YYYY-MM-DD'));
-    }
+   // if (filtro.birthday) {
+    //  params.set('birthday',
+   //     moment(filtro.birthday).format('YYYY-MM-DD'));
+   // }
 
     if (filtro.patientsex) {
       params = params.append('patientsex', filtro.patientsex);
@@ -88,7 +88,7 @@ export class PacienteService {
       .toPromise()
       .then(response => {
         const patientalterado = response as Patient;
-        // this.converterStringsParaDatas([patientalterado]);
+        this.converterStringsParaDatas([patientalterado]);
 
         return patientalterado;
       });
@@ -102,8 +102,7 @@ export class PacienteService {
 
   private converterStringsParaDatas(patients: Patient[]) {
     for (const patient of patients) {
-      patient.birthday = moment(patient.birthday,
-        'YYYY-MM-DD').toDate();
+      patient.birthday = moment(patient.birthday, 'YYYY-MM-DD').toDate();
     }
   }
 

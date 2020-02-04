@@ -36,10 +36,6 @@ export class TelaAtendimentoComponent implements OnInit {
     }
   }
 
-  teste() {
-    console.log(JSON.stringify(this.atendimento));
-  }
-
   get editando() {
     return this.atendimento.codigo === null ? false : Boolean(this.atendimento.codigo);
   }
@@ -62,7 +58,7 @@ export class TelaAtendimentoComponent implements OnInit {
   Adicionar(form: FormControl) {
     this.service.Adicionar(this.atendimento)
       .then(atendimentoaAdicionado => {
-        this.route.navigate(['/atendimento', atendimentoaAdicionado.codigo]);
+        this.route.navigate(['/atendimento']);
       })
       .catch(erro => erro);
   }
@@ -71,7 +67,7 @@ export class TelaAtendimentoComponent implements OnInit {
     this.service.Atualizar(this.atendimento)
       .then(atendimento => {
         this.atendimento = atendimento;
-
+        this.route.navigate(['/atendimento']);
       })
       .catch(erro => erro);
   }
