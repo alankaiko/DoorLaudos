@@ -9,7 +9,7 @@ import { TooltipModule } from 'primeng/components/tooltip/tooltip';
 import { FormsModule } from '@angular/forms';
 import {MenuModule} from 'primeng/menu';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {SidebarModule} from 'primeng/components/sidebar/sidebar';
+import {MenubarModule} from 'primeng/components/menubar/menubar';
 
 
 
@@ -24,7 +24,7 @@ import {SidebarModule} from 'primeng/components/sidebar/sidebar';
     TooltipModule,
     MenuModule,
     BrowserAnimationsModule,
-    SidebarModule
+    MenubarModule
   ],
   exports: [
     NavbarComponent

@@ -1,29 +1,60 @@
-.classegeral{
-  width: 100%;
+.topo {
+  z-index: 75;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
 }
-
 
 .conainer-top {
   position: relative;
-  width: 100%;
-  margin: 0 auto;
-  padding: 0px;
+  min-height: 50px;
+  margin-bottom: 22px;
+  border: 1px solid transparent;
+  background-color: #03a9f4;
+  border-color: #03a9f4;
+  top: 0;
+  border-width: 0 0 1px;
+}
+
+.conainer-top .menubarra {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
 }
 
-.conainer-top .conainer{
-
+.logotipo {
+  float: left;
 }
 
-.panel-heading-2{
-  position: relative;
-    width: 100%;
-    height: 20px;
-    border: 2px solid;
-    margin: 0 auto;
-    padding: 0px;
-    background-color: #252525;
-    color: #FFF;
-    line-height: 1.42857143;
+.menus {
+  max-height: 340px;
+  display: block !important;
+  height: auto !important;
+  padding-bottom: 0;
+  overflow: visible !important;
+  border-color: #03a9f4;
+  width: auto;
+  border-top: 0;
+  box-shadow: none;
 }
 
+.linhamenu {
+  float: left;
+  margin: 0;
+}
+
+.opcoesmenu {
+  float: right !important;
+  margin-right: -15px;
+}
+
+.ui-inputgroup {
+  float: left;
+}

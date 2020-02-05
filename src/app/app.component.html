@@ -2,14 +2,25 @@
   <div class="ui-g">
     <div class="ui-g-12 topo">
       <div class="conainer-top">
-        <div class="conainer">
-          <a routerLink="/">
+        <div class="menubarra">
+          <div class="logotipo">
             <img src="assets/prefeitura.png">
-          </a>
-        </div>
+          </div>
 
-        <div class="row panel-heading-2">
+          <div class="menus">
+            <div class="linhamenu">
+              <app-navbar></app-navbar>
+            </div>
 
+            <div class="opcoesmenu">
+              <div class="ui-inputgroup">
+                <span class="ui-inputgroup-addon"><i class="pi pi-search" style="line-height: 1.25;"></i></span>
+                <input type="text" pInputText placeholder="Username">
+              </div>
+
+
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -17,7 +28,7 @@
     <div class="ui-g-12 corpo">
         <div class="conteudo">
             <div class="menu-lateral ui-g-3">
-              <app-navbar></app-navbar>
+
             </div>
 
             <div class="ui-g-9">

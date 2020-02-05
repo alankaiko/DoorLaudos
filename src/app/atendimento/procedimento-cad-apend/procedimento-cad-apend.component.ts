@@ -70,7 +70,6 @@ export class ProcedimentoCadApendComponent implements OnInit {
 
   RemoverProcedimento(index: number) {
     this.procedimentos.splice(index, 1);
-    console.log(JSON.stringify(this.procedimentos));
   }
 
   ClonarProcedimento(procedimento: ProcedimentoAtendimento): ProcedimentoAtendimento {
