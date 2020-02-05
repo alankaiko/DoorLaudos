@@ -218,7 +218,6 @@ export class ViewerComponent implements OnInit {
       const e = document.createEvent('MouseEvents');
       e.initMouseEvent('click', true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
       lnk.dispatchEvent(e);
-      console.log('deu certo maluquete');
     }
   }
 

@@ -10,8 +10,8 @@
         <tr>
           <th style="width: 50%;">Procedimento</th>
           <th style="width: 20%;">Data Exec.</th>
-          <th style="width: 20%;">Prev. Ent. Laudo</th>
-          <th style="width: 10%;" class="col-acoes-header">Opções</th>
+          <th style="width: 16%;">Prev. Ent. Laudo</th>
+          <th style="width: 14%;" class="col-acoes-header">Opções</th>
         </tr>
       </ng-template>
 
@@ -21,6 +21,12 @@
           <td>{{ procedimento.dataexecucao | date:'dd/MM/yyyy' }}</td>
           <td>{{ procedimento.preventregalaudo | date:'dd/MM/yyyy' }}</td>
           <td class="col-acoes">
+            <a pButton icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top"
+                (click)="PrepararEdicaoProcedimento(procedimento)"></a>
+
+            <button pButton icon="fa fa-trash" type="button"
+              pTooltip="Excluir" tooltipPosition="top"
+              (click)="RemoverProcedimento(rowIndex)"></button>
           </td>
         </tr>
       </ng-template>

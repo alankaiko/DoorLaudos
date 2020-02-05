@@ -48,12 +48,11 @@ export class ProcedimentoCadApendComponent implements OnInit {
   PrepararNovoProcedimento() {
     this.exbindoFormularioProcedimento = true;
     this.CriarFormulario(new ProcedimentoAtendimento());
-    // this.procedimento = new ProcedimentoAtendimento();
     this.procedimentoIndex = this.procedimentos.length;
   }
 
   PrepararEdicaoProcedimento(procedimento: ProcedimentoAtendimento) {
-    this.CriarFormulario(procedimento);
+    this.formulario.patchValue(procedimento);
     this.exbindoFormularioProcedimento = true;
     // this.procedimento = this.ClonarProcedimento(procedimento);
     // this.CriarFormulario(this.ClonarProcedimento(procedimento));
@@ -71,6 +70,7 @@ export class ProcedimentoCadApendComponent implements OnInit {
 
   RemoverProcedimento(index: number) {
     this.procedimentos.splice(index, 1);
+    console.log(JSON.stringify(this.procedimentos));
   }
 
   ClonarProcedimento(procedimento: ProcedimentoAtendimento): ProcedimentoAtendimento {
