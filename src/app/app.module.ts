@@ -50,6 +50,8 @@ import {CalendarModule} from 'primeng/components/calendar/calendar';
 import { PanelModule } from 'primeng/components/panel/panel';
 import { DialogModule } from 'primeng/components/dialog/dialog';
 import {EditorModule} from 'primeng/components/editor/editor';
+import { CapturaComponent } from './captura/captura.component';
+import {WebcamModule} from 'ngx-webcam';
 
 const rotas: Routes = [
   { path: 'abreviaturas/novo', component: CadastroAbreviaturaComponent },
@@ -88,7 +90,8 @@ const rotas: Routes = [
   { path: 'atendimento', component: ListaAtendimentoComponent },
   { path: 'atendimento/novo', component: TelaAtendimentoComponent },
   { path: 'atendimento/:cod', component: TelaAtendimentoComponent },
-  { path: 'laudos', component: TelaLaudoComponent }
+  { path: 'laudos', component: TelaLaudoComponent },
+  { path: 'captura', component: CapturaComponent }
 ];
 
 @NgModule({
@@ -102,7 +105,7 @@ const rotas: Routes = [
     ListaTextopessoalComponent, ListaCbhpmComponent, ListaCid10Component,
     ListaCnesComponent, ListaCrmComponent, ListaEspecialidademedicaComponent,
     ListaPacienteComponent, CadastroPacienteComponent, ListaAtendimentoComponent,
-    TelaAtendimentoComponent, ProcedimentoCadApendComponent
+    TelaAtendimentoComponent, ProcedimentoCadApendComponent, CapturaComponent
   ],
   imports: [
     ServidorModule,
@@ -126,7 +129,8 @@ const rotas: Routes = [
     DialogModule,
     LaudoModule,
     EditorModule,
-    HttpClientModule
+    HttpClientModule,
+    WebcamModule
   ],
   providers: [],
   bootstrap: [AppComponent]
