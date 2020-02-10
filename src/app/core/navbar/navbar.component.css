@@ -1,1 +1,25 @@
+.menuInicial {
+	width: 100%;
+	height: 60px;
+	top: 0px;
+	margin: 0 auto;
+	position: fixed;
+  z-index: 1000;
+}
 
+.topbar {
+  width: 100%;
+	height: 60px;
+	outline: 0 none;
+	box-sizing: border-box;
+	background: #ffffff;
+	-webkit-box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.08);
+	-moz-box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.08);
+	box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.08);
+	z-index: 1000;
+}
+
+:host /deep/ p-menubar .ui-menubar{
+  border: none;
+  font-weight: bold;
+}

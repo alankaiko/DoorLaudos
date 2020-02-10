@@ -1,3 +1,5 @@
+import { CardModule } from 'primeng/components/card/card';
+import { CardConvenioComponent } from './convenios/card-convenio/card-convenio.component';
 import { HttpClientModule } from '@angular/common/http';
 import { TelaLaudoComponent } from './laudo/tela-laudo/tela-laudo.component';
 import { LaudoModule } from './laudo/laudo.module';
@@ -52,6 +54,9 @@ import { DialogModule } from 'primeng/components/dialog/dialog';
 import {EditorModule} from 'primeng/components/editor/editor';
 import { CapturaComponent } from './captura/captura.component';
 import {WebcamModule} from 'ngx-webcam';
+import {DataViewModule} from 'primeng/components/dataview/dataview';
+import {ToggleButtonModule} from 'primeng/togglebutton';
+import {RatingModule} from 'primeng/rating';
 
 const rotas: Routes = [
   { path: 'abreviaturas/novo', component: CadastroAbreviaturaComponent },
@@ -105,7 +110,7 @@ const rotas: Routes = [
     ListaTextopessoalComponent, ListaCbhpmComponent, ListaCid10Component,
     ListaCnesComponent, ListaCrmComponent, ListaEspecialidademedicaComponent,
     ListaPacienteComponent, CadastroPacienteComponent, ListaAtendimentoComponent,
-    TelaAtendimentoComponent, ProcedimentoCadApendComponent, CapturaComponent
+    TelaAtendimentoComponent, ProcedimentoCadApendComponent, CapturaComponent, CardConvenioComponent
   ],
   imports: [
     ServidorModule,
@@ -130,7 +135,11 @@ const rotas: Routes = [
     LaudoModule,
     EditorModule,
     HttpClientModule,
-    WebcamModule
+    WebcamModule,
+    DataViewModule,
+    CardModule,
+    ToggleButtonModule,
+    RatingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

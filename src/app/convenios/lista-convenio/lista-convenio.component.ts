@@ -1,6 +1,5 @@
 import { ConvenioService } from './../../zservice/convenio.service';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Convenio } from 'src/app/core/model';
 import { LazyLoadEvent } from 'primeng/api';
@@ -17,7 +16,6 @@ export class ListaConvenioComponent implements OnInit {
   filtro = new ConvenioFiltro();
 
   constructor(private service: ConvenioService,
-              private formbuilder: FormBuilder,
               private route: Router) { }
 
   ngOnInit() {}

@@ -1,41 +1,15 @@
-<div class="grupo">
-  <div class="classe">
-      <div class="ui-g">
-        <h3>Convênios</h3>
-        <div>
-          <p-table id="tabela" [value]="convenios" [responsive]="true" [paginator]="true" [rows]="filtro.itensPorPagina"
-            [lazy]="true" [totalRecords]="totalRegistros" (onLazyLoad)="aoMudarPagina($event)">
-            <ng-template pTemplate="header">
-                <tr>
-                    <th style="width: 8%;">Código</th>
-                    <th style="width: 40%;">Título</th>
-                    <th style="width: 15%;">Telefone</th>
-                    <th style="width: 10%;">Status</th>
-                    <th style="width: 10%; text-align: center;">Opções</th>
-                </tr>
-            </ng-template>
-            <ng-template pTemplate="body" let-convenio>
-                <tr>
-                    <td style="text-align: center;">{{convenio.codigo}}</td>
-                    <td>{{convenio.nome}}</td>
-                    <td>{{convenio.telefone}}</td>
-                    <td>{{convenio.ativo}}</td>
-                    <td style="text-align: center;">
-                        <a pButton icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top"
-                        [routerLink]="['/convenios', convenio.codigo]"></a>
+<div class="ui-g">
+  <div class="ui-g-12 ui-fluid">
+      <p-dataView id="tabela" class="tabela ui-fluid" [value]="convenios" [paginator]="true" [rows]="filtro.itensPorPagina"
+        [lazy]="true" [totalRecords]="totalRegistros" (onLazyLoad)="aoMudarPagina($event)" layout="list">
 
-                      <button pButton icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="top"
-                        (click)="Excluir(convenio)"></button>
-                    </td>
-                </tr>
-            </ng-template>
-        </p-table>
-        </div>
+        <ng-template let-convenio pTemplate="listItem">
+          <app-card-convenio [conv]="convenio" class="ui-g-12 convenios"></app-card-convenio>
+        </ng-template>
+    </p-dataView>
 
-        <div class="ui-g-12" style="text-align: right;">
-          <a pButton label="Novo Convênio" routerLink="/convenios/novo"></a>
-        </div>
-      </div>
-
+    <div class="ui-g-1" style="text-align: right;">
+      <a pButton label="Novo Convênio" routerLink="/convenios/novo"></a>
     </div>
+  </div>
 </div>

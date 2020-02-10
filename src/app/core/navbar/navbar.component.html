@@ -1,4 +1,26 @@
-<div class="menuinicial">
-  <p-menubar [model]="items" styleClass="border: none;"></p-menubar >
+<div class="menuInicial">
+  <div class="topbar ui-g">
+    <div class="logotipo ui-g-1 ui-fluid">
+      <a routerLink="/">
+        <img src="assets/prefeitura.png">
+      </a>
+    </div>
+
+    <div class="ui-g-9 ui-fluid">
+      <p-menubar [model]="items" styleClass="border: none;"></p-menubar >
+    </div>
+
+    <div class="ui-inputgroup ui-g-2 ui-fluid">
+      <span class="ui-inputgroup-addon"><i class="pi pi-search" style="line-height: 1.25;"></i></span>
+      <input type="text" pInputText placeholder="Username">
+    </div>
+  </div>
+
 </div>
+
+
+
+
+
+
 

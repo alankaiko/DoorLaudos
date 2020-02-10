@@ -1,0 +1,64 @@
+<p-card class="cartao">
+  <a [routerLink]="['/convenios', convenio.codigo]" class="linkes">
+    <div class="ui-g-1" style="margin-top: -10px;">
+      <div>
+        <label>Ativo?</label>
+      </div>
+
+      <div>
+        <p-toggleButton disabled="true" [(ngModel)]="convenio.ativo"></p-toggleButton>
+      </div>
+    </div>
+
+    <div class="ui-g-1" style="margin-top: -10px;">
+      <div>
+        <label>Código</label>
+      </div>
+
+      <div>
+        <span>{{convenio.codigo}}</span>
+      </div>
+    </div>
+
+    <div class="ui-g-5" style="margin-top: -10px;">
+      <div>
+        <label>Título</label>
+      </div>
+
+      <div>
+        <i class="pi pi-calendar-plus" style="font-size: 25px; color: #E34A4A;"></i>
+        <span>{{convenio.nome}}</span>
+      </div>
+
+    </div>
+
+    <div class="ui-g-2" style="margin-top: -10px;">
+      <div>
+        <label>Telefone</label>
+      </div>
+
+      <div>
+        <span>{{convenio.telefone}}</span>
+      </div>
+    </div>
+
+    <div class="ui-g-2" style="margin-top: -10px;">
+      <div>
+        Rating
+      </div>
+
+      <div>
+        <p-rating [(ngModel)]="val"></p-rating>
+      </div>
+    </div>
+
+    <div class="ui-g-1">
+      <a pButton icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top"
+        [routerLink]="['/convenios', convenio.codigo]" style="margin-right: 5px;"></a>
+
+      <button pButton icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="top"
+        (click)="Excluir(convenio)" style="background-color: #E34A4A; color: #fff;"></button>
+    </div>
+  </a>
+</p-card>
+
