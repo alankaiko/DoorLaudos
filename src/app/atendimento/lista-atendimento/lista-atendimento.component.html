@@ -1,41 +1,15 @@
-<div class="grupo">
-  <div class="classe">
-      <div class="ui-g">
-        <h3>Lista de Atendimentos</h3>
-        <div>
-          <p-table id="tabela" [value]="atendimentos" [responsive]="true" [paginator]="true" [rows]="filtro.itensPorPagina"
-            [lazy]="true" [totalRecords]="totalRegistros" (onLazyLoad)="aoMudarPagina($event)">
-            <ng-template pTemplate="header">
-                <tr>
-                    <th style="width: 8%;">Código</th>
-                    <th style="width: 15%;">Nome</th>
-                    <th style="width: 40%;">Convenio</th>
-                    <th style="width: 20%;">Data Cad</th>
-                    <th style="width: 10%; text-align: center;">Opções</th>
-                </tr>
-            </ng-template>
-            <ng-template pTemplate="body" let-atend>
-                <tr>
-                    <td style="text-align: center;">{{atend.codigo}}</td>
-                    <td>{{atend.patient.patientname}}</td>
-                    <td>{{atend.convenio.nome}}</td>
-                    <td>{{atend.dataatendimento}}</td>
-                    <td style="text-align: center;">
-                        <a pButton icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top"
-                        [routerLink]="['/atendimento', atend.codigo]"></a>
+<div class="ui-g">
+  <div class="ui-g-12 ui-fluid">
+      <p-dataView id="tabela" class="tabela ui-fluid" [value]="atendimentos" [paginator]="true" [rows]="filtro.itensPorPagina"
+        [lazy]="true" [totalRecords]="totalRegistros" (onLazyLoad)="aoMudarPagina($event)" layout="list">
 
-                      <button pButton icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="top"
-                        (click)="Excluir(atend)"></button>
-                    </td>
-                </tr>
-            </ng-template>
-        </p-table>
-        </div>
+        <ng-template let-atendimento pTemplate="listItem">
+          <app-card-atendimento [atend]="atendimento" class="ui-g-12 convenios"></app-card-atendimento>
+        </ng-template>
+    </p-dataView>
 
-        <div class="ui-g-12" style="text-align: right;">
-          <a pButton label="Novo Atendimento" routerLink="/atendimento/novo"></a>
-        </div>
-      </div>
-
+    <div class="ui-g-1" style="text-align: right;">
+      <a pButton label="Novo Atendimento" routerLink="/atendimento/novo"></a>
     </div>
+  </div>
 </div>

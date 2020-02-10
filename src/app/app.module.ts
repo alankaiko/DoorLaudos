@@ -1,3 +1,4 @@
+import { CardAtendimentoComponent } from './atendimento/card-atendimento/card-atendimento.component';
 import { CardModule } from 'primeng/components/card/card';
 import { CardConvenioComponent } from './convenios/card-convenio/card-convenio.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -111,7 +112,7 @@ const rotas: Routes = [
     ListaTextopessoalComponent, ListaCbhpmComponent, ListaCid10Component,
     ListaCnesComponent, ListaCrmComponent, ListaEspecialidademedicaComponent,
     ListaPacienteComponent, CadastroPacienteComponent, ListaAtendimentoComponent,
-    TelaAtendimentoComponent, ProcedimentoCadApendComponent, CapturaComponent, CardConvenioComponent
+    TelaAtendimentoComponent, ProcedimentoCadApendComponent, CapturaComponent, CardConvenioComponent, CardAtendimentoComponent
   ],
   imports: [
     ServidorModule,

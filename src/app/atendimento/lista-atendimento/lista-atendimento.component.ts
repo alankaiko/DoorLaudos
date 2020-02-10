@@ -1,6 +1,5 @@
 import { LazyLoadEvent } from 'primeng/api';
 import { Router } from '@angular/router';
-import { FormBuilder } from '@angular/forms';
 import { AtendimentoFilter, AtendimentoService } from './../../zservice/atendimento.service';
 import { Component, OnInit } from '@angular/core';
 import { Atendimento } from 'src/app/core/model';
@@ -16,7 +15,6 @@ export class ListaAtendimentoComponent implements OnInit {
   filtro = new AtendimentoFilter();
 
   constructor(private service: AtendimentoService,
-              private formbuilder: FormBuilder,
               private route: Router) { }
 
   ngOnInit() {}
@@ -29,18 +27,6 @@ export class ListaAtendimentoComponent implements OnInit {
         this.totalRegistros = response.total;
         this.atendimentos = response.atendimentos.content;
       }).catch(erro => console.log(erro));
-  }
-
-
-  Excluir(atendimento: Atendimento) {
-    try {
-      this.service.Remover(atendimento.codigo);
-      alert(atendimento.patient.patientname + ' foi excluído');
-      this.route.navigate(['/atendimento']);
-    } catch (error) {
-      console.log('erro ao excluir');
-    }
-
   }
 
   aoMudarPagina(event: LazyLoadEvent) {

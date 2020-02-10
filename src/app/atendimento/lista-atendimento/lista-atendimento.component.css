@@ -1,0 +1,19 @@
+:host /deep/ p-dataView .ui-dataview .ui-dataview-header{
+  border: none;
+  background-color: transparent;
+  color: none;
+}
+
+:host /deep/ p-dataView .ui-dataview .ui-dataview-content{
+  border: none;
+  background-color: transparent;
+  color: none;
+}
+
+.convenios {
+  padding: .2em;
+}
+
+:host /deep/ p-card .ui-card {
+  height: 72px;
+}

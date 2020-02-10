@@ -1,0 +1,21 @@
+label {
+  font-size: 12px;
+  letter-spacing: 0.015em;
+  border-color: #03a9f4;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+span {
+  font-size: 15px;
+  color: #515b5f;
+}
+
+
+:host /deep/ p-togglebutton .ui-button .ui-button-text{
+  font-size: 70%;
+}
+
+:host /deep/ p-card .ui-card:hover {
+  background-color: rgb(220, 230, 230);
+}
