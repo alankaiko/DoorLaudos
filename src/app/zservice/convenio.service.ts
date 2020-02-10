@@ -67,8 +67,8 @@ export class ConvenioService {
       });
   }
 
-  Remover(codigo: number) {
-    this.http.delete(`${this.url}/${codigo}`)
+  Remover(codigo: number): Promise<void> {
+    return this.http.delete(`${this.url}/${codigo}`)
       .toPromise()
       .then(() => null);
   }

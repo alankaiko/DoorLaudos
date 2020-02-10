@@ -51,14 +51,14 @@
         <p-rating [(ngModel)]="val"></p-rating>
       </div>
     </div>
-
-    <div class="ui-g-1">
-      <a pButton icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top"
-        [routerLink]="['/convenios', convenio.codigo]" style="margin-right: 5px;"></a>
-
-      <button pButton icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="top"
-        (click)="Excluir(convenio)" style="background-color: #E34A4A; color: #fff;"></button>
-    </div>
   </a>
+
+  <div class="ui-g-1">
+    <a pButton icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top"
+      [routerLink]="['/convenios', convenio.codigo]" style="margin-right: 5px;"></a>
+
+    <button pButton icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="top"
+      (click)="Excluir(convenio)" style="background-color: #E34A4A; color: #fff;"></button>
+  </div>
 </p-card>
 

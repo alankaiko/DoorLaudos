@@ -30,18 +30,6 @@ export class ListaConvenioComponent implements OnInit {
       }).catch(erro => console.log(erro));
   }
 
-
-  Excluir(convenio: Convenio) {
-    try {
-      this.service.Remover(convenio.codigo);
-      alert(convenio.nome + ' foi excluído');
-      this.route.navigate(['/convenios']);
-    } catch (error) {
-      console.log('erro ao excluir');
-    }
-
-  }
-
   aoMudarPagina(event: LazyLoadEvent) {
     const pagina = event.first / event.rows;
     this.Consultar(pagina);

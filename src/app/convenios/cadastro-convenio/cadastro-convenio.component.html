@@ -1,36 +1,49 @@
 <div class="conteudos">
-  <p-fieldset legend="{{ editando ? 'Editar' : 'Novo'}} Convênio">
     <div class="classecad">
       <form autocomplete="off" [formGroup]="formulario" (ngSubmit)="Salvar()" class="formu">
-        <div class="ui-g-12">
-          <div class="ui-g-3 ui-fluid">
+        <p-toolbar>
+          <div class="ui-toolbar-group-left">
+            <button class="btn btn-success" type="button" routerLink="/convenios/novo">Novo</button>
+
+            <button style="margin-left: 7px;" class="btn btn-primary" type="submit">Salvar</button>
+          </div>
+
+          <div class="ui-toolbar-group-right">
+            <button pButton type="button" icon="pi pi-times" class="ui-button-danger" routerLink="/convenios"></button>
+          </div>
+        </p-toolbar>
+
+        <div class="ui-g-8 ui-fluid">
+          <div class="ui-g-3">
             <label>Código</label>
             <input [readonly]= "true" type="text" pInputText ng-model="text" name="codigo" formControlName="codigo">
           </div>
 
-          <div class="ui-g-9 ui-fluid">
+          <div class="ui-g-9">
             <label>Descrição</label>
             <input type="text" pInputText ng-model="text" name="nome" formControlName="nome">
           </div>
 
-          <div class="ui-g-12 ui-fluid">
+          <div class="ui-g-12">
             <label>Nome do contato</label>
             <input type="text" pInputText ng-model="text" name="nomedocontato" formControlName="nomedocontato">
           </div>
 
-          <div class="ui-g-4 ui-fluid">
+          <div class="ui-g-12">
+            <label>Observações</label>
+            <input type="text" pInputText ng-model="text" name="observacoes" formControlName="observacoes">
+          </div>
+        </div>
+
+        <div class="ui-g-4">
+          <div class="ui-g-12 ui-fluid">
             <label>Telefone</label>
             <p-inputMask mask="(99) 9 9999-9999" name="telefone" formControlName="telefone"></p-inputMask>
           </div>
 
-          <div class="ui-g-4 ui-fluid">
+          <div class="ui-g-12 ui-fluid">
             <label>Fax</label>
             <p-inputMask mask="(99) 9999-9999" name="fax" formControlName="fax"></p-inputMask>
-          </div>
-
-          <div class="ui-g-4 ui-fluid">
-            <label>Ativo?</label>
-            <p-checkbox ng-model="ativo" name="ativo" binary="true" formControlName="ativo"></p-checkbox>
           </div>
 
           <div class="ui-g-12 ui-fluid">
@@ -38,19 +51,18 @@
             <input type="text" pInputText ng-model="text" placeholder="seu-email@email.com" name="email" formControlName="email">
           </div>
 
-          <div class="ui-g-12 ui-fluid">
-            <label>Observações</label>
-            <input type="text" pInputText ng-model="text" name="observacoes" formControlName="observacoes">
+          <div class="ui-g-4 ui-fluid">
+            <label>Ativo?</label>
+            <p-checkbox ng-model="ativo" name="ativo" binary="true" formControlName="ativo"></p-checkbox>
           </div>
+        </div>
 
-          <div class="ui-g-12 ui-fluid" formGroupName="endereco">
+        <div class="ui-g-12">
+          <h5>Endereço</h5>
+
+          <div class="ui-g-8 ui-fluid" formGroupName="endereco">
             <label>Logradouro</label>
             <input type="text" pInputText ng-model="text" name="logradouro" formControlName="logradouro">
-          </div>
-
-          <div class="ui-g-12 ui-fluid" formGroupName="endereco">
-            <label>Complemento</label>
-            <input type="text" pInputText ng-model="text" name="complemento" formControlName="complemento">
           </div>
 
           <div class="ui-g-4 ui-fluid" formGroupName="endereco">
@@ -59,31 +71,31 @@
           </div>
 
           <div class="ui-g-8 ui-fluid" formGroupName="endereco">
+            <label>Complemento</label>
+            <input type="text" pInputText ng-model="text" name="complemento" formControlName="complemento">
+          </div>
+
+          <div class="ui-g-4 ui-fluid" formGroupName="endereco">
             <label>Bairro</label>
             <input type="text" pInputText ng-model="text" name="bairro" formControlName="bairro">
           </div>
 
-          <div class="ui-g-5 ui-fluid" formGroupName="endereco">
+          <div class="ui-g-4 ui-fluid" formGroupName="endereco">
             <label>Cidade</label>
             <input type="text" pInputText ng-model="text" name="cidade" formControlName="cidade">
           </div>
 
-          <div class="ui-g-5 ui-fluid" formGroupName="endereco">
+          <div class="ui-g-4 ui-fluid" formGroupName="endereco">
             <label>Estado</label>
             <input type="text" pInputText ng-model="text" name="estado" formControlName="estado">
           </div>
 
-          <div class="ui-g-2 ui-fluid" formGroupName="endereco">
+          <div class="ui-g-4 ui-fluid" formGroupName="endereco">
             <label>CEP</label>
             <p-inputMask mask="99.999-999" name="cep" formControlName="cep"></p-inputMask>
           </div>
 
           <div class="ui-g-12 ui-fluid">
-            <div style="text-align: left;">
-              <button class="btn btn-primary" type="submit" style="margin-right: 8px;">Salvar</button>
-              <button class="btn btn-outline-secondary" routerLink="/convenios">Cancelar</button>
-            </div>
-
             <div style="text-align: right;">
               <a style="color: #007bff; text-decoration: underline;" (click)="Voltar();">Retornar</a>
             </div>
@@ -91,5 +103,4 @@
         </div>
       </form>
     </div>
-  </p-fieldset>
 </div>
