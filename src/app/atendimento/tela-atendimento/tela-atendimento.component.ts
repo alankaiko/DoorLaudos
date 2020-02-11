@@ -3,6 +3,7 @@ import { AtendimentoService } from './../../zservice/atendimento.service';
 import { FormArray, FormControl } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { Atendimento } from 'src/app/core/model';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-tela-atendimento',
@@ -33,11 +34,18 @@ export class TelaAtendimentoComponent implements OnInit {
 
     if (codatendimento) {
       this.CarregaAtendimento(codatendimento);
+    } else {
+      this.VerificarData();
     }
   }
 
   get editando() {
     return this.atendimento.codigo === null ? false : Boolean(this.atendimento.codigo);
+  }
+
+  VerificarData() {
+    const data = moment();
+    this.atendimento.dataatendimento = moment(data, 'YYYY-MM-DD').toDate();
   }
 
   CarregaAtendimento(codigo: number) {

@@ -13,14 +13,15 @@ export class CapturaComponent implements OnInit {
   public allowCameraSwitch = true;
   public multipleWebcamsAvailable = false;
   public deviceId: string;
+  index: number;
   public videoOptions: MediaTrackConstraints = {
     // width: {ideal: 1024},
-    // height: {ideal: 576}
+     // height: {ideal: 576}
   };
   public errors: WebcamInitError[] = [];
 
   // latest snapshot
-  public webcamImage: WebcamImage = null;
+  webcamImage = new Array<WebcamImage>();
 
   // webcam snapshot trigger
   private trigger: Subject<void> = new Subject<void>();
@@ -36,6 +37,15 @@ export class CapturaComponent implements OnInit {
       });
   }
 
+  PegaAltura() {
+    const alturaAtual = document.getElementById('divisoria').clientHeight;
+    return alturaAtual;
+  }
+
+  PegaLargura() {
+    const larguraAtual = document.getElementById('divisoria').clientWidth;
+    return larguraAtual;
+  }
 
   public triggerSnapshot(): void {
     this.trigger.next();
@@ -57,7 +67,8 @@ export class CapturaComponent implements OnInit {
   }
 
   public handleImage(webcamImage: WebcamImage): void {
-    this.webcamImage = webcamImage;
+    this.index = this.webcamImage.length;
+    this.webcamImage[this.index] = webcamImage ;
   }
 
   public cameraWasSwitched(deviceId: string): void {

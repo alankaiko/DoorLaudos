@@ -2,7 +2,8 @@ import { ProfissionalexecutanteService } from './../../zservice/profissionalexec
 import { ProcedimentomedicoService } from './../../zservice/procedimentomedico.service';
 import { ProcedimentoAtendimento } from './../../core/model';
 import { Component, OnInit, Input } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-procedimento-cad-apend',
@@ -10,14 +11,14 @@ import { FormBuilder, FormGroup, Validators, AbstractControl, ValidationErrors }
   styleUrls: ['./procedimento-cad-apend.component.css']
 })
 export class ProcedimentoCadApendComponent implements OnInit {
-
   @Input() procedimentos: Array<ProcedimentoAtendimento>;
-  // procedimento: ProcedimentoAtendimento;
+
   formulario: FormGroup;
   exbindoFormularioProcedimento = false;
   procedimentoIndex: number;
   profissionalexecutantes: [];
   procedimentomedicos: [];
+  datadias;
 
   constructor(private formbuilder: FormBuilder,
               private serviceProc: ProcedimentomedicoService,
@@ -27,6 +28,7 @@ export class ProcedimentoCadApendComponent implements OnInit {
     this.CriarFormulario(new ProcedimentoAtendimento());
     this.CarregarProcedimentosMedico();
     this.CarregaProfissionalExecutante();
+    this.AdicionandoDias();
   }
 
   CriarFormulario(procedimento: ProcedimentoAtendimento) {
@@ -89,5 +91,11 @@ export class ProcedimentoCadApendComponent implements OnInit {
     this.serviceProf.Listar().then(lista => {
       this.profissionalexecutantes = lista.map(prof => ({label: prof.nome, value: prof.codigo}));
     }).catch(erro => erro);
+  }
+
+  AdicionandoDias() {
+    const data = moment();
+    data.add(8, 'days');
+    moment(data, 'YYYY-MM-DD').toDate();
   }
 }

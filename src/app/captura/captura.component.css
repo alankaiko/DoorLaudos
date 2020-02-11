@@ -1,0 +1,34 @@
+.geral {
+  color: #fff;
+  background-color: #27272b;
+  width: 101%;
+  height: 100%;
+  position: fixed;
+  margin-left: -8px;
+  margin-top:  -22px;
+}
+
+.topoproc {
+  width: 100%;
+  height: 30px;
+  position: relative;
+}
+
+.menulateral {
+  border-right: 1px solid #beb9b9;
+  width: 30%;
+  float: left;
+
+}
+
+.painelprincipal {
+  width: 70%;
+  height: 100%;
+  float: right;
+  position: initial;
+}
+
+button {
+  font-size: 70%;
+  margin-right: 5px;
+}

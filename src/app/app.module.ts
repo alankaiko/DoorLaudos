@@ -59,6 +59,7 @@ import {DataViewModule} from 'primeng/components/dataview/dataview';
 import {ToggleButtonModule} from 'primeng/togglebutton';
 import {RatingModule} from 'primeng/rating';
 import {ToolbarModule} from 'primeng/toolbar';
+import {CarouselModule} from 'primeng/carousel';
 
 const rotas: Routes = [
   { path: 'abreviaturas/novo', component: CadastroAbreviaturaComponent },
@@ -142,7 +143,8 @@ const rotas: Routes = [
     CardModule,
     ToggleButtonModule,
     RatingModule,
-    ToolbarModule
+    ToolbarModule,
+    CarouselModule
   ],
   providers: [],
   bootstrap: [AppComponent]

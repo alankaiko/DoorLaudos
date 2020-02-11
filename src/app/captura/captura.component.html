@@ -1,31 +1,46 @@
-<div style="text-align:center" class="ui-g">
-  <div class="ui-g-12">
-    <button class="actionBtn" (click)="triggerSnapshot();">Capturar</button>
-    <button class="actionBtn" (click)="toggleWebcam();">Alternar Disposito</button>
-    <br/>
-    <button class="actionBtn" (click)="showNextWebcam(true);" [disabled]="!multipleWebcamsAvailable">Prox Disp.</button>
-    <input id="cameraSwitchCheckbox" type="checkbox" [(ngModel)]="allowCameraSwitch"><label for="cameraSwitchCheckbox">Allow Camera Switch</label>
-    <br/>
+<div style="text-align:center" class="ui-g geral">
+
+
+  <div class="menulateral">
+    <div class="topoproc">
+
+    </div>
+
+
+
+    <div class="ui-g-12">
+      <p-carousel [value]="webcamImage" orientation="vertical" [style]="{'width':'100%', 'margin-top':'1em'}" verticalViewPortHeight="330px" [numVisible]="1" [numScroll]="1">
+        <ng-template let-web pTemplate="item">
+          <img style="width: 100%; height: 100%;" [src]="web.imageAsDataUrl"/>
+        </ng-template>
+      </p-carousel>
+    </div>
+
+    <div class="ui-g-12">
+      <p-toolbar>
+        <div class="ui-toolbar-group-left">
+          <button class="btn btn-success" type="button" (click)="triggerSnapshot();">Capturar</button>
+          <button class="btn btn-primary" (click)="toggleWebcam();">Alternar</button>
+          <button class="btn btn-secondary" type="button" (click)="showNextWebcam(true);" [disabled]="!multipleWebcamsAvailable">Prox Disp.</button>
+        </div>
+
+        <div class="ui-toolbar-group-right">
+          <button class="btn btn-danger" type="button">Gravar Imagens</button>
+        </div>
+      </p-toolbar>
+    </div>
+
   </div>
 
-  <div class="ui-g-12">
-    DeviceId: <input id="deviceId" type="text" [(ngModel)]="deviceId" style="width: 500px">
-    <button (click)="showNextWebcam(deviceId);">Activate</button>
+  <div class="painelprincipal">
+    <div id="divisoria" style="width: 88%; height: 88%; margin-top: 10px;">
+      <webcam style="float: right; border: 2px solid;" [height]="PegaAltura()" [width]="PegaLargura()" [trigger]="triggerObservable" (imageCapture)="handleImage($event)" *ngIf="showWebcam"
+      [allowCameraSwitch]="allowCameraSwitch" [switchCamera]="nextWebcamObservable"
+      [videoOptions]="videoOptions" [imageQuality]="1" (cameraSwitched)="cameraWasSwitched($event)"
+      (initError)="handleInitError($event)"></webcam>
+    </div>
   </div>
 
-  <div class="ui-g-12">
-    <webcam [height]="800" [width]="450" [trigger]="triggerObservable" (imageCapture)="handleImage($event)" *ngIf="showWebcam"
-            [allowCameraSwitch]="allowCameraSwitch" [switchCamera]="nextWebcamObservable"
-            [videoOptions]="videoOptions"
-            [imageQuality]="1"
-            (cameraSwitched)="cameraWasSwitched($event)"
-            (initError)="handleInitError($event)"
-    ></webcam>
-  </div>
 
 </div>
 
-<div class="snapshot" *ngIf="webcamImage">
-  <h2>Teste inicial</h2>
-  <img [src]="webcamImage.imageAsDataUrl"/>
-</div>
