@@ -60,6 +60,8 @@ import {ToggleButtonModule} from 'primeng/togglebutton';
 import {RatingModule} from 'primeng/rating';
 import {ToolbarModule} from 'primeng/toolbar';
 import {CarouselModule} from 'primeng/carousel';
+import {TreeTableModule} from 'primeng/treetable';
+import {TreeNode} from 'primeng/api';
 
 const rotas: Routes = [
   { path: 'abreviaturas/novo', component: CadastroAbreviaturaComponent },
@@ -144,7 +146,8 @@ const rotas: Routes = [
     ToggleButtonModule,
     RatingModule,
     ToolbarModule,
-    CarouselModule
+    CarouselModule,
+    TreeTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

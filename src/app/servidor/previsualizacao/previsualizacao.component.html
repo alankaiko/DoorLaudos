@@ -30,25 +30,25 @@
 
       <section class="ui-g-12">
         <div>
-          <p-table id="tabela" [value]="series?.instance" [responsive]="true">
+          <p-treeTable [value]="estudos">
             <ng-template pTemplate="header">
                 <tr>
-                  <th style="width: 10%;">Cod.</th>
-                  <th style="width: 50%;">Inst. UID</th>
-                  <th style="width: 7%; text-align: center;">Data Incl.</th>
+                    <th>Name</th>
+                    <th>Size</th>
+                    <th>Type</th>
                 </tr>
             </ng-template>
-            <ng-template pTemplate="body" let-insta>
-                <tr>
+            <ng-template pTemplate="body" let-rowNode let-rowData="rowData">
+                <tr [ttRow]="rowNode">
                   <td>
-                    {{insta.idinstance}}
+                    <p-treeTableToggler [rowNode]="rowNode"></p-treeTableToggler>
+                    {{patient.idpatient}}
                   </td>
-                  <td><a icon="pi pi-eye" pTooltip="Visualizar Dicom"
-                    [routerLink]="['/viewer', insta.idinstance]">{{insta.sopinstanceuid}}</a></td>
-                  <td>{{insta.datecreate}}</td>
+                  <td>{{studyinstanceuid}}</td>
+                  <td>{{patient.patientname}}</td>
                 </tr>
             </ng-template>
-          </p-table>
+          </p-treeTable>
         </div>
       </section>
 

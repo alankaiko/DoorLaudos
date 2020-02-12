@@ -1,3 +1,4 @@
+import { TreeNode } from 'primeng/api';
 import { environment } from './../../environments/environment.prod';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
@@ -61,11 +62,15 @@ export class ServidorService {
       });
   }
 
+
+
   BuscarUrlBuscaImagem(instanceuid: any) {
     return `${this.url}/dicom/${instanceuid}`;
   }
 
-  BuscarInstanciasDoPaciente(idpatient: number): Promise<any> {
-    return this.http.get<any>(`${this.url}/series/${idpatient}`).toPromise().then(response => response);
+  BuscarEstudosDoPaciente(idpatient: number): Promise<any> {
+    return this.http.get<any>(`${this.url}/study/${idpatient}`)
+    .toPromise()
+    .then(response => response);
   }
 }
