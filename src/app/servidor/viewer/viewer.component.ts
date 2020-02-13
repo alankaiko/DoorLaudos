@@ -1,15 +1,17 @@
-import { Tagimagem, TagImagemGamb } from './../../core/model';
-import { InstanceService, ResumoInstance } from './../../zservice/instance.service';
 import { ServidorService } from './../../zservice/servidor.service';
-import {Component, OnInit} from '@angular/core';
+import { InstanceService } from './../../zservice/instance.service';
+import { TagImagemGamb } from './../../core/model';
 import cornerstone from 'cornerstone-core';
 import cornerstoneMath from 'cornerstone-math';
 import cornerstoneTools from 'cornerstone-tools';
 import Hammer from 'hammerjs';
 import cornerstoneWADOImageLoader from 'cornerstone-wado-image-loader';
-import { Router, ActivatedRoute } from '@angular/router';
 import dicomParser from 'dicom-parser';
 import {Location} from '@angular/common';
+import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { Instance } from 'src/app/core/model';
+
 
 const config = {
   webWorkerPath: '/assets/cornerstoneWADOImageLoaderWebWorker.js',
@@ -29,7 +31,7 @@ cornerstoneWADOImageLoader.webWorkerManager.initialize(config);
 })
 export class ViewerComponent implements OnInit {
   display: boolean;
-  instance = new ResumoInstance();
+  instance: Instance;
   tagsimagems: TagImagemGamb[];
 
   constructor(private router: Router,
@@ -70,8 +72,8 @@ export class ViewerComponent implements OnInit {
       .then(response => { this.tagsimagems = response; } );
   }
 
-  BuscarInstanciaResumida(idinstance: number) {
-    return this.serviceInst.ResumoProDicom(idinstance)
+  BuscarInstanciaResumida(idinstance: number, ) {
+    this.serviceInst.ResumoProDicom(idinstance)
       .then(
         instance => {
           this.instance = instance;

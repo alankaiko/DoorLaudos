@@ -62,15 +62,11 @@ export class ServidorService {
       });
   }
 
-
-
   BuscarUrlBuscaImagem(instanceuid: any) {
     return `${this.url}/dicom/${instanceuid}`;
   }
 
-  BuscarEstudosDoPaciente(idpatient: number): Promise<any> {
-    return this.http.get<any>(`${this.url}/study/${idpatient}`)
-    .toPromise()
-    .then(response => response);
+  BuscarInstanciasDoPaciente(idpatient: number): Promise<any> {
+    return this.http.get<any>(`${this.url}/series/${idpatient}`).toPromise().then(response => response);
   }
 }

@@ -129,6 +129,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "DoorLaudos"
+    }
+  },
+  "defaultProject": "DoorLaudos",
+  "cli": {
+    "analytics": false
+  }
 }
