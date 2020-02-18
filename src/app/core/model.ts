@@ -337,3 +337,12 @@ export class ProcedimentoAtendimento {
                 this.atendimento = atendimento;
               }
 }
+
+export class Modality {
+  codigo: number;
+  name: string;
+  description: string;
+  ip: string;
+  port: number;
+  timeout: number;
+}

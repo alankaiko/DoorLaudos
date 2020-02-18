@@ -1,0 +1,50 @@
+<div class="conteudos">
+  <p-fieldset legend="{{ editando ? 'Editar' : 'Nova'}} Modality">
+    <div class="classecad">
+      <form autocomplete="off" [formGroup]="formulario" (ngSubmit)="Salvar()" class="formu">
+        <div class="p-grid">
+          <div class="ui-g-3 ui-fluid">
+            <label>Código</label>
+            <input [readonly]= "true" type="text" pInputText ng-model="text" name="codigo" formControlName="codigo">
+          </div>
+
+          <div class="ui-g-9 ui-fluid">
+            <label>Nome</label>
+            <input type="text" pInputText ng-model="text" name="name" formControlName="name">
+          </div>
+
+          <div class="ui-g-12 ui-fluid">
+            <label>Descrição</label>
+            <input type="text" pInputText ng-model="text" name="description" formControlName="description">
+          </div>
+
+          <div class="ui-g-12 ui-fluid">
+            <label>Endereço</label>
+            <input type="text" pInputText ng-model="text" name="ip" formControlName="ip">
+          </div>
+
+          <div class="ui-g-12 ui-fluid">
+            <label>Porta</label>
+            <input type="text" pInputText ng-model="text" name="port" formControlName="port">
+          </div>
+
+          <div class="ui-g-12 ui-fluid">
+            <div style="text-align: left;">
+              <button class="btn btn-primary" type="submit" style="margin-right: 8px;">Salvar</button>
+              <button class="btn btn-outline-secondary" routerLink="/modalite">Cancelar</button>
+            </div>
+
+            <div style="text-align: right;">
+              <a style="color: #007bff; text-decoration: underline;" (click)="Voltar();">Retornar</a>
+            </div>
+
+            <div style="text-align: left;">
+              <a style="color: #007bff; text-decoration: underline;" (click)="Imprimir();">Imprimir</a>
+              <button class="btn btn-outline-warning" (click)="Testar();">Testar Mensagem</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </p-fieldset>
+</div>

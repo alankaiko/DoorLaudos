@@ -52,7 +52,8 @@ items: MenuItem[];
         {
           label: 'Server',
           items: [
-            {label: 'Listagem', icon: 'fa fa-fw fa-server', routerLink: ['servidor']}
+            {label: 'Listagem', icon: 'fa fa-fw fa-server', routerLink: ['servidor']},
+            {label: 'Modality', icon: 'fa fa-fw fa-server', routerLink: ['modalite']}
         ]
         }
       ];

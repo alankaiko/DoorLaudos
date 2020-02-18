@@ -16,7 +16,7 @@ export class ListaAbreviaturasComponent implements OnInit {
   totalRegistros = 0;
   filtro = new AbreviaturaFiltro();
 
-  constructor(private service: AbreviaturaService, private formbuilder: FormBuilder, private route: Router) { }
+  constructor(private service: AbreviaturaService, private route: Router) { }
 
   ngOnInit() {}
 

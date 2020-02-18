@@ -1,3 +1,5 @@
+import { CadastroMaquinasComponent } from './comunicacao/cadastro-maquinas/cadastro-maquinas.component';
+import { ListaMaquinasComponent } from './comunicacao/lista-maquinas/lista-maquinas.component';
 import { CardAtendimentoComponent } from './atendimento/card-atendimento/card-atendimento.component';
 import { CardModule } from 'primeng/components/card/card';
 import { CardConvenioComponent } from './convenios/card-convenio/card-convenio.component';
@@ -101,18 +103,21 @@ const rotas: Routes = [
   { path: 'atendimento/novo', component: TelaAtendimentoComponent },
   { path: 'atendimento/:cod', component: TelaAtendimentoComponent },
   { path: 'laudos', component: TelaLaudoComponent },
-  { path: 'captura', component: CapturaComponent }
+  { path: 'captura', component: CapturaComponent },
+  { path: 'modalite', component: ListaMaquinasComponent },
+  { path: 'modalite/novo', component: CadastroMaquinasComponent },
+  { path: 'modalite/:cod', component: CadastroMaquinasComponent }
 ];
 
 @NgModule({
   declarations: [
-    AppComponent, CadastroAbreviaturaComponent, ListaAbreviaturasComponent,
+    AppComponent, CadastroAbreviaturaComponent, ListaAbreviaturasComponent, ListaMaquinasComponent,
     CadastroConvenioComponent, ListaConvenioComponent, CadastroGrupoprocedimentoComponent,
     ListaGrupoprocedimentoComponent, CadastroProcedimentomedicoComponent,
     ListaProcedimentomedicoComponent, CadastroProfissionalexecComponent,
     ListaProfissionalexecutanteComponent, CadastroProfissionalsolComponent,
     ListaProfissionalsolicitanteComponent, CadastroTextopessoalComponent,
-    ListaTextopessoalComponent, ListaCbhpmComponent, ListaCid10Component,
+    ListaTextopessoalComponent, ListaCbhpmComponent, ListaCid10Component, CadastroMaquinasComponent,
     ListaCnesComponent, ListaCrmComponent, ListaEspecialidademedicaComponent,
     ListaPacienteComponent, CadastroPacienteComponent, ListaAtendimentoComponent,
     TelaAtendimentoComponent, ProcedimentoCadApendComponent, CapturaComponent, CardConvenioComponent, CardAtendimentoComponent
